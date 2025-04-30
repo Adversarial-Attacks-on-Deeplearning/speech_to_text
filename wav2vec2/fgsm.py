@@ -4,7 +4,7 @@ from datasets import load_dataset
 import jiwer
 import numpy as np
 
-def fgsm_attack(audio_array, ground_truth, target_transcription, model, processor, epsilon=0.3, sampling_rate=16000, device="cuda"):
+def fgsm_attack(audio_array, ground_truth, target_transcription, model, processor, epsilon=0.3, sampling_rate=16000):
     """
     Perform FGSM attack on Wav2Vec2 model to generate adversarial audio.
 
@@ -27,10 +27,10 @@ def fgsm_attack(audio_array, ground_truth, target_transcription, model, processo
     """
     # Step 1: Preprocess the audio
     inputs = processor(audio_array, sampling_rate=sampling_rate, return_tensors="pt", padding="longest")
-    input_values = inputs.input_values.to(device)  # Shape: [1, audio_length]
+    input_values = inputs.input_values  # Shape: [1, audio_length]
 
     # Step 2: Tokenize the target transcription
-    labels = processor.tokenizer(target_transcription, return_tensors="pt").input_ids.to(device)
+    labels = processor.tokenizer(target_transcription, return_tensors="pt").input_ids
 
     # Step 3 & 4: Compute CTC loss with gradient tracking
     input_values.requires_grad_(True)
