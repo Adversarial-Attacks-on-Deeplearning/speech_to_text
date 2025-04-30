@@ -1,22 +1,6 @@
 [
   {
     "sample_idx": 0,
-    "epsilon": 0.001,
-    "ground_truth": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
-    "adversarial_transcription": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 4.0
-  },
-  {
-    "sample_idx": 0,
-    "epsilon": 0.005,
-    "ground_truth": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
-    "adversarial_transcription": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 4.0
-  },
-  {
-    "sample_idx": 0,
     "epsilon": 0.01,
     "ground_truth": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
     "adversarial_transcription": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
@@ -54,30 +38,6 @@
     "adversarial_transcription": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
     "ground_truth_wer": 0.0,
     "target_wer": 4.0
-  },
-  {
-    "sample_idx": 0,
-    "epsilon": 0.3,
-    "ground_truth": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
-    "adversarial_transcription": "AND WHAT SORT OF EVIDENCE IT LOT BE POSSIBLE",
-    "ground_truth_wer": 0.375,
-    "target_wer": 4.5
-  },
-  {
-    "sample_idx": 1,
-    "epsilon": 0.001,
-    "ground_truth": "REMEMBERING HAS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLING OR RELATED TO WHAT IS REMEMBERED",
-    "adversarial_transcription": "REMEMBERING HAS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLING OR RELATED TO WHAT IS REMEMBERED",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 1,
-    "epsilon": 0.005,
-    "ground_truth": "REMEMBERING HAS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLING OR RELATED TO WHAT IS REMEMBERED",
-    "adversarial_transcription": "REMEMBERING HOWS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLING OR RELATED TO WHAT IS REMEMBERED",
-    "ground_truth_wer": 0.058823529411764705,
-    "target_wer": 8.5
   },
   {
     "sample_idx": 1,
@@ -120,30 +80,6 @@
     "target_wer": 8.5
   },
   {
-    "sample_idx": 1,
-    "epsilon": 0.3,
-    "ground_truth": "REMEMBERING HAS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLING OR RELATED TO WHAT IS REMEMBERED",
-    "adversarial_transcription": "REMEMBERING HOW TO BE A PRESENT E COLNENT IN SOME WAY RESEMTING OR LATED TO WHAT IT REMEMBERED",
-    "ground_truth_wer": 0.35294117647058826,
-    "target_wer": 9.0
-  },
-  {
-    "sample_idx": 2,
-    "epsilon": 0.001,
-    "ground_truth": "BUT I DO NOT THINK SUCH AN INFERENCE IS WARRANTED",
-    "adversarial_transcription": "BUT I DO NOT THINK SUCH AN INFERENCE IS WARNT IT",
-    "ground_truth_wer": 0.2,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 2,
-    "epsilon": 0.005,
-    "ground_truth": "BUT I DO NOT THINK SUCH AN INFERENCE IS WARRANTED",
-    "adversarial_transcription": "BUT I DO NOT THINK SUCH AN IFFERENCE IS WAREN'T IT",
-    "ground_truth_wer": 0.3,
-    "target_wer": 5.5
-  },
-  {
     "sample_idx": 2,
     "epsilon": 0.01,
     "ground_truth": "BUT I DO NOT THINK SUCH AN INFERENCE IS WARRANTED",
@@ -182,30 +118,6 @@
     "adversarial_transcription": "BUT I DO NOT THINK SUCH AN EQENT IS WANTED",
     "ground_truth_wer": 0.2,
     "target_wer": 5.0
-  },
-  {
-    "sample_idx": 2,
-    "epsilon": 0.3,
-    "ground_truth": "BUT I DO NOT THINK SUCH AN INFERENCE IS WARRANTED",
-    "adversarial_transcription": "BUT I DO NOT THINK SUCH AMAIN IS WANDFUL",
-    "ground_truth_wer": 0.3,
-    "target_wer": 4.5
-  },
-  {
-    "sample_idx": 3,
-    "epsilon": 0.001,
-    "ground_truth": "FAMILIARITY IS A FEELING CAPABLE OF DEGREES",
-    "adversarial_transcription": "FAMILIARITY IS A FILLING CAPABLE OF DEGREES",
-    "ground_truth_wer": 0.14285714285714285,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 3,
-    "epsilon": 0.005,
-    "ground_truth": "FAMILIARITY IS A FEELING CAPABLE OF DEGREES",
-    "adversarial_transcription": "FAMILIARITY IS A FILLING CAPABLE OF DEGREES",
-    "ground_truth_wer": 0.14285714285714285,
-    "target_wer": 3.5
   },
   {
     "sample_idx": 3,
@@ -248,30 +160,6 @@
     "target_wer": 3.5
   },
   {
-    "sample_idx": 3,
-    "epsilon": 0.3,
-    "ground_truth": "FAMILIARITY IS A FEELING CAPABLE OF DEGREES",
-    "adversarial_transcription": "FAMILIARITY IS FELING CAPABLE OF DEGREE",
-    "ground_truth_wer": 0.42857142857142855,
-    "target_wer": 3.0
-  },
-  {
-    "sample_idx": 4,
-    "epsilon": 0.001,
-    "ground_truth": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
-    "adversarial_transcription": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 9.0
-  },
-  {
-    "sample_idx": 4,
-    "epsilon": 0.005,
-    "ground_truth": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
-    "adversarial_transcription": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 9.0
-  },
-  {
     "sample_idx": 4,
     "epsilon": 0.01,
     "ground_truth": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
@@ -310,30 +198,6 @@
     "adversarial_transcription": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN A CERTAIN ANADVANCE IS RATHER VAGUE",
     "ground_truth_wer": 0.16666666666666666,
     "target_wer": 8.5
-  },
-  {
-    "sample_idx": 4,
-    "epsilon": 0.3,
-    "ground_truth": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
-    "adversarial_transcription": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN A CERTAIN INVANCE IS RATHER VAGU",
-    "ground_truth_wer": 0.2222222222222222,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 5,
-    "epsilon": 0.001,
-    "ground_truth": "THE FIRST OF OUR VAGUE BUT INDUBITABLE DATA IS THAT THERE IS KNOWLEDGE OF THE PAST",
-    "adversarial_transcription": "THE FIRST OF OUR VAGUE BUT INDUBITABLE DATA IS THAT THERE IS KNOWLEDGE OF THE PAST",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.0
-  },
-  {
-    "sample_idx": 5,
-    "epsilon": 0.005,
-    "ground_truth": "THE FIRST OF OUR VAGUE BUT INDUBITABLE DATA IS THAT THERE IS KNOWLEDGE OF THE PAST",
-    "adversarial_transcription": "THE FIRST OF OUR VAGUE BUT INDUBITABLE DATA IS THAT THERE IS KNOWLEDGE OF THE PAST",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.0
   },
   {
     "sample_idx": 5,
@@ -376,30 +240,6 @@
     "target_wer": 7.5
   },
   {
-    "sample_idx": 5,
-    "epsilon": 0.3,
-    "ground_truth": "THE FIRST OF OUR VAGUE BUT INDUBITABLE DATA IS THAT THERE IS KNOWLEDGE OF THE PAST",
-    "adversarial_transcription": "THE FIRTH OF OUR VAGUE THAT INDUBITABLE VATA IS ETTHERCKNOWLEDGE OF THE PAST",
-    "ground_truth_wer": 0.4375,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 6,
-    "epsilon": 0.001,
-    "ground_truth": "A FURTHER STAGE IS RECOGNITION",
-    "adversarial_transcription": "A FURTHER STAGE IS RECOGNITION",
-    "ground_truth_wer": 0.0,
-    "target_wer": 2.5
-  },
-  {
-    "sample_idx": 6,
-    "epsilon": 0.005,
-    "ground_truth": "A FURTHER STAGE IS RECOGNITION",
-    "adversarial_transcription": "A FURTHER STAGE IS RECOGNITION",
-    "ground_truth_wer": 0.0,
-    "target_wer": 2.5
-  },
-  {
     "sample_idx": 6,
     "epsilon": 0.01,
     "ground_truth": "A FURTHER STAGE IS RECOGNITION",
@@ -438,30 +278,6 @@
     "adversarial_transcription": "A FURTHER STAGE IS RECOGNITION",
     "ground_truth_wer": 0.0,
     "target_wer": 2.5
-  },
-  {
-    "sample_idx": 6,
-    "epsilon": 0.3,
-    "ground_truth": "A FURTHER STAGE IS RECOGNITION",
-    "adversarial_transcription": "A FURTHER STAGE IS RECOGNITION",
-    "ground_truth_wer": 0.0,
-    "target_wer": 2.5
-  },
-  {
-    "sample_idx": 7,
-    "epsilon": 0.001,
-    "ground_truth": "SOME POINTS MAY BE TAKEN AS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE AT",
-    "adversarial_transcription": "SOME POINTS MAY BE TAKEN AS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE AT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 7,
-    "epsilon": 0.005,
-    "ground_truth": "SOME POINTS MAY BE TAKEN AS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE AT",
-    "adversarial_transcription": "SOME POINTS MAY BE TAKEN AS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE AT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.5
   },
   {
     "sample_idx": 7,
@@ -504,30 +320,6 @@
     "target_wer": 8.5
   },
   {
-    "sample_idx": 7,
-    "epsilon": 0.3,
-    "ground_truth": "SOME POINTS MAY BE TAKEN AS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE AT",
-    "adversarial_transcription": "SOME POINTS MAY BE TAKEN AT THICK AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE O",
-    "ground_truth_wer": 0.17647058823529413,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 8,
-    "epsilon": 0.001,
-    "ground_truth": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
-    "adversarial_transcription": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 8,
-    "epsilon": 0.005,
-    "ground_truth": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
-    "adversarial_transcription": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
     "sample_idx": 8,
     "epsilon": 0.01,
     "ground_truth": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
@@ -566,30 +358,6 @@
     "adversarial_transcription": "THIS KNOWLEDGE IS MEMORY IN ONE FINT THOUGH IN ANOTHER IT IS NOT",
     "ground_truth_wer": 0.07692307692307693,
     "target_wer": 6.5
-  },
-  {
-    "sample_idx": 8,
-    "epsilon": 0.3,
-    "ground_truth": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
-    "adversarial_transcription": "THIS KNOWLEDGE IS MEMORY IN ONE THING THOUGH IN ANOTHER IT IS NOT",
-    "ground_truth_wer": 0.07692307692307693,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 9,
-    "epsilon": 0.001,
-    "ground_truth": "SOME IMAGES LIKE SOME SENSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
-    "adversarial_transcription": "SOME IMAGES LIKE SOME SENSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 9,
-    "epsilon": 0.005,
-    "ground_truth": "SOME IMAGES LIKE SOME SENSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
-    "adversarial_transcription": "SOME IMAGES LIKE SOME SENSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
   },
   {
     "sample_idx": 9,
@@ -632,30 +400,6 @@
     "target_wer": 6.0
   },
   {
-    "sample_idx": 9,
-    "epsilon": 0.3,
-    "ground_truth": "SOME IMAGES LIKE SOME SENSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
-    "adversarial_transcription": "SOME IMAGES LIKE SONSINSATION FEEL VERY FAMILIAR WHILE OTHERS FILL STRANGE",
-    "ground_truth_wer": 0.25,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 10,
-    "epsilon": 0.001,
-    "ground_truth": "IT IS THIS THAT IS OF INTEREST TO THEORY OF KNOWLEDGE",
-    "adversarial_transcription": "IT IS THIS THAT IS A VENTUREST TO THEORY OF KNOWLEDGE",
-    "ground_truth_wer": 0.18181818181818182,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 10,
-    "epsilon": 0.005,
-    "ground_truth": "IT IS THIS THAT IS OF INTEREST TO THEORY OF KNOWLEDGE",
-    "adversarial_transcription": "IT IS THIS THAT IS ADVENTUROUS TO THEORY OF KNOWLEDGE",
-    "ground_truth_wer": 0.18181818181818182,
-    "target_wer": 5.0
-  },
-  {
     "sample_idx": 10,
     "epsilon": 0.01,
     "ground_truth": "IT IS THIS THAT IS OF INTEREST TO THEORY OF KNOWLEDGE",
@@ -696,30 +440,6 @@
     "target_wer": 5.0
   },
   {
-    "sample_idx": 10,
-    "epsilon": 0.3,
-    "ground_truth": "IT IS THIS THAT IS OF INTEREST TO THEORY OF KNOWLEDGE",
-    "adversarial_transcription": "IT IS THIS THAT A TEVENTURAL TTHERY OF KNOWLEDGE",
-    "ground_truth_wer": 0.45454545454545453,
-    "target_wer": 4.5
-  },
-  {
-    "sample_idx": 11,
-    "epsilon": 0.001,
-    "ground_truth": "AS USED IN THE SPEECH OF EVERYDAY LIFE THE WORD CARRIES AN UNDERTONE OF DEPRECATION",
-    "adversarial_transcription": "AS USED IN THE SPEECH OF EVERYDAY LIFE THE WORD CARRIES AN UNDERTONE OF DEPRECATION",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 11,
-    "epsilon": 0.005,
-    "ground_truth": "AS USED IN THE SPEECH OF EVERYDAY LIFE THE WORD CARRIES AN UNDERTONE OF DEPRECATION",
-    "adversarial_transcription": "AS USE IN THE SPEECH OF EVERYDAY LIFE THE WORD CARRIES AN UNDERTONE OF DEPRECATION",
-    "ground_truth_wer": 0.06666666666666667,
-    "target_wer": 7.5
-  },
-  {
     "sample_idx": 11,
     "epsilon": 0.01,
     "ground_truth": "AS USED IN THE SPEECH OF EVERYDAY LIFE THE WORD CARRIES AN UNDERTONE OF DEPRECATION",
@@ -755,33 +475,9 @@
     "sample_idx": 11,
     "epsilon": 0.2,
     "ground_truth": "AS USED IN THE SPEECH OF EVERYDAY LIFE THE WORD CARRIES AN UNDERTONE OF DEPRECATION",
-    "adversarial_transcription": "AS YUSED IN THE FIEF OF EVERYDAY LIFE THE WORD CARRIES AN UNDERTONE OF IFICATION",
+    "adversarial_transcription": "AS YUSE IN THE FIEF OF EVERYDAY LIFE THE WORD CARRIES AN UNDERTONE OF IFICATION",
     "ground_truth_wer": 0.2,
     "target_wer": 7.5
-  },
-  {
-    "sample_idx": 11,
-    "epsilon": 0.3,
-    "ground_truth": "AS USED IN THE SPEECH OF EVERYDAY LIFE THE WORD CARRIES AN UNDERTONE OF DEPRECATION",
-    "adversarial_transcription": "AS YOUTH IN THE FEEF OF EVERYDAY LIFE THE WORD CARRIED AN UNDERTONE OF EFFICATION",
-    "ground_truth_wer": 0.26666666666666666,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 12,
-    "epsilon": 0.001,
-    "ground_truth": "THE SALIENT FEATURES OF THIS DEVELOPMENT OF DOMESTIC SERVICE HAVE ALREADY BEEN INDICATED",
-    "adversarial_transcription": "THE SALE AND FEATURES OF THIS DEVELOPMENT OF DOMESTIC SERVICE HAVE ALREADY BEEN INDICATED",
-    "ground_truth_wer": 0.15384615384615385,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 12,
-    "epsilon": 0.005,
-    "ground_truth": "THE SALIENT FEATURES OF THIS DEVELOPMENT OF DOMESTIC SERVICE HAVE ALREADY BEEN INDICATED",
-    "adversarial_transcription": "THE SALE AND FEATURES OF THIS DEVELOPMENT OF DOMESTIC SERVICE HAVE ALREADY BEEN INDICATED",
-    "ground_truth_wer": 0.15384615384615385,
-    "target_wer": 7.0
   },
   {
     "sample_idx": 12,
@@ -824,30 +520,6 @@
     "target_wer": 7.0
   },
   {
-    "sample_idx": 12,
-    "epsilon": 0.3,
-    "ground_truth": "THE SALIENT FEATURES OF THIS DEVELOPMENT OF DOMESTIC SERVICE HAVE ALREADY BEEN INDICATED",
-    "adversarial_transcription": "THE FAILING FETES OF IC DEVELOPMENT OF THEMETHIC THIRDICS HAVE ALREADY BEEN INDICATED",
-    "ground_truth_wer": 0.38461538461538464,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 13,
-    "epsilon": 0.001,
-    "ground_truth": "IN A GENERAL WAY THOUGH NOT WHOLLY NOR CONSISTENTLY THESE TWO GROUPS COINCIDE",
-    "adversarial_transcription": "IN A GENERAL WAY THOUGH NOT WHOLLY NOR CONSISTENTLY THESE TWO GROUPS COINCIDE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 13,
-    "epsilon": 0.005,
-    "ground_truth": "IN A GENERAL WAY THOUGH NOT WHOLLY NOR CONSISTENTLY THESE TWO GROUPS COINCIDE",
-    "adversarial_transcription": "IN A GENERAL WAY THOUGH NOT WHOLLY NOR CONSISTENTLY THESE TWO GROUPS COINCIDE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
     "sample_idx": 13,
     "epsilon": 0.01,
     "ground_truth": "IN A GENERAL WAY THOUGH NOT WHOLLY NOR CONSISTENTLY THESE TWO GROUPS COINCIDE",
@@ -883,33 +555,9 @@
     "sample_idx": 13,
     "epsilon": 0.2,
     "ground_truth": "IN A GENERAL WAY THOUGH NOT WHOLLY NOR CONSISTENTLY THESE TWO GROUPS COINCIDE",
-    "adversarial_transcription": "IN A GENERAL WAY THOUGH NOT POLY NOR COMPITEETE TO GROUP GOING GITE",
+    "adversarial_transcription": "IN A GENERAL WAY THOUGH NOT HOLLY NOR COMPLITEETE TO GROUP GOING GITE",
     "ground_truth_wer": 0.46153846153846156,
     "target_wer": 6.5
-  },
-  {
-    "sample_idx": 13,
-    "epsilon": 0.3,
-    "ground_truth": "IN A GENERAL WAY THOUGH NOT WHOLLY NOR CONSISTENTLY THESE TWO GROUPS COINCIDE",
-    "adversarial_transcription": "IN A GENERAL WAY THOUGH NOT POLY NOR COMPPLELLELE GR GOINGITE",
-    "ground_truth_wer": 0.46153846153846156,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 14,
-    "epsilon": 0.001,
-    "ground_truth": "EACH WILL THEREFORE SERVE ABOUT EQUALLY WELL DURING THE EARLIER STAGES OF SOCIAL GROWTH",
-    "adversarial_transcription": "EACH WILL THEREFORE SERVE ABOUT EQUALLY WELL DURING THE EARLIER STAGES OF SOCIAL GROWTH",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 14,
-    "epsilon": 0.005,
-    "ground_truth": "EACH WILL THEREFORE SERVE ABOUT EQUALLY WELL DURING THE EARLIER STAGES OF SOCIAL GROWTH",
-    "adversarial_transcription": "EACH WILL THEREFORE SERVE ABOUT EQUALLY WELL DURING THE EARLIER STAGES OF SOCIAL GROWTH",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.0
   },
   {
     "sample_idx": 14,
@@ -952,30 +600,6 @@
     "target_wer": 7.0
   },
   {
-    "sample_idx": 14,
-    "epsilon": 0.3,
-    "ground_truth": "EACH WILL THEREFORE SERVE ABOUT EQUALLY WELL DURING THE EARLIER STAGES OF SOCIAL GROWTH",
-    "adversarial_transcription": "EACH WILL THEREFORE SERVE ABOUT EQUALY WELL DOING THE EARLIEST FAT OF SOCIAL WORTH",
-    "ground_truth_wer": 0.35714285714285715,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 15,
-    "epsilon": 0.001,
-    "ground_truth": "IN THE COMMUNITIES OF THE WESTERN CULTURE THIS POINT IS AT PRESENT FOUND AMONG THE LOWER MIDDLE CLASS",
-    "adversarial_transcription": "IN THE COMMUNITIES OF THE WESTERN CULTURE THIS POINT IS AT PRESENT FOUND AMONG THE LOWER MIDDLE CLASS",
-    "ground_truth_wer": 0.0,
-    "target_wer": 9.0
-  },
-  {
-    "sample_idx": 15,
-    "epsilon": 0.005,
-    "ground_truth": "IN THE COMMUNITIES OF THE WESTERN CULTURE THIS POINT IS AT PRESENT FOUND AMONG THE LOWER MIDDLE CLASS",
-    "adversarial_transcription": "IN THE COMMUNITIES OF THE WESTERN CELFTURE THIS POINT IS AT PRESENT FOUND AMONG THE LOWER MIDDLE CLASS",
-    "ground_truth_wer": 0.05555555555555555,
-    "target_wer": 9.0
-  },
-  {
     "sample_idx": 15,
     "epsilon": 0.01,
     "ground_truth": "IN THE COMMUNITIES OF THE WESTERN CULTURE THIS POINT IS AT PRESENT FOUND AMONG THE LOWER MIDDLE CLASS",
@@ -1003,8 +627,8 @@
     "sample_idx": 15,
     "epsilon": 0.1,
     "ground_truth": "IN THE COMMUNITIES OF THE WESTERN CULTURE THIS POINT IS AT PRESENT FOUND AMONG THE LOWER MIDDLE CLASS",
-    "adversarial_transcription": "IN THE COMMUNITIES OF THE WESTERN CALCHER THIS POINT IS A PRESENT FOUND AMONG THE LOWER MIDDLE CLAUS",
-    "ground_truth_wer": 0.16666666666666666,
+    "adversarial_transcription": "IN THE COMMUNITIES OF THE WESTERN CALCHER THIS POINT IS A PRESENT FOUND AMONG THE LOWER MIDDLE CLASS",
+    "ground_truth_wer": 0.1111111111111111,
     "target_wer": 9.0
   },
   {
@@ -1014,30 +638,6 @@
     "adversarial_transcription": "IN THE COMMUNITIES OF THE WESTERN CALCHER THIS POINT IS A PRESENT FOUND AMONG THE LOW EMITTED POT",
     "ground_truth_wer": 0.2777777777777778,
     "target_wer": 9.0
-  },
-  {
-    "sample_idx": 15,
-    "epsilon": 0.3,
-    "ground_truth": "IN THE COMMUNITIES OF THE WESTERN CULTURE THIS POINT IS AT PRESENT FOUND AMONG THE LOWER MIDDLE CLASS",
-    "adversarial_transcription": "IN THE COMMUNITIES OF THE WESTERN CALCULAR TID POINTED H HAD BEEN FOUND AMONG THE LOWENITTED TI",
-    "ground_truth_wer": 0.5,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 16,
-    "epsilon": 0.001,
-    "ground_truth": "CONSUMPTION BECOMES A LARGER ELEMENT IN THE STANDARD OF LIVING IN THE CITY THAN IN THE COUNTRY",
-    "adversarial_transcription": "CONSUMPTION BECOMES A LARGER ELEMENT IN THE SANDARD OF LIVING IN THE CITY ON IN THE COUNTRY",
-    "ground_truth_wer": 0.11764705882352941,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 16,
-    "epsilon": 0.005,
-    "ground_truth": "CONSUMPTION BECOMES A LARGER ELEMENT IN THE STANDARD OF LIVING IN THE CITY THAN IN THE COUNTRY",
-    "adversarial_transcription": "CONSUMPTION BECOMES A LARGER ELEMENT IN THE SANDAR OF LIVING IN THE CITIES ON IN THE COUNTRY",
-    "ground_truth_wer": 0.17647058823529413,
-    "target_wer": 8.5
   },
   {
     "sample_idx": 16,
@@ -1080,30 +680,6 @@
     "target_wer": 8.5
   },
   {
-    "sample_idx": 16,
-    "epsilon": 0.3,
-    "ground_truth": "CONSUMPTION BECOMES A LARGER ELEMENT IN THE STANDARD OF LIVING IN THE CITY THAN IN THE COUNTRY",
-    "adversarial_transcription": "SOMETEMPING TO COME ALLOWD TO ELEMENTTIN EFENDER OF LIVING IN I TIKIS ON NYTINTING",
-    "ground_truth_wer": 0.8235294117647058,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 17,
-    "epsilon": 0.001,
-    "ground_truth": "THE QUESTION IS WHICH OF THE TWO METHODS WILL MOST EFFECTIVELY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO AFFECT",
-    "adversarial_transcription": "THE QUESTIONIS WHICH OF THE TWO METHODS WILL MOST EFFECTIVAELY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO EFFECT",
-    "ground_truth_wer": 0.19047619047619047,
-    "target_wer": 10.0
-  },
-  {
-    "sample_idx": 17,
-    "epsilon": 0.005,
-    "ground_truth": "THE QUESTION IS WHICH OF THE TWO METHODS WILL MOST EFFECTIVELY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO AFFECT",
-    "adversarial_transcription": "THE QUESTIONISS WHICH OF THE TWO METHODS WILL MOST EFFECTIVAELY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO EFFECT",
-    "ground_truth_wer": 0.19047619047619047,
-    "target_wer": 10.0
-  },
-  {
     "sample_idx": 17,
     "epsilon": 0.01,
     "ground_truth": "THE QUESTION IS WHICH OF THE TWO METHODS WILL MOST EFFECTIVELY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO AFFECT",
@@ -1115,7 +691,7 @@
     "sample_idx": 17,
     "epsilon": 0.02,
     "ground_truth": "THE QUESTION IS WHICH OF THE TWO METHODS WILL MOST EFFECTIVELY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO AFFECT",
-    "adversarial_transcription": "THE QUESTIONIS WHICH OF THE TWO METHODS WILL MOST AFFECTEVLY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO EFFECT",
+    "adversarial_transcription": "THE QUESTIONIS WHICH OF THE TWO METHODS WILL MOST AFFECTEDLY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO EFFECT",
     "ground_truth_wer": 0.19047619047619047,
     "target_wer": 10.0
   },
@@ -1123,7 +699,7 @@
     "sample_idx": 17,
     "epsilon": 0.05,
     "ground_truth": "THE QUESTION IS WHICH OF THE TWO METHODS WILL MOST EFFECTIVELY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO AFFECT",
-    "adversarial_transcription": "THE QUESTIONIS WHICH OF THE TWO METHODS WILL MOST AFFECTEDLY REACH THE PERSONS WHOSE CONVICTIONS IT AS DESIRED TO EFFECT",
+    "adversarial_transcription": "THE QUESTIONIS WHICH OF THE TWO METHODS WILL MOST AFFECTEDLY REACH THE PERSONS WHOSE CONVICTIONS IT HAS DESIRED TO EFFECT",
     "ground_truth_wer": 0.23809523809523808,
     "target_wer": 10.0
   },
@@ -1139,33 +715,9 @@
     "sample_idx": 17,
     "epsilon": 0.2,
     "ground_truth": "THE QUESTION IS WHICH OF THE TWO METHODS WILL MOST EFFECTIVELY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO AFFECT",
-    "adversarial_transcription": "A QUESTION IS WHICH OF THE TWO METHODS OLMOT EFFECT IVLY REACHED THE PERSONS WHOSE CONVICTION IT HAD DESIRED TO EFFECT",
-    "ground_truth_wer": 0.38095238095238093,
-    "target_wer": 10.5
-  },
-  {
-    "sample_idx": 17,
-    "epsilon": 0.3,
-    "ground_truth": "THE QUESTION IS WHICH OF THE TWO METHODS WILL MOST EFFECTIVELY REACH THE PERSONS WHOSE CONVICTIONS IT IS DESIRED TO AFFECT",
-    "adversarial_transcription": "I QUESTION I WHICH OF THE TWO METHODS WILMULTEFECS OF E REACH THE PERCON WUCHCON BI ON IF IT DESIRED TO EFFECT",
-    "ground_truth_wer": 0.5714285714285714,
+    "adversarial_transcription": "E QUESTION IS WHICH OF THE TWO METHODS WOL MOLT EFFECT IVBE REACHED THE PERSONS WHOSE CONVICTION IT HAD DESIRED TO EFFECT",
+    "ground_truth_wer": 0.42857142857142855,
     "target_wer": 11.0
-  },
-  {
-    "sample_idx": 18,
-    "epsilon": 0.001,
-    "ground_truth": "THE MODERN ORGANIZATION OF INDUSTRY WORKS IN THE SAME DIRECTION ALSO BY ANOTHER LINE",
-    "adversarial_transcription": "THE MODERN ORGANIZATION OF INDUSTRY WORKS IN THE SAME DIRECTION ALSO BY ANOTHER LINE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 18,
-    "epsilon": 0.005,
-    "ground_truth": "THE MODERN ORGANIZATION OF INDUSTRY WORKS IN THE SAME DIRECTION ALSO BY ANOTHER LINE",
-    "adversarial_transcription": "THE MODERN ORGANIZATION OF INDUSTRY WORKS IN THE SAME DIRECTION ALSO BY ANOTHER LINE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.0
   },
   {
     "sample_idx": 18,
@@ -1203,33 +755,9 @@
     "sample_idx": 18,
     "epsilon": 0.2,
     "ground_truth": "THE MODERN ORGANIZATION OF INDUSTRY WORKS IN THE SAME DIRECTION ALSO BY ANOTHER LINE",
-    "adversarial_transcription": "THE MODERN ORGANIZATION OF INDUSTRY WORKE  IN THE SAME DIRECTION ALTERED BY ANOTHER LINE",
+    "adversarial_transcription": "THE MODERN ORGANIZATION OF INDUSTRY WORKED  IN THE SAME DIRECTION ALTERED BY ANOTHER LINE",
     "ground_truth_wer": 0.14285714285714285,
     "target_wer": 7.0
-  },
-  {
-    "sample_idx": 18,
-    "epsilon": 0.3,
-    "ground_truth": "THE MODERN ORGANIZATION OF INDUSTRY WORKS IN THE SAME DIRECTION ALSO BY ANOTHER LINE",
-    "adversarial_transcription": "THE MODERN ORGANIZATION OF NRE WORKE IN THE PLAIN DIRECTION ALTERED BY ANOTHER LINE",
-    "ground_truth_wer": 0.2857142857142857,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 19,
-    "epsilon": 0.001,
-    "ground_truth": "THIS DIFFERENTIATION IS FURTHERED BY THE INHERITANCE OF WEALTH AND THE CONSEQUENT INHERITANCE OF GENTILITY",
-    "adversarial_transcription": "THIS DEFERENCIATION IS FURTHERED BY THE INHERITANCE OF WEALTH AND THE CONSEQUENT INHERITANCE OF GENTILITY",
-    "ground_truth_wer": 0.06666666666666667,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 19,
-    "epsilon": 0.005,
-    "ground_truth": "THIS DIFFERENTIATION IS FURTHERED BY THE INHERITANCE OF WEALTH AND THE CONSEQUENT INHERITANCE OF GENTILITY",
-    "adversarial_transcription": "THIS DEFERUNCIATION IS FURTHERED BY THE INHERITANCE OF WEALTH AND THE CONSEQUENT INHERITANCE OF GENTILITY",
-    "ground_truth_wer": 0.06666666666666667,
-    "target_wer": 7.5
   },
   {
     "sample_idx": 19,
@@ -1267,33 +795,9 @@
     "sample_idx": 19,
     "epsilon": 0.2,
     "ground_truth": "THIS DIFFERENTIATION IS FURTHERED BY THE INHERITANCE OF WEALTH AND THE CONSEQUENT INHERITANCE OF GENTILITY",
-    "adversarial_transcription": "IF DEGRENTIATION IS FIRDED BY THE INHERITANCE OF WEALTH AND THE CONSEQUENT INHERITANCE OF GENTILITY",
+    "adversarial_transcription": "IF DECRENTIATION IS FIRDED BY THE INHERITANCE OF WEALTH AND THE CONSEQUENT INHERITANCE OF GENTILITY",
     "ground_truth_wer": 0.2,
     "target_wer": 7.5
-  },
-  {
-    "sample_idx": 19,
-    "epsilon": 0.3,
-    "ground_truth": "THIS DIFFERENTIATION IS FURTHERED BY THE INHERITANCE OF WEALTH AND THE CONSEQUENT INHERITANCE OF GENTILITY",
-    "adversarial_transcription": "IF DEPENTIATION IS THIRDED BY THE INHERITANCE OF WEALTH AND THE CONENT INHERITANCE OF GENTILITY",
-    "ground_truth_wer": 0.26666666666666666,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 20,
-    "epsilon": 0.001,
-    "ground_truth": "THE LIVERY BECOMES OBNOXIOUS TO NEARLY ALL WHO ARE REQUIRED TO WEAR IT",
-    "adversarial_transcription": "THE LIVERY BECOMES OBNOXIOUS TO NEARLY ALL WHO ARE REQUIRED TO WEAR IT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 20,
-    "epsilon": 0.005,
-    "ground_truth": "THE LIVERY BECOMES OBNOXIOUS TO NEARLY ALL WHO ARE REQUIRED TO WEAR IT",
-    "adversarial_transcription": "THE LIVERY BECOMES OBNOXIOUS TO NEARLY ALL WHO ARE REQUIRED TO WEAR IT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
   },
   {
     "sample_idx": 20,
@@ -1336,30 +840,6 @@
     "target_wer": 6.5
   },
   {
-    "sample_idx": 20,
-    "epsilon": 0.3,
-    "ground_truth": "THE LIVERY BECOMES OBNOXIOUS TO NEARLY ALL WHO ARE REQUIRED TO WEAR IT",
-    "adversarial_transcription": "THE LIVERY BECOMES OBNUPTOV TO NEARLY ALL WHO ARE REQUIRE TO WEARIT",
-    "ground_truth_wer": 0.3076923076923077,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 21,
-    "epsilon": 0.001,
-    "ground_truth": "BUT THE GENERAL DISTINCTION IS NOT ON THAT ACCOUNT TO BE OVERLOOKED",
-    "adversarial_transcription": "BUT THE GENERAL DISTINCTION IS NOT ON THAT ACCOUNT TO BE OVERLOOKED",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 21,
-    "epsilon": 0.005,
-    "ground_truth": "BUT THE GENERAL DISTINCTION IS NOT ON THAT ACCOUNT TO BE OVERLOOKED",
-    "adversarial_transcription": "BUT THE GENERAL DISTINCTION IS NOT ON THAT ACCOUNT TO BE OVERLOOKED",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
     "sample_idx": 21,
     "epsilon": 0.01,
     "ground_truth": "BUT THE GENERAL DISTINCTION IS NOT ON THAT ACCOUNT TO BE OVERLOOKED",
@@ -1400,30 +880,6 @@
     "target_wer": 6.0
   },
   {
-    "sample_idx": 21,
-    "epsilon": 0.3,
-    "ground_truth": "BUT THE GENERAL DISTINCTION IS NOT ON THAT ACCOUNT TO BE OVERLOOKED",
-    "adversarial_transcription": "THAT THE GENERAL BETHINKONEIS NOT ON THAT ATTOWN TO BE OVERLOOKED",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 22,
-    "epsilon": 0.001,
-    "ground_truth": "THE UTILITY OF CONSUMPTION AS AN EVIDENCE OF WEALTH IS TO BE CLASSED AS A DERIVATIVE GROWTH",
-    "adversarial_transcription": "THE UTILITY OF CONSUMPTION AS AN EVIDENCE OF WEALTH IS TO BE CLASSED AS A DERIVITIV GROWTH",
-    "ground_truth_wer": 0.058823529411764705,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 22,
-    "epsilon": 0.005,
-    "ground_truth": "THE UTILITY OF CONSUMPTION AS AN EVIDENCE OF WEALTH IS TO BE CLASSED AS A DERIVATIVE GROWTH",
-    "adversarial_transcription": "THE UTILITI OFE CONSUMPTION AS AN EVIDENCE OF WEALTH IS TO BE CLASSED AS A GERIVITIV GROWTH",
-    "ground_truth_wer": 0.17647058823529413,
-    "target_wer": 8.5
-  },
-  {
     "sample_idx": 22,
     "epsilon": 0.01,
     "ground_truth": "THE UTILITY OF CONSUMPTION AS AN EVIDENCE OF WEALTH IS TO BE CLASSED AS A DERIVATIVE GROWTH",
@@ -1435,8 +891,8 @@
     "sample_idx": 22,
     "epsilon": 0.02,
     "ground_truth": "THE UTILITY OF CONSUMPTION AS AN EVIDENCE OF WEALTH IS TO BE CLASSED AS A DERIVATIVE GROWTH",
-    "adversarial_transcription": "THE UTILITI OVE CONSUMPTION AS AN EVIDENCE OF WEALTH IS TO BE CLASSED AS A DERIVITIVE GROWTH",
-    "ground_truth_wer": 0.17647058823529413,
+    "adversarial_transcription": "THE UTILITY OVE CONSUMPTION AS AN EVIDENCE OF WEALTH IS TO BE CLASSED AS A DERIVITIVE GROWTH",
+    "ground_truth_wer": 0.11764705882352941,
     "target_wer": 8.5
   },
   {
@@ -1464,30 +920,6 @@
     "target_wer": 8.5
   },
   {
-    "sample_idx": 22,
-    "epsilon": 0.3,
-    "ground_truth": "THE UTILITY OF CONSUMPTION AS AN EVIDENCE OF WEALTH IS TO BE CLASSED AS A DERIVATIVE GROWTH",
-    "adversarial_transcription": "THE APILITIVE CON EMTION AS AN EVIDENCE OF WEALTH IS TO THE CAST OF A DERIVITIVE GROWTH",
-    "ground_truth_wer": 0.4117647058823529,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 23,
-    "epsilon": 0.001,
-    "ground_truth": "THERE IS A MORE OR LESS ELABORATE SYSTEM OF RANK AND GRADES",
-    "adversarial_transcription": "THERE IS A MORE OR LESS ELABORATE SYSTEM OF RANK AND GRATES",
-    "ground_truth_wer": 0.08333333333333333,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 23,
-    "epsilon": 0.005,
-    "ground_truth": "THERE IS A MORE OR LESS ELABORATE SYSTEM OF RANK AND GRADES",
-    "adversarial_transcription": "THERE IS A MORE OR LESS ELABORATE SYSTEM OF RANK AND GRATES",
-    "ground_truth_wer": 0.08333333333333333,
-    "target_wer": 6.0
-  },
-  {
     "sample_idx": 23,
     "epsilon": 0.01,
     "ground_truth": "THERE IS A MORE OR LESS ELABORATE SYSTEM OF RANK AND GRADES",
@@ -1499,9 +931,9 @@
     "sample_idx": 23,
     "epsilon": 0.02,
     "ground_truth": "THERE IS A MORE OR LESS ELABORATE SYSTEM OF RANK AND GRADES",
-    "adversarial_transcription": "THERE IS A MORE ORLESS ELEBORATE SYSTEM OF RANK AND GRATES",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 5.5
+    "adversarial_transcription": "THERE IS A MORE OR LESS ELEBORATE SYSTEM OF RANK AND GRATES",
+    "ground_truth_wer": 0.16666666666666666,
+    "target_wer": 6.0
   },
   {
     "sample_idx": 23,
@@ -1526,30 +958,6 @@
     "adversarial_transcription": "THERE IS MORE OR LESS ELABORATE VICTIM OF RANK AND GRATE",
     "ground_truth_wer": 0.25,
     "target_wer": 5.5
-  },
-  {
-    "sample_idx": 23,
-    "epsilon": 0.3,
-    "ground_truth": "THERE IS A MORE OR LESS ELABORATE SYSTEM OF RANK AND GRADES",
-    "adversarial_transcription": "THERE IS MORE OR LES ELABORATE VICTHEM OF RANK AND GRATE",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 24,
-    "epsilon": 0.001,
-    "ground_truth": "IN THE NATURE OF THINGS LUXURIES AND THE COMFORTS OF LIFE BELONG TO THE LEISURE CLASS",
-    "adversarial_transcription": "IN THE NATURE OF THINGS LUXURIES AND THE COMFORTS OF LIFE BELONG TO THE LEISURE CLASS",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.0
-  },
-  {
-    "sample_idx": 24,
-    "epsilon": 0.005,
-    "ground_truth": "IN THE NATURE OF THINGS LUXURIES AND THE COMFORTS OF LIFE BELONG TO THE LEISURE CLASS",
-    "adversarial_transcription": "IN THE NATURE OF THINGS LUXURIES AND THE COMFORTS OF LIFE BELONGE TO THE LEISURE CLASS",
-    "ground_truth_wer": 0.0625,
-    "target_wer": 8.0
   },
   {
     "sample_idx": 24,
@@ -1579,8 +987,8 @@
     "sample_idx": 24,
     "epsilon": 0.1,
     "ground_truth": "IN THE NATURE OF THINGS LUXURIES AND THE COMFORTS OF LIFE BELONG TO THE LEISURE CLASS",
-    "adversarial_transcription": "IN THE NATURE OF THINGS LUXURIES AND THE COMFORTS OF LIFE BELONG TO THE LEISURE CLASS",
-    "ground_truth_wer": 0.0,
+    "adversarial_transcription": "IN THE NATURE OF THIN LUXURIES AND THE COMFORTS OF LIFE BELONG TO THE LEISURE CLASS",
+    "ground_truth_wer": 0.0625,
     "target_wer": 8.0
   },
   {
@@ -1588,30 +996,6 @@
     "epsilon": 0.2,
     "ground_truth": "IN THE NATURE OF THINGS LUXURIES AND THE COMFORTS OF LIFE BELONG TO THE LEISURE CLASS",
     "adversarial_transcription": "IN THE NATURE OF THE LUXURIES AND THE COMFORTS OF LIFE BELONG TO THE LEISURE CLASS",
-    "ground_truth_wer": 0.0625,
-    "target_wer": 8.0
-  },
-  {
-    "sample_idx": 24,
-    "epsilon": 0.3,
-    "ground_truth": "IN THE NATURE OF THINGS LUXURIES AND THE COMFORTS OF LIFE BELONG TO THE LEISURE CLASS",
-    "adversarial_transcription": "IN THE NATURE OF THEN LUXURY AND THE COMFORTS OF LIFE BELONGED TO THE LEISURE CLASS",
-    "ground_truth_wer": 0.1875,
-    "target_wer": 8.0
-  },
-  {
-    "sample_idx": 25,
-    "epsilon": 0.001,
-    "ground_truth": "THEY DREW BACK A LITTLE FROM THE ENTRANCE AND MOTIONED TO THE SUPPOSED CONJURER TO ENTER",
-    "adversarial_transcription": "THEY DREW BACK A LITTLE FROM THE ENTRANCE AND MOTIONED TO THE SUPPOSED CONJUROR TO ENTER",
-    "ground_truth_wer": 0.0625,
-    "target_wer": 8.0
-  },
-  {
-    "sample_idx": 25,
-    "epsilon": 0.005,
-    "ground_truth": "THEY DREW BACK A LITTLE FROM THE ENTRANCE AND MOTIONED TO THE SUPPOSED CONJURER TO ENTER",
-    "adversarial_transcription": "THEY DREW BACK A LITTLE FROM THE ENTRANCE AND MOTIONED TO THE SUPPOSED CONJUROR TO ENTER",
     "ground_truth_wer": 0.0625,
     "target_wer": 8.0
   },
@@ -1656,30 +1040,6 @@
     "target_wer": 8.0
   },
   {
-    "sample_idx": 25,
-    "epsilon": 0.3,
-    "ground_truth": "THEY DREW BACK A LITTLE FROM THE ENTRANCE AND MOTIONED TO THE SUPPOSED CONJURER TO ENTER",
-    "adversarial_transcription": "THEY DREW BACK A LITTLE FROM THE ENTRANCE AND MOTIONED TO THE SUPPOSED CONJUROR TO ENTER",
-    "ground_truth_wer": 0.0625,
-    "target_wer": 8.0
-  },
-  {
-    "sample_idx": 26,
-    "epsilon": 0.001,
-    "ground_truth": "THE BEAR SHOOK HIS SHAGGY SIDES AND THEN A WELL KNOWN VOICE REPLIED",
-    "adversarial_transcription": "THE BEAR SHOOK HIS SHAGGY SIDES AND THEN A WELL KNOWN VOICE REPLIED",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 26,
-    "epsilon": 0.005,
-    "ground_truth": "THE BEAR SHOOK HIS SHAGGY SIDES AND THEN A WELL KNOWN VOICE REPLIED",
-    "adversarial_transcription": "THE BEAR SHOOK HIS SHAGGY SIDES AND THEN A WELL KNOWN VOICE REPLIED",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
     "sample_idx": 26,
     "epsilon": 0.01,
     "ground_truth": "THE BEAR SHOOK HIS SHAGGY SIDES AND THEN A WELL KNOWN VOICE REPLIED",
@@ -1720,30 +1080,6 @@
     "target_wer": 6.5
   },
   {
-    "sample_idx": 26,
-    "epsilon": 0.3,
-    "ground_truth": "THE BEAR SHOOK HIS SHAGGY SIDES AND THEN A WELL KNOWN VOICE REPLIED",
-    "adversarial_transcription": "THE BEAR SHOOK HIS SHAGGY SIDE AND THEN A WELL KNOWN VOICE REPLIED",
-    "ground_truth_wer": 0.07692307692307693,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 27,
-    "epsilon": 0.001,
-    "ground_truth": "WHAT SHALL WE DO WITH THE MINGOES AT THE DOOR THEY COUNT SIX AND THIS SINGER IS AS GOOD AS NOTHING",
-    "adversarial_transcription": "WHAT SHALL WE DO WITH THE MINGOES AT THE DOOR THEY COUNT SIX AND THE SINGER IS AS GOOD AS NOTHING",
-    "ground_truth_wer": 0.047619047619047616,
-    "target_wer": 10.5
-  },
-  {
-    "sample_idx": 27,
-    "epsilon": 0.005,
-    "ground_truth": "WHAT SHALL WE DO WITH THE MINGOES AT THE DOOR THEY COUNT SIX AND THIS SINGER IS AS GOOD AS NOTHING",
-    "adversarial_transcription": "WHAT SHALL WE DO WITH THE MINGOES AT THE DOOR THEY COUNT SIX AND THE SINGER IS AS GOOD AS NOTHING",
-    "ground_truth_wer": 0.047619047619047616,
-    "target_wer": 10.5
-  },
-  {
     "sample_idx": 27,
     "epsilon": 0.01,
     "ground_truth": "WHAT SHALL WE DO WITH THE MINGOES AT THE DOOR THEY COUNT SIX AND THIS SINGER IS AS GOOD AS NOTHING",
@@ -1755,8 +1091,8 @@
     "sample_idx": 27,
     "epsilon": 0.02,
     "ground_truth": "WHAT SHALL WE DO WITH THE MINGOES AT THE DOOR THEY COUNT SIX AND THIS SINGER IS AS GOOD AS NOTHING",
-    "adversarial_transcription": "WHAT SHALL WE DO WITH THE MINGOES AT THE DOOR THEY COUNT SIX AND THIS SINGER IS AS GOOD AS NOTHING",
-    "ground_truth_wer": 0.0,
+    "adversarial_transcription": "WHAT SHALL WE DO WITH THE MINGOES AT THE DOOR THEY COUNT SIX AND THI SINGER IS AS GOOD AS NOTHING",
+    "ground_truth_wer": 0.047619047619047616,
     "target_wer": 10.5
   },
   {
@@ -1784,30 +1120,6 @@
     "target_wer": 10.5
   },
   {
-    "sample_idx": 27,
-    "epsilon": 0.3,
-    "ground_truth": "WHAT SHALL WE DO WITH THE MINGOES AT THE DOOR THEY COUNT SIX AND THIS SINGER IS AS GOOD AS NOTHING",
-    "adversarial_transcription": "WHAT SHALL WE DO WITH THE MINGOES AT THE DOOR THEY COUNT FICKD AND THE FINGERS AS GOOD AS NOTHING",
-    "ground_truth_wer": 0.19047619047619047,
-    "target_wer": 10.0
-  },
-  {
-    "sample_idx": 28,
-    "epsilon": 0.001,
-    "ground_truth": "WILL THE HURONS HEAR HIS GROANS",
-    "adversarial_transcription": "WILL THE HURANS HEAR HIS GROANS",
-    "ground_truth_wer": 0.16666666666666666,
-    "target_wer": 3.0
-  },
-  {
-    "sample_idx": 28,
-    "epsilon": 0.005,
-    "ground_truth": "WILL THE HURONS HEAR HIS GROANS",
-    "adversarial_transcription": "WILE THE HURANS HEAR HIS GROANS",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 3.0
-  },
-  {
     "sample_idx": 28,
     "epsilon": 0.01,
     "ground_truth": "WILL THE HURONS HEAR HIS GROANS",
@@ -1827,7 +1139,7 @@
     "sample_idx": 28,
     "epsilon": 0.05,
     "ground_truth": "WILL THE HURONS HEAR HIS GROANS",
-    "adversarial_transcription": "WERE THE HURANS HEAR HIS GROANS",
+    "adversarial_transcription": "WELE THE HURANS HEAR HIS GROANS",
     "ground_truth_wer": 0.3333333333333333,
     "target_wer": 3.0
   },
@@ -1843,33 +1155,9 @@
     "sample_idx": 28,
     "epsilon": 0.2,
     "ground_truth": "WILL THE HURONS HEAR HIS GROANS",
-    "adversarial_transcription": "WILE THE HURAN HER HIS GROAN",
-    "ground_truth_wer": 0.6666666666666666,
-    "target_wer": 3.0
-  },
-  {
-    "sample_idx": 28,
-    "epsilon": 0.3,
-    "ground_truth": "WILL THE HURONS HEAR HIS GROANS",
-    "adversarial_transcription": "WILL THE HURANHER HIS ROAN",
+    "adversarial_transcription": "WILL THE HURAN HER HIS GROAN",
     "ground_truth_wer": 0.5,
-    "target_wer": 2.5
-  },
-  {
-    "sample_idx": 29,
-    "epsilon": 0.001,
-    "ground_truth": "WELL WHAT CAN'T BE DONE BY MAIN COURAGE IN WAR MUST BE DONE BY CIRCUMVENTION",
-    "adversarial_transcription": "WELL WHAT CAN'T BE DONE BY MAIN COURAGE AND WAR MUST BE DONE BY CIRCUMVENTION",
-    "ground_truth_wer": 0.06666666666666667,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 29,
-    "epsilon": 0.005,
-    "ground_truth": "WELL WHAT CAN'T BE DONE BY MAIN COURAGE IN WAR MUST BE DONE BY CIRCUMVENTION",
-    "adversarial_transcription": "WELL WHAT CAN'T BE DONE BY MAIN COURAGE IN WAR MUST BE DONE BY CIRCUMVENTION",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.5
+    "target_wer": 3.0
   },
   {
     "sample_idx": 29,
@@ -1910,30 +1198,6 @@
     "adversarial_transcription": "WELL WHAT CAN'T BE DONE BY MAIN COURAGE AND WAR MUST BE DONE BY CIRCUMVENTIONS",
     "ground_truth_wer": 0.13333333333333333,
     "target_wer": 7.5
-  },
-  {
-    "sample_idx": 29,
-    "epsilon": 0.3,
-    "ground_truth": "WELL WHAT CAN'T BE DONE BY MAIN COURAGE IN WAR MUST BE DONE BY CIRCUMVENTION",
-    "adversarial_transcription": "WELL WHAT CAN'T BE DONE BY MAIN COURAGE AND WAR MUST BE DONE BY CIRCUNVENTIONS",
-    "ground_truth_wer": 0.13333333333333333,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 30,
-    "epsilon": 0.001,
-    "ground_truth": "BRAVELY AND GENEROUSLY HAS HE BATTLED IN MY BEHALF AND THIS AND MORE WILL I DARE IN HIS SERVICE",
-    "adversarial_transcription": "BRAVELY AND GENEROUSLY AS HE BATTLED IN MY BEHALF AND THIS AND MORE WILL I DARE IN HIS SERVICE",
-    "ground_truth_wer": 0.05263157894736842,
-    "target_wer": 9.5
-  },
-  {
-    "sample_idx": 30,
-    "epsilon": 0.005,
-    "ground_truth": "BRAVELY AND GENEROUSLY HAS HE BATTLED IN MY BEHALF AND THIS AND MORE WILL I DARE IN HIS SERVICE",
-    "adversarial_transcription": "BRAVELY AND GENEROUSLY AS HE BATTLED IN MY BEHALF AND THIS AND MORE WILL I DARE IN HIS SERVICE",
-    "ground_truth_wer": 0.05263157894736842,
-    "target_wer": 9.5
   },
   {
     "sample_idx": 30,
@@ -1976,30 +1240,6 @@
     "target_wer": 9.5
   },
   {
-    "sample_idx": 30,
-    "epsilon": 0.3,
-    "ground_truth": "BRAVELY AND GENEROUSLY HAS HE BATTLED IN MY BEHALF AND THIS AND MORE WILL I DARE IN HIS SERVICE",
-    "adversarial_transcription": "BRAVELY AND GENEROUSLY AD HE BATTLED IN MY BEHALF AND THIS AND MORE WILL I DARE IN HI SERVICE",
-    "ground_truth_wer": 0.10526315789473684,
-    "target_wer": 9.5
-  },
-  {
-    "sample_idx": 31,
-    "epsilon": 0.001,
-    "ground_truth": "SO UNCAS YOU HAD BETTER TAKE THE LEAD WHILE I WILL PUT ON THE SKIN AGAIN AND TRUST TO CUNNING FOR WANT OF SPEED",
-    "adversarial_transcription": "SO UNCAS YOU HAD BETTER TAKE THE LEAD WHILE I WILL PUT ON THE SKIN AGAIN AND TRUST TO CUNNING FOR WANT OF SPEED",
-    "ground_truth_wer": 0.0,
-    "target_wer": 12.0
-  },
-  {
-    "sample_idx": 31,
-    "epsilon": 0.005,
-    "ground_truth": "SO UNCAS YOU HAD BETTER TAKE THE LEAD WHILE I WILL PUT ON THE SKIN AGAIN AND TRUST TO CUNNING FOR WANT OF SPEED",
-    "adversarial_transcription": "SO UNCHAS YOU HAD BETTER TAKE THE LEAD WHILE I WILL PUT ON THE SKIN AGAIN AND TRUST TO CUNNING FOR WANT OF SPEED",
-    "ground_truth_wer": 0.041666666666666664,
-    "target_wer": 12.0
-  },
-  {
     "sample_idx": 31,
     "epsilon": 0.01,
     "ground_truth": "SO UNCAS YOU HAD BETTER TAKE THE LEAD WHILE I WILL PUT ON THE SKIN AGAIN AND TRUST TO CUNNING FOR WANT OF SPEED",
@@ -2011,8 +1251,8 @@
     "sample_idx": 31,
     "epsilon": 0.02,
     "ground_truth": "SO UNCAS YOU HAD BETTER TAKE THE LEAD WHILE I WILL PUT ON THE SKIN AGAIN AND TRUST TO CUNNING FOR WANT OF SPEED",
-    "adversarial_transcription": "SO UNCAS YOU HAD BETTER TAKE THE LEAD WHILE I WILL PUT ON THE SKIN AGAIN AND TRUST TO CUNNING FOR WANT OF SPEED",
-    "ground_truth_wer": 0.0,
+    "adversarial_transcription": "SO YNCAS YOU HAD BETTER TAKE THE LEAD WHILE I WILL PUT ON THE SKIN AGAIN AND TRUST TO CUNNING FOR WANT OF SPEED",
+    "ground_truth_wer": 0.041666666666666664,
     "target_wer": 12.0
   },
   {
@@ -2038,30 +1278,6 @@
     "adversarial_transcription": "SO UNCAS YOU HAD BETTER TAKE THE LEAD WHILE I WILL PUT ON THE SKIN AGAIN AND TRUST TO CUNNING FOR WANT OF SPEED",
     "ground_truth_wer": 0.0,
     "target_wer": 12.0
-  },
-  {
-    "sample_idx": 31,
-    "epsilon": 0.3,
-    "ground_truth": "SO UNCAS YOU HAD BETTER TAKE THE LEAD WHILE I WILL PUT ON THE SKIN AGAIN AND TRUST TO CUNNING FOR WANT OF SPEED",
-    "adversarial_transcription": "SO UNCAS YOU HAD BETTER TAKE THE LEAVE OR I WILL PUT ON THE SKIN AGAIN AND TRUST TE CENNING FOR WANT OF SPEED",
-    "ground_truth_wer": 0.16666666666666666,
-    "target_wer": 12.0
-  },
-  {
-    "sample_idx": 32,
-    "epsilon": 0.001,
-    "ground_truth": "THERE WAS SOMETHING IN HIS AIR AND MANNER THAT BETRAYED TO THE SCOUT THE UTTER CONFUSION OF THE STATE OF HIS MIND",
-    "adversarial_transcription": "THERE WAS SOMETHING IN HIS AIR AND MANNER THAT BETRAYED TO THE SCOUT THE UTTER CONFUSION OF THE STATE OF HIS MIND",
-    "ground_truth_wer": 0.0,
-    "target_wer": 11.0
-  },
-  {
-    "sample_idx": 32,
-    "epsilon": 0.005,
-    "ground_truth": "THERE WAS SOMETHING IN HIS AIR AND MANNER THAT BETRAYED TO THE SCOUT THE UTTER CONFUSION OF THE STATE OF HIS MIND",
-    "adversarial_transcription": "THERE WAS SOMETHING IN HIS AIR AND MANNER THAT BETRAYED TO THE SCOUT THE UTTER CONFUSION OF THE STATE OF HIS MIND",
-    "ground_truth_wer": 0.0,
-    "target_wer": 11.0
   },
   {
     "sample_idx": 32,
@@ -2102,30 +1318,6 @@
     "adversarial_transcription": "THERE WAS SOMETHING IN HIS AIR AND MANNER THAT BETRAYED TO THE SCOUT THE UTTER CONFUSION OF THE STATE OF HIS MIND",
     "ground_truth_wer": 0.0,
     "target_wer": 11.0
-  },
-  {
-    "sample_idx": 32,
-    "epsilon": 0.3,
-    "ground_truth": "THERE WAS SOMETHING IN HIS AIR AND MANNER THAT BETRAYED TO THE SCOUT THE UTTER CONFUSION OF THE STATE OF HIS MIND",
-    "adversarial_transcription": "THERE WAS SOMETHING IN HIS AIR AND MANNER THAT BETRAYED TO THE SCOUT THE UTTER CONFUSION OF THE STATE OF HIS MIND",
-    "ground_truth_wer": 0.0,
-    "target_wer": 11.0
-  },
-  {
-    "sample_idx": 33,
-    "epsilon": 0.001,
-    "ground_truth": "CAN THESE THINGS BE RETURNED DAVID BREATHING MORE FREELY AS THE TRUTH BEGAN TO DAWN UPON HIM",
-    "adversarial_transcription": "CAN THESE THINGS BE RETURNED DAVID BREATHING MORE FREELY AS THE TRUTH BEGAN TO DAWN UPON HIM",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 33,
-    "epsilon": 0.005,
-    "ground_truth": "CAN THESE THINGS BE RETURNED DAVID BREATHING MORE FREELY AS THE TRUTH BEGAN TO DAWN UPON HIM",
-    "adversarial_transcription": "CAN THESE THINGS BE RETURNED DAVID BREATHING MORE FREELY AS THE TRUTH BEGAN TO DAWN UPON HIM",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.5
   },
   {
     "sample_idx": 33,
@@ -2168,30 +1360,6 @@
     "target_wer": 8.5
   },
   {
-    "sample_idx": 33,
-    "epsilon": 0.3,
-    "ground_truth": "CAN THESE THINGS BE RETURNED DAVID BREATHING MORE FREELY AS THE TRUTH BEGAN TO DAWN UPON HIM",
-    "adversarial_transcription": "CAN TE THINGS BE RETURNED DAVID BRETHING MORE FREELY AN THE TRUTH BEGAN TO DAWN UPON HIM",
-    "ground_truth_wer": 0.17647058823529413,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 34,
-    "epsilon": 0.001,
-    "ground_truth": "THE YOUNG MAN IS IN BONDAGE AND MUCH I FEAR HIS DEATH IS DECREED",
-    "adversarial_transcription": "THE YOUNG MAN IS IN BONDAGE AND MUCH I FEAR HIS DEATH IS DECREED",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 34,
-    "epsilon": 0.005,
-    "ground_truth": "THE YOUNG MAN IS IN BONDAGE AND MUCH I FEAR HIS DEATH IS DECREED",
-    "adversarial_transcription": "THE YOUNG MAN IS IN BONDAGE AND MUCH I FEAR HIS DEATH IS DECREED",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.0
-  },
-  {
     "sample_idx": 34,
     "epsilon": 0.01,
     "ground_truth": "THE YOUNG MAN IS IN BONDAGE AND MUCH I FEAR HIS DEATH IS DECREED",
@@ -2230,30 +1398,6 @@
     "adversarial_transcription": "THE YOUNG MAN IS IN BONDAGE AND MUCH I FEAR HIS DEATH IS DECREED",
     "ground_truth_wer": 0.0,
     "target_wer": 7.0
-  },
-  {
-    "sample_idx": 34,
-    "epsilon": 0.3,
-    "ground_truth": "THE YOUNG MAN IS IN BONDAGE AND MUCH I FEAR HIS DEATH IS DECREED",
-    "adversarial_transcription": "THE YOUNG MAN HAS BEEN BONDAGE AND MUCH I FEAR HIS DEATH IS DECREED",
-    "ground_truth_wer": 0.14285714285714285,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 35,
-    "epsilon": 0.001,
-    "ground_truth": "THEN AS IF SATISFIED OF THEIR SAFETY THE SCOUT LEFT HIS POSITION AND SLOWLY ENTERED THE PLACE",
-    "adversarial_transcription": "THEN AS IF SATISFIED OF THEIR SAFETY THE SCOUT LEFT HIS POSITION AND SLOWLY ENTERED THE PLACE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.5
-  },
-  {
-    "sample_idx": 35,
-    "epsilon": 0.005,
-    "ground_truth": "THEN AS IF SATISFIED OF THEIR SAFETY THE SCOUT LEFT HIS POSITION AND SLOWLY ENTERED THE PLACE",
-    "adversarial_transcription": "THEN AS IF SATISFIED OF THEIR SAFETY THE SCOUT LEFT HIS POSITION AND SLOWLY ENTERED THE PLACE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.5
   },
   {
     "sample_idx": 35,
@@ -2296,30 +1440,6 @@
     "target_wer": 8.5
   },
   {
-    "sample_idx": 35,
-    "epsilon": 0.3,
-    "ground_truth": "THEN AS IF SATISFIED OF THEIR SAFETY THE SCOUT LEFT HIS POSITION AND SLOWLY ENTERED THE PLACE",
-    "adversarial_transcription": "THEN AS IF SATISFIED OF THEIR SHAKIN THE SCOUT LEFT HIS POSI TION AND SLOWLY INTO THE PLACE",
-    "ground_truth_wer": 0.23529411764705882,
-    "target_wer": 9.0
-  },
-  {
-    "sample_idx": 36,
-    "epsilon": 0.001,
-    "ground_truth": "SO CHOOSE FOR YOURSELF TO MAKE A RUSH OR TARRY HERE",
-    "adversarial_transcription": "SO CHOOSE FOR YOURSELF TO MAKE A RUSH OR TARRY HERE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 36,
-    "epsilon": 0.005,
-    "ground_truth": "SO CHOOSE FOR YOURSELF TO MAKE A RUSH OR TARRY HERE",
-    "adversarial_transcription": "TO CHOOSE FOR YOURSELF TO MAKE A RUSH OR TARRY HERE",
-    "ground_truth_wer": 0.09090909090909091,
-    "target_wer": 5.5
-  },
-  {
     "sample_idx": 36,
     "epsilon": 0.01,
     "ground_truth": "SO CHOOSE FOR YOURSELF TO MAKE A RUSH OR TARRY HERE",
@@ -2358,30 +1478,6 @@
     "adversarial_transcription": "TO CHOOSE FOR YOURSELF TO MAKE A RUSH OR TARRY HERE",
     "ground_truth_wer": 0.09090909090909091,
     "target_wer": 5.5
-  },
-  {
-    "sample_idx": 36,
-    "epsilon": 0.3,
-    "ground_truth": "SO CHOOSE FOR YOURSELF TO MAKE A RUSH OR TARRY HERE",
-    "adversarial_transcription": "TO CHOOSE FOR YOURSELF TO MAKE A RUSH OR CARRY HERE",
-    "ground_truth_wer": 0.18181818181818182,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 37,
-    "epsilon": 0.001,
-    "ground_truth": "AS SOON AS THESE DISPOSITIONS WERE MADE THE SCOUT TURNED TO DAVID AND GAVE HIM HIS PARTING INSTRUCTIONS",
-    "adversarial_transcription": "AS SOON AS THESE DISPOSITIONS WERE MADE THE SCOUT TURNED TO DAVE IT AND GAVE HIM IS PARTING INSTRUCTIONS",
-    "ground_truth_wer": 0.16666666666666666,
-    "target_wer": 9.5
-  },
-  {
-    "sample_idx": 37,
-    "epsilon": 0.005,
-    "ground_truth": "AS SOON AS THESE DISPOSITIONS WERE MADE THE SCOUT TURNED TO DAVID AND GAVE HIM HIS PARTING INSTRUCTIONS",
-    "adversarial_transcription": "AS SOON AS THESE DISPOSITIONS WERE MADE THE SCOUT TURNED TO DAVE IT AND GAVE HIM IS PARTING INSTRUCTIONS",
-    "ground_truth_wer": 0.16666666666666666,
-    "target_wer": 9.5
   },
   {
     "sample_idx": 37,
@@ -2424,30 +1520,6 @@
     "target_wer": 9.5
   },
   {
-    "sample_idx": 37,
-    "epsilon": 0.3,
-    "ground_truth": "AS SOON AS THESE DISPOSITIONS WERE MADE THE SCOUT TURNED TO DAVID AND GAVE HIM HIS PARTING INSTRUCTIONS",
-    "adversarial_transcription": "AS SOON AS THESE DISPOSITIONS WERE MADE THE SCOUT TURNED TO GAVE IT AND GAVE HIM HIS PARTING INSTRUCTION",
-    "ground_truth_wer": 0.16666666666666666,
-    "target_wer": 9.5
-  },
-  {
-    "sample_idx": 38,
-    "epsilon": 0.001,
-    "ground_truth": "THE DELAWARES ARE CHILDREN OF THE TORTOISE AND THEY OUTSTRIP THE DEER",
-    "adversarial_transcription": "THE DELAWARES ARE CHILDREN OF THE TORTOISE AND THEY OUTSTRIPPED THE DEER",
-    "ground_truth_wer": 0.08333333333333333,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 38,
-    "epsilon": 0.005,
-    "ground_truth": "THE DELAWARES ARE CHILDREN OF THE TORTOISE AND THEY OUTSTRIP THE DEER",
-    "adversarial_transcription": "THE DELAWARES ARE CHILDREN OF THE TORTOISE AND THE OUTSTRIPPED THE DEER",
-    "ground_truth_wer": 0.16666666666666666,
-    "target_wer": 6.0
-  },
-  {
     "sample_idx": 38,
     "epsilon": 0.01,
     "ground_truth": "THE DELAWARES ARE CHILDREN OF THE TORTOISE AND THEY OUTSTRIP THE DEER",
@@ -2486,30 +1558,6 @@
     "adversarial_transcription": "THE DELAWARES ARE CHILDREN OF THE TORTOISE AND THEY OUTSTRIT THE DEER",
     "ground_truth_wer": 0.08333333333333333,
     "target_wer": 6.0
-  },
-  {
-    "sample_idx": 38,
-    "epsilon": 0.3,
-    "ground_truth": "THE DELAWARES ARE CHILDREN OF THE TORTOISE AND THEY OUTSTRIP THE DEER",
-    "adversarial_transcription": "THE DELAWARES ARE CHILDREN OF THE TORTISE O MEY OUT WITH THE BIER",
-    "ground_truth_wer": 0.5,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 39,
-    "epsilon": 0.001,
-    "ground_truth": "BUT THE BEAR INSTEAD OF OBEYING MAINTAINED THE SEAT IT HAD TAKEN AND GROWLED",
-    "adversarial_transcription": "BUT THE BEAR INSTEAD OF OBEYING MAINTAINED THE SEAT IT HAD TAKEN AND GROWLED",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 39,
-    "epsilon": 0.005,
-    "ground_truth": "BUT THE BEAR INSTEAD OF OBEYING MAINTAINED THE SEAT IT HAD TAKEN AND GROWLED",
-    "adversarial_transcription": "BUT THE BEAR INSTEAD OF OBEYING MAINTAINED THE SEAT IT HAD TAKEN AND GROWLED",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.0
   },
   {
     "sample_idx": 39,
@@ -2552,30 +1600,6 @@
     "target_wer": 7.5
   },
   {
-    "sample_idx": 39,
-    "epsilon": 0.3,
-    "ground_truth": "BUT THE BEAR INSTEAD OF OBEYING MAINTAINED THE SEAT IT HAD TAKEN AND GROWLED",
-    "adversarial_transcription": "THAT THE BEAR INSTEAD OF OBEYING MAINTAINED AT THE FEAT IT HAD TAKEN AND GROWLED",
-    "ground_truth_wer": 0.21428571428571427,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 40,
-    "epsilon": 0.001,
-    "ground_truth": "UNCAS CAST HIS SKIN AND STEPPED FORTH IN HIS OWN BEAUTIFUL PROPORTIONS",
-    "adversarial_transcription": "UNCAS CAST HIS SKIN AND STEPPED FORTH IN HIS OWN BEAUTIFUL PROPORTIONS",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 40,
-    "epsilon": 0.005,
-    "ground_truth": "UNCAS CAST HIS SKIN AND STEPPED FORTH IN HIS OWN BEAUTIFUL PROPORTIONS",
-    "adversarial_transcription": "UNCAS CAST HIS SKIN AND STEPPED FORTH IN HIS OWN BEAUTIFUL PROPORTIONS",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
     "sample_idx": 40,
     "epsilon": 0.01,
     "ground_truth": "UNCAS CAST HIS SKIN AND STEPPED FORTH IN HIS OWN BEAUTIFUL PROPORTIONS",
@@ -2614,30 +1638,6 @@
     "adversarial_transcription": "MONCAS CASST HIS SKIN AND STEPPED FORTH IN HIS OWN BEAUTIFUL PROPORTIONS",
     "ground_truth_wer": 0.16666666666666666,
     "target_wer": 6.0
-  },
-  {
-    "sample_idx": 40,
-    "epsilon": 0.3,
-    "ground_truth": "UNCAS CAST HIS SKIN AND STEPPED FORTH IN HIS OWN BEAUTIFUL PROPORTIONS",
-    "adversarial_transcription": "MONKAS CASCED HIS THIN AND STEPPED FORTH IN HIS OWN BEAUTIFUL PROPORTION",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 41,
-    "epsilon": 0.001,
-    "ground_truth": "YET HERE ARE WE WITHIN A SHORT RANGE OF THE SCAROONS AND NOT A SIGN OF A TRAIL HAVE WE CROSSED",
-    "adversarial_transcription": "YET HERE ARE WE WITHIN A SHORT RANGE OF THE SKOROONS AND NOT A SIGN OF A TRAIL HAVE WE CROSSED",
-    "ground_truth_wer": 0.047619047619047616,
-    "target_wer": 10.5
-  },
-  {
-    "sample_idx": 41,
-    "epsilon": 0.005,
-    "ground_truth": "YET HERE ARE WE WITHIN A SHORT RANGE OF THE SCAROONS AND NOT A SIGN OF A TRAIL HAVE WE CROSSED",
-    "adversarial_transcription": "YET HERE ARE WE WITHIN A SHORT RANGE OF THE SKOROONS AND NOT A SIGN OF A TRAIL HAVE WE CROSSED",
-    "ground_truth_wer": 0.047619047619047616,
-    "target_wer": 10.5
   },
   {
     "sample_idx": 41,
@@ -2680,30 +1680,6 @@
     "target_wer": 10.5
   },
   {
-    "sample_idx": 41,
-    "epsilon": 0.3,
-    "ground_truth": "YET HERE ARE WE WITHIN A SHORT RANGE OF THE SCAROONS AND NOT A SIGN OF A TRAIL HAVE WE CROSSED",
-    "adversarial_transcription": "YET HERE ARE WE WITHIN A SHORT RANGE OF THA SPALLOONS AND NOT A SIGN OF A TRAIL HAD WE CROSSED",
-    "ground_truth_wer": 0.14285714285714285,
-    "target_wer": 10.5
-  },
-  {
-    "sample_idx": 42,
-    "epsilon": 0.001,
-    "ground_truth": "IT WOULD HAVE BEEN MORE WONDERFUL HAD HE SPOKEN WITHOUT A BIDDING",
-    "adversarial_transcription": "IT WOULD HAVE BEEN MORE WONDERFUL HAD HE SPOKEN WITHOUT A BIDDING",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 42,
-    "epsilon": 0.005,
-    "ground_truth": "IT WOULD HAVE BEEN MORE WONDERFUL HAD HE SPOKEN WITHOUT A BIDDING",
-    "adversarial_transcription": "IT WOULD HAVE BEEN MORE WONDERFUL HAD HE SPOKEN WITHOUT A BIDDING",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
     "sample_idx": 42,
     "epsilon": 0.01,
     "ground_truth": "IT WOULD HAVE BEEN MORE WONDERFUL HAD HE SPOKEN WITHOUT A BIDDING",
@@ -2740,30 +1716,6 @@
     "epsilon": 0.2,
     "ground_truth": "IT WOULD HAVE BEEN MORE WONDERFUL HAD HE SPOKEN WITHOUT A BIDDING",
     "adversarial_transcription": "IT WOULD HAVE BEEN MORE WONDERFUL HAD HE SPOKEN WITHOUT A BIDDING",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 42,
-    "epsilon": 0.3,
-    "ground_truth": "IT WOULD HAVE BEEN MORE WONDERFUL HAD HE SPOKEN WITHOUT A BIDDING",
-    "adversarial_transcription": "IT WOULD HAVE BEEN MORE WONDERFUL HAD HE SPOKEN WITHOUT A BIDTING",
-    "ground_truth_wer": 0.08333333333333333,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 43,
-    "epsilon": 0.001,
-    "ground_truth": "RUN BACK UNCAS AND BRING ME THE SIZE OF THE SINGER'S FOOT",
-    "adversarial_transcription": "RUN BACK UNCAS AND BRING ME THE SIZE OF THE SINGER'S FOOT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 43,
-    "epsilon": 0.005,
-    "ground_truth": "RUN BACK UNCAS AND BRING ME THE SIZE OF THE SINGER'S FOOT",
-    "adversarial_transcription": "RUN BACK UNCAS AND BRING ME THE SIZE OF THE SINGER'S FOOT",
     "ground_truth_wer": 0.0,
     "target_wer": 6.0
   },
@@ -2808,30 +1760,6 @@
     "target_wer": 6.0
   },
   {
-    "sample_idx": 43,
-    "epsilon": 0.3,
-    "ground_truth": "RUN BACK UNCAS AND BRING ME THE SIZE OF THE SINGER'S FOOT",
-    "adversarial_transcription": "RUN BACK UNCAS AND BRING ME THE SIZE OF THE SEANER'S FOOT",
-    "ground_truth_wer": 0.08333333333333333,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 44,
-    "epsilon": 0.001,
-    "ground_truth": "THE EXAMINATION HOWEVER RESULTED IN NO DISCOVERY",
-    "adversarial_transcription": "THE EXAMINATION HOWEVER RESULTED IN NO DISCOVERY",
-    "ground_truth_wer": 0.0,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 44,
-    "epsilon": 0.005,
-    "ground_truth": "THE EXAMINATION HOWEVER RESULTED IN NO DISCOVERY",
-    "adversarial_transcription": "THE EXAMINATION HOWEVER RESULTED IN NO DISCOVERY",
-    "ground_truth_wer": 0.0,
-    "target_wer": 3.5
-  },
-  {
     "sample_idx": 44,
     "epsilon": 0.01,
     "ground_truth": "THE EXAMINATION HOWEVER RESULTED IN NO DISCOVERY",
@@ -2870,30 +1798,6 @@
     "adversarial_transcription": "THE EXAMINATION HOWEVER RESULTED IN NO DISCOVERY",
     "ground_truth_wer": 0.0,
     "target_wer": 3.5
-  },
-  {
-    "sample_idx": 44,
-    "epsilon": 0.3,
-    "ground_truth": "THE EXAMINATION HOWEVER RESULTED IN NO DISCOVERY",
-    "adversarial_transcription": "THE EXAMINATION HOWEVER RESOLTED IN NO DISCOVERY",
-    "ground_truth_wer": 0.14285714285714285,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 45,
-    "epsilon": 0.001,
-    "ground_truth": "A CIRCLE OF A FEW HUNDRED FEET IN CIRCUMFERENCE WAS DRAWN AND EACH OF THE PARTY TOOK A SEGMENT FOR HIS PORTION",
-    "adversarial_transcription": "A CIRCLE OF A FEW HUNDRED FEET IN CIRCUMFERENCE WAS DRAWN AND EACH OF THE PARTY TOOK A SEGMENT FOR HIS PORTION",
-    "ground_truth_wer": 0.0,
-    "target_wer": 11.0
-  },
-  {
-    "sample_idx": 45,
-    "epsilon": 0.005,
-    "ground_truth": "A CIRCLE OF A FEW HUNDRED FEET IN CIRCUMFERENCE WAS DRAWN AND EACH OF THE PARTY TOOK A SEGMENT FOR HIS PORTION",
-    "adversarial_transcription": "A CIRCLE OF A FEW HUNDRED FEET IN CIRCUMFERENCE WAS DRAWN AND EACH OF THE PARTY TOOK A SEGMENT FOR HIS PORTION",
-    "ground_truth_wer": 0.0,
-    "target_wer": 11.0
   },
   {
     "sample_idx": 45,
@@ -2936,30 +1840,6 @@
     "target_wer": 11.0
   },
   {
-    "sample_idx": 45,
-    "epsilon": 0.3,
-    "ground_truth": "A CIRCLE OF A FEW HUNDRED FEET IN CIRCUMFERENCE WAS DRAWN AND EACH OF THE PARTY TOOK A SEGMENT FOR HIS PORTION",
-    "adversarial_transcription": "A CIRCLE OF A FEW HUNDRED FEET IN CIRCUMFERENCE WAS DONE AND EACH OF THE PARTY TOOK A SEGMENT FOR HIS FORTUNE",
-    "ground_truth_wer": 0.09090909090909091,
-    "target_wer": 11.0
-  },
-  {
-    "sample_idx": 46,
-    "epsilon": 0.001,
-    "ground_truth": "LET US RETRACE OUR STEPS AND EXAMINE AS WE GO WITH KEENER EYES",
-    "adversarial_transcription": "LET US RETRACE OUR STEPS AND EXAMINE AS WE GO WITH KEENER EYES",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 46,
-    "epsilon": 0.005,
-    "ground_truth": "LET US RETRACE OUR STEPS AND EXAMINE AS WE GO WITH KEENER EYES",
-    "adversarial_transcription": "LET US RETRACE OUR STEPS AND EXAMINE AS WE GO WITH KEENER EYES",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
     "sample_idx": 46,
     "epsilon": 0.01,
     "ground_truth": "LET US RETRACE OUR STEPS AND EXAMINE AS WE GO WITH KEENER EYES",
@@ -2998,30 +1878,6 @@
     "adversarial_transcription": "LET US RETRACE OUR STEPS AND EXAMINE AS WE GO WITH KEENER EYES",
     "ground_truth_wer": 0.0,
     "target_wer": 6.5
-  },
-  {
-    "sample_idx": 46,
-    "epsilon": 0.3,
-    "ground_truth": "LET US RETRACE OUR STEPS AND EXAMINE AS WE GO WITH KEENER EYES",
-    "adversarial_transcription": "LET US RETRACE OUR STEPS AND EXAMINE AS WE GO WITH KEENER EYES",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 47,
-    "epsilon": 0.001,
-    "ground_truth": "THE WHOLE PARTY CROWDED TO THE SPOT WHERE UNCAS POINTED OUT THE IMPRESSION OF A MOCCASIN IN THE MOIST ALLUVION",
-    "adversarial_transcription": "THE WHOLE PARTY CROWDED TO THE SPOT WHERE UNCAS POINTED OUT THE IMPRESSION OF A MOCCASIN IN THE MOIST ELUVIAN",
-    "ground_truth_wer": 0.05,
-    "target_wer": 10.0
-  },
-  {
-    "sample_idx": 47,
-    "epsilon": 0.005,
-    "ground_truth": "THE WHOLE PARTY CROWDED TO THE SPOT WHERE UNCAS POINTED OUT THE IMPRESSION OF A MOCCASIN IN THE MOIST ALLUVION",
-    "adversarial_transcription": "THE WHOLE PARTY CROWDED TO THE SPOT WHERE UNCAS POINTED OUT THE IMPRESSION OF A MOCCASIN IN THE MOIST ELUVIAN",
-    "ground_truth_wer": 0.05,
-    "target_wer": 10.0
   },
   {
     "sample_idx": 47,
@@ -3064,30 +1920,6 @@
     "target_wer": 10.0
   },
   {
-    "sample_idx": 47,
-    "epsilon": 0.3,
-    "ground_truth": "THE WHOLE PARTY CROWDED TO THE SPOT WHERE UNCAS POINTED OUT THE IMPRESSION OF A MOCCASIN IN THE MOIST ALLUVION",
-    "adversarial_transcription": "THE WHOLE PARTY CROWDED TO THE SPOT WHERE UNCAS POINTED OUT THE IMPRESSION OF A MOCCASIN AN THE MOISTER LUVIUM",
-    "ground_truth_wer": 0.15,
-    "target_wer": 10.0
-  },
-  {
-    "sample_idx": 48,
-    "epsilon": 0.001,
-    "ground_truth": "DISTRUSTING HIS OWN JUDGMENT HIS APPEALS TO THE OPINION OF CHINGACHGOOK WERE FREQUENT AND EARNEST",
-    "adversarial_transcription": "DISTRUSTING HIS OWN JUDGMENT HIS APPEALS TO THE OPINION OF CHINGACHKUK WERE FREQUENT AND EARNEST",
-    "ground_truth_wer": 0.06666666666666667,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 48,
-    "epsilon": 0.005,
-    "ground_truth": "DISTRUSTING HIS OWN JUDGMENT HIS APPEALS TO THE OPINION OF CHINGACHGOOK WERE FREQUENT AND EARNEST",
-    "adversarial_transcription": "DISTRUSTING HIS OWN JUDGMENT HIS APPEALS TO THE OPINION OF CHINGATCHGUK WERE FREQUENT AND EARNEST",
-    "ground_truth_wer": 0.06666666666666667,
-    "target_wer": 7.5
-  },
-  {
     "sample_idx": 48,
     "epsilon": 0.01,
     "ground_truth": "DISTRUSTING HIS OWN JUDGMENT HIS APPEALS TO THE OPINION OF CHINGACHGOOK WERE FREQUENT AND EARNEST",
@@ -3128,30 +1960,6 @@
     "target_wer": 7.5
   },
   {
-    "sample_idx": 48,
-    "epsilon": 0.3,
-    "ground_truth": "DISTRUSTING HIS OWN JUDGMENT HIS APPEALS TO THE OPINION OF CHINGACHGOOK WERE FREQUENT AND EARNEST",
-    "adversarial_transcription": "DISTRUSTING HIS OWN JUDGMENT IS APPEALS TO THE OPINION OPINTHAT WERE WUERE FREQUENT AND EARNEST",
-    "ground_truth_wer": 0.26666666666666666,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 49,
-    "epsilon": 0.001,
-    "ground_truth": "CHINGACHGOOK HAD CAUGHT THE LOOK AND MOTIONING WITH HIS HAND HE BADE HIM SPEAK",
-    "adversarial_transcription": "CHINGACHKUK HAD CAUGHT THE LOOK AND MOTIONING WITH HIS HAND HE BADE HIM SPEAK",
-    "ground_truth_wer": 0.07142857142857142,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 49,
-    "epsilon": 0.005,
-    "ground_truth": "CHINGACHGOOK HAD CAUGHT THE LOOK AND MOTIONING WITH HIS HAND HE BADE HIM SPEAK",
-    "adversarial_transcription": "CHINGACHGOOK HAD CAUGHT THE LOOK AND MOTIONING WITH HIS HAND HE BADE HIM SPEAK",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.0
-  },
-  {
     "sample_idx": 49,
     "epsilon": 0.01,
     "ground_truth": "CHINGACHGOOK HAD CAUGHT THE LOOK AND MOTIONING WITH HIS HAND HE BADE HIM SPEAK",
@@ -3187,35 +1995,11 @@
     "sample_idx": 49,
     "epsilon": 0.2,
     "ground_truth": "CHINGACHGOOK HAD CAUGHT THE LOOK AND MOTIONING WITH HIS HAND HE BADE HIM SPEAK",
-    "adversarial_transcription": "CHINGACHGRUK HAD CAUGHT THE LOOK AND MOTIONING WITH HIS HAND HE BADE HIM SPEAK",
+    "adversarial_transcription": "CHINGACHGROUK HAD CAUGHT THE LOOK AND MOTIONING WITH HIS HAND HE BADE HIM SPEAK",
     "ground_truth_wer": 0.07142857142857142,
     "target_wer": 7.0
   },
   {
-    "sample_idx": 49,
-    "epsilon": 0.3,
-    "ground_truth": "CHINGACHGOOK HAD CAUGHT THE LOOK AND MOTIONING WITH HIS HAND HE BADE HIM SPEAK",
-    "adversarial_transcription": "CHINGACHGRUK HAD CAUGHT THE WOK AND MOTIONING WITH HIS HAND HE BADE HIM SPEAK",
-    "ground_truth_wer": 0.14285714285714285,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 50,
-    "epsilon": 0.001,
-    "ground_truth": "IN PERSON WELCOME ABOARD PROFESSOR YOUR CABIN IS WAITING FOR YOU",
-    "adversarial_transcription": "IN PERSON WELCOME ABOID PROFESSOR YOUR CABIN IS WAITING FOR YOU",
-    "ground_truth_wer": 0.09090909090909091,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 50,
-    "epsilon": 0.005,
-    "ground_truth": "IN PERSON WELCOME ABOARD PROFESSOR YOUR CABIN IS WAITING FOR YOU",
-    "adversarial_transcription": "IN PERSON WELCOME AVOID PROFESSOR YOUR CABIN IS WAITING FOR YOU",
-    "ground_truth_wer": 0.09090909090909091,
-    "target_wer": 5.5
-  },
-  {
     "sample_idx": 50,
     "epsilon": 0.01,
     "ground_truth": "IN PERSON WELCOME ABOARD PROFESSOR YOUR CABIN IS WAITING FOR YOU",
@@ -3256,30 +2040,6 @@
     "target_wer": 5.5
   },
   {
-    "sample_idx": 50,
-    "epsilon": 0.3,
-    "ground_truth": "IN PERSON WELCOME ABOARD PROFESSOR YOUR CABIN IS WAITING FOR YOU",
-    "adversarial_transcription": "OUINPERSON WELCOME AVOID PERFECTOR YOUR CABIN IS WAITING FOR YOU",
-    "ground_truth_wer": 0.36363636363636365,
-    "target_wer": 5.0
-  },
-  {
-    "sample_idx": 51,
-    "epsilon": 0.001,
-    "ground_truth": "HE WENT HERE THERE AND EVERYWHERE IN PERFECT CONTENTMENT",
-    "adversarial_transcription": "HE WENT HERE THERE AND EVERYWHERE IN PERFECT CONTENTMENT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 4.5
-  },
-  {
-    "sample_idx": 51,
-    "epsilon": 0.005,
-    "ground_truth": "HE WENT HERE THERE AND EVERYWHERE IN PERFECT CONTENTMENT",
-    "adversarial_transcription": "HE WENT HERE THERE AND EVERYWHERE IN PERFECT CONTENTMENT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 4.5
-  },
-  {
     "sample_idx": 51,
     "epsilon": 0.01,
     "ground_truth": "HE WENT HERE THERE AND EVERYWHERE IN PERFECT CONTENTMENT",
@@ -3318,30 +2078,6 @@
     "adversarial_transcription": "HE WENT HERE THERE AND EVERYWHERE IN PERFECT CONTENTMENT",
     "ground_truth_wer": 0.0,
     "target_wer": 4.5
-  },
-  {
-    "sample_idx": 51,
-    "epsilon": 0.3,
-    "ground_truth": "HE WENT HERE THERE AND EVERYWHERE IN PERFECT CONTENTMENT",
-    "adversarial_transcription": "HE WENT HERE THERE AND EVERYWHERE IN PERFECT CONTENTMENT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 4.5
-  },
-  {
-    "sample_idx": 52,
-    "epsilon": 0.001,
-    "ground_truth": "BUT NOW NOTHING COULD HOLD ME BACK",
-    "adversarial_transcription": "BUT NOW NOTHING COULD HOLD ME BACK",
-    "ground_truth_wer": 0.0,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 52,
-    "epsilon": 0.005,
-    "ground_truth": "BUT NOW NOTHING COULD HOLD ME BACK",
-    "adversarial_transcription": "BUT NOW NOTHING COULD HOLD ME BACK",
-    "ground_truth_wer": 0.0,
-    "target_wer": 3.5
   },
   {
     "sample_idx": 52,
@@ -3384,30 +2120,6 @@
     "target_wer": 3.5
   },
   {
-    "sample_idx": 52,
-    "epsilon": 0.3,
-    "ground_truth": "BUT NOW NOTHING COULD HOLD ME BACK",
-    "adversarial_transcription": "BUT NOW NOTHING CAN HOLD HER BACK",
-    "ground_truth_wer": 0.2857142857142857,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 53,
-    "epsilon": 0.001,
-    "ground_truth": "OUR BAGGAGE WAS IMMEDIATELY CARRIED TO THE DECK OF THE FRIGATE I RUSHED ABOARD",
-    "adversarial_transcription": "OUR BAGGAGE WAS IMMEDIATELY CARRIED TO THE DECK OF THE FRIGATE I RUSHED ABOARD",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 53,
-    "epsilon": 0.005,
-    "ground_truth": "OUR BAGGAGE WAS IMMEDIATELY CARRIED TO THE DECK OF THE FRIGATE I RUSHED ABOARD",
-    "adversarial_transcription": "OUR BAGGAGE WAS IMMEDIATELY CARRIED TO THE DECK OF THE FRIGATES I RUSHED ABOARD",
-    "ground_truth_wer": 0.07142857142857142,
-    "target_wer": 7.0
-  },
-  {
     "sample_idx": 53,
     "epsilon": 0.01,
     "ground_truth": "OUR BAGGAGE WAS IMMEDIATELY CARRIED TO THE DECK OF THE FRIGATE I RUSHED ABOARD",
@@ -3448,30 +2160,6 @@
     "target_wer": 7.0
   },
   {
-    "sample_idx": 53,
-    "epsilon": 0.3,
-    "ground_truth": "OUR BAGGAGE WAS IMMEDIATELY CARRIED TO THE DECK OF THE FRIGATE I RUSHED ABOARD",
-    "adversarial_transcription": "OUR BAGGAGE WAS IMMEDIATELY CARRIED TO THE DECK OF THE FRIGAN I RUSHED AFORWARD",
-    "ground_truth_wer": 0.14285714285714285,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 54,
-    "epsilon": 0.001,
-    "ground_truth": "DEPARTING FROM FIVE HUNDRED THOUSAND THROATS THREE CHEERS BURST FORTH IN SUCCESSION",
-    "adversarial_transcription": "DEPARTING FROM FIVE HUNDRED THOUSAND THROATS THREE CHEERS BURST FORTH IN SUCCESSION",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 54,
-    "epsilon": 0.005,
-    "ground_truth": "DEPARTING FROM FIVE HUNDRED THOUSAND THROATS THREE CHEERS BURST FORTH IN SUCCESSION",
-    "adversarial_transcription": "DEPARTING FROM FIVE HUNDRED THOUSAND THROATS THREE CHEERS BURST FORTH IN SUCCESSION",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
     "sample_idx": 54,
     "epsilon": 0.01,
     "ground_truth": "DEPARTING FROM FIVE HUNDRED THOUSAND THROATS THREE CHEERS BURST FORTH IN SUCCESSION",
@@ -3510,30 +2198,6 @@
     "adversarial_transcription": "DEPARTING FROM FIVE HUNDRED THOUSAND THROATS THREE CHEERS BURST FORTH IN SUCCESSION",
     "ground_truth_wer": 0.0,
     "target_wer": 6.0
-  },
-  {
-    "sample_idx": 54,
-    "epsilon": 0.3,
-    "ground_truth": "DEPARTING FROM FIVE HUNDRED THOUSAND THROATS THREE CHEERS BURST FORTH IN SUCCESSION",
-    "adversarial_transcription": "DEPARTING FROM FIVE HUNDRED THOUSAND THROATS THREE CHEERS BURST FORTH IN SUCCESSION",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 55,
-    "epsilon": 0.001,
-    "ground_truth": "I ASKED FOR COMMANDER FARRAGUT",
-    "adversarial_transcription": "I ASKED FOR COMMANDER FARRAGUT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 2.5
-  },
-  {
-    "sample_idx": 55,
-    "epsilon": 0.005,
-    "ground_truth": "I ASKED FOR COMMANDER FARRAGUT",
-    "adversarial_transcription": "I ESTRA COMMANDER FARRAGUT",
-    "ground_truth_wer": 0.4,
-    "target_wer": 2.0
   },
   {
     "sample_idx": 55,
@@ -3563,7 +2227,7 @@
     "sample_idx": 55,
     "epsilon": 0.1,
     "ground_truth": "I ASKED FOR COMMANDER FARRAGUT",
-    "adversarial_transcription": "I ESTRA COMMANDER FARALIX",
+    "adversarial_transcription": "I ESTRA COMMANDER FARADIX",
     "ground_truth_wer": 0.6,
     "target_wer": 2.0
   },
@@ -3571,33 +2235,9 @@
     "sample_idx": 55,
     "epsilon": 0.2,
     "ground_truth": "I ASKED FOR COMMANDER FARRAGUT",
-    "adversarial_transcription": "I STRA COMMANDER OF FARADIX",
+    "adversarial_transcription": "I STRA COMMANDER OF ARADIX",
     "ground_truth_wer": 0.8,
     "target_wer": 2.5
-  },
-  {
-    "sample_idx": 55,
-    "epsilon": 0.3,
-    "ground_truth": "I ASKED FOR COMMANDER FARRAGUT",
-    "adversarial_transcription": "I SKED YOUR COMMANDER IN FARADIX",
-    "ground_truth_wer": 0.8,
-    "target_wer": 3.0
-  },
-  {
-    "sample_idx": 56,
-    "epsilon": 0.001,
-    "ground_truth": "EVEN SO I HAD JUST RETURNED FROM AN ARDUOUS JOURNEY EXHAUSTED AND BADLY NEEDING A REST",
-    "adversarial_transcription": "EVEN SO I HAD JUST RETURNED FROM AN ARDUOUS JOURNEY EXHAUSTED AND BADLY NEEDING ARREST",
-    "ground_truth_wer": 0.125,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 56,
-    "epsilon": 0.005,
-    "ground_truth": "EVEN SO I HAD JUST RETURNED FROM AN ARDUOUS JOURNEY EXHAUSTED AND BADLY NEEDING A REST",
-    "adversarial_transcription": "EVEN SO I HAD JUST RETURNED FROM AN ARDUOUS JOURNEY EXHAUSTED AND BADLY NEEDING ARREST",
-    "ground_truth_wer": 0.125,
-    "target_wer": 7.5
   },
   {
     "sample_idx": 56,
@@ -3640,30 +2280,6 @@
     "target_wer": 8.0
   },
   {
-    "sample_idx": 56,
-    "epsilon": 0.3,
-    "ground_truth": "EVEN SO I HAD JUST RETURNED FROM AN ARDUOUS JOURNEY EXHAUSTED AND BADLY NEEDING A REST",
-    "adversarial_transcription": "EVEN SO I HAD JUST RETURNED FROM AN ARDUOUS JOURNEY EXHAUSTED AND VADLY NEEDING A REST",
-    "ground_truth_wer": 0.0625,
-    "target_wer": 8.0
-  },
-  {
-    "sample_idx": 57,
-    "epsilon": 0.001,
-    "ground_truth": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MENAGERIE TO FRANCE",
-    "adversarial_transcription": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MINAGERIE TO FRANCE",
-    "ground_truth_wer": 0.09090909090909091,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 57,
-    "epsilon": 0.005,
-    "ground_truth": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MENAGERIE TO FRANCE",
-    "adversarial_transcription": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MINAGERIE TO FRANCE",
-    "ground_truth_wer": 0.09090909090909091,
-    "target_wer": 5.5
-  },
-  {
     "sample_idx": 57,
     "epsilon": 0.01,
     "ground_truth": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MENAGERIE TO FRANCE",
@@ -3691,8 +2307,8 @@
     "sample_idx": 57,
     "epsilon": 0.1,
     "ground_truth": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MENAGERIE TO FRANCE",
-    "adversarial_transcription": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MONAGERE TO FRANC",
-    "ground_truth_wer": 0.18181818181818182,
+    "adversarial_transcription": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MONAGERE TO FRANCE",
+    "ground_truth_wer": 0.09090909090909091,
     "target_wer": 5.5
   },
   {
@@ -3702,30 +2318,6 @@
     "adversarial_transcription": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MONAGERY TO FRAMIN",
     "ground_truth_wer": 0.18181818181818182,
     "target_wer": 5.5
-  },
-  {
-    "sample_idx": 57,
-    "epsilon": 0.3,
-    "ground_truth": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MENAGERIE TO FRANCE",
-    "adversarial_transcription": "ANYHOW WE'LL LEAVE INSTRUCTIONS TO SHIP THE WHOLE MONAGERY TO BRING",
-    "ground_truth_wer": 0.18181818181818182,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 58,
-    "epsilon": 0.001,
-    "ground_truth": "WE'LL BE QUITE COMFORTABLE HERE I TOLD CONSEIL",
-    "adversarial_transcription": "WILL BE QUITE COMFORTABLE HERE I TOLD CONSEIL",
-    "ground_truth_wer": 0.125,
-    "target_wer": 4.0
-  },
-  {
-    "sample_idx": 58,
-    "epsilon": 0.005,
-    "ground_truth": "WE'LL BE QUITE COMFORTABLE HERE I TOLD CONSEIL",
-    "adversarial_transcription": "WILL BE QUITE COMFORTABLE HERE I TOLD CONSEIL",
-    "ground_truth_wer": 0.125,
-    "target_wer": 4.0
   },
   {
     "sample_idx": 58,
@@ -3768,30 +2360,6 @@
     "target_wer": 4.0
   },
   {
-    "sample_idx": 58,
-    "epsilon": 0.3,
-    "ground_truth": "WE'LL BE QUITE COMFORTABLE HERE I TOLD CONSEIL",
-    "adversarial_transcription": "WILL BE QUITE COMFORTABLE HERE I HOLE COME DAY",
-    "ground_truth_wer": 0.5,
-    "target_wer": 4.5
-  },
-  {
-    "sample_idx": 59,
-    "epsilon": 0.001,
-    "ground_truth": "YOU SEE MY FRIEND IT'S AN ISSUE OF THE MONSTER THE NOTORIOUS NARWHALE",
-    "adversarial_transcription": "YOU SEE MY FRIEND IT'S AN ISSUE OF THE MONSTER THE NOTORIOUS NARWHAL",
-    "ground_truth_wer": 0.07692307692307693,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 59,
-    "epsilon": 0.005,
-    "ground_truth": "YOU SEE MY FRIEND IT'S AN ISSUE OF THE MONSTER THE NOTORIOUS NARWHALE",
-    "adversarial_transcription": "YOU SEE MY FRIEND IT'S AN ISSUE OF THE MONSTER THE NOTORIAS NARWA",
-    "ground_truth_wer": 0.15384615384615385,
-    "target_wer": 6.5
-  },
-  {
     "sample_idx": 59,
     "epsilon": 0.01,
     "ground_truth": "YOU SEE MY FRIEND IT'S AN ISSUE OF THE MONSTER THE NOTORIOUS NARWHALE",
@@ -3830,30 +2398,6 @@
     "adversarial_transcription": "YOU SEE MY FRIEND IT'S AN ISSUE OF THE MONSTER WITH NOTARIAS NARWAW",
     "ground_truth_wer": 0.23076923076923078,
     "target_wer": 6.5
-  },
-  {
-    "sample_idx": 59,
-    "epsilon": 0.3,
-    "ground_truth": "YOU SEE MY FRIEND IT'S AN ISSUE OF THE MONSTER THE NOTORIOUS NARWHALE",
-    "adversarial_transcription": "YOU SEE MY FRIEND ITS THE ISSUE OF THE MONSTER WITH NATARIAS FARWHILE",
-    "ground_truth_wer": 0.38461538461538464,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 60,
-    "epsilon": 0.001,
-    "ground_truth": "I LEFT INSTRUCTIONS FOR SHIPPING MY CONTAINERS OF STUFFED ANIMALS AND DRIED PLANTS TO PARIS FRANCE",
-    "adversarial_transcription": "I LEFT INSTRUCTIONS FOR SHIPPING MY CONTAINERS OF STUFFED ANIMALS AND DRIED PLANTS TO PARIS FRANCE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.0
-  },
-  {
-    "sample_idx": 60,
-    "epsilon": 0.005,
-    "ground_truth": "I LEFT INSTRUCTIONS FOR SHIPPING MY CONTAINERS OF STUFFED ANIMALS AND DRIED PLANTS TO PARIS FRANCE",
-    "adversarial_transcription": "I LEFT INSTRUCTIONS FOR SHIPPING MY CONTAINERS OF STUFFED ANIMALS AND DRIED PLANTS TO PARIS FRANCE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 8.0
   },
   {
     "sample_idx": 60,
@@ -3896,30 +2440,6 @@
     "target_wer": 8.0
   },
   {
-    "sample_idx": 60,
-    "epsilon": 0.3,
-    "ground_truth": "I LEFT INSTRUCTIONS FOR SHIPPING MY CONTAINERS OF STUFFED ANIMALS AND DRIED PLANTS TO PARIS FRANCE",
-    "adversarial_transcription": "I LEFT INSTRUCTIONS FOR SHIPPING MA CANTAINOS OF STUFFED ANIMALS AND DARK PLANTS TO PARIS BRANS",
-    "ground_truth_wer": 0.25,
-    "target_wer": 8.0
-  },
-  {
-    "sample_idx": 61,
-    "epsilon": 0.001,
-    "ground_truth": "CONSEIL I CALLED A THIRD TIME CONSEIL APPEARED",
-    "adversarial_transcription": "CONSEIL I CALLED A THIRD TARM CONSEIL APPEARED",
-    "ground_truth_wer": 0.125,
-    "target_wer": 4.0
-  },
-  {
-    "sample_idx": 61,
-    "epsilon": 0.005,
-    "ground_truth": "CONSEIL I CALLED A THIRD TIME CONSEIL APPEARED",
-    "adversarial_transcription": "CONSEIL I CALLED A THIRD TAR CONSEIL APPEARED",
-    "ground_truth_wer": 0.125,
-    "target_wer": 4.0
-  },
-  {
     "sample_idx": 61,
     "epsilon": 0.01,
     "ground_truth": "CONSEIL I CALLED A THIRD TIME CONSEIL APPEARED",
@@ -3931,59 +2451,35 @@
     "sample_idx": 61,
     "epsilon": 0.02,
     "ground_truth": "CONSEIL I CALLED A THIRD TIME CONSEIL APPEARED",
-    "adversarial_transcription": "CONSEIL I CALLED A FHIRD CHARM CONSEIL APPEARED",
-    "ground_truth_wer": 0.25,
+    "adversarial_transcription": "CONSEIL I CALLED A THIRD CHARM CONSEIL APPEARED",
+    "ground_truth_wer": 0.125,
     "target_wer": 4.0
   },
   {
     "sample_idx": 61,
     "epsilon": 0.05,
     "ground_truth": "CONSEIL I CALLED A THIRD TIME CONSEIL APPEARED",
-    "adversarial_transcription": "CONSEIL I CALLED A FIRD CHARM CONSEIL APPEARED",
-    "ground_truth_wer": 0.25,
+    "adversarial_transcription": "CONSEIL I CALLED A THIRD CHARM CONSEIL APPEARED",
+    "ground_truth_wer": 0.125,
     "target_wer": 4.0
   },
   {
     "sample_idx": 61,
     "epsilon": 0.1,
     "ground_truth": "CONSEIL I CALLED A THIRD TIME CONSEIL APPEARED",
-    "adversarial_transcription": "CONSE A CALLED A FAIRD CHARM CONSEY APPEARED",
-    "ground_truth_wer": 0.625,
+    "adversarial_transcription": "CONSE I CALLED A FAIRD CHARM CONSEY APPEARED",
+    "ground_truth_wer": 0.5,
     "target_wer": 4.0
   },
   {
     "sample_idx": 61,
     "epsilon": 0.2,
     "ground_truth": "CONSEIL I CALLED A THIRD TIME CONSEIL APPEARED",
-    "adversarial_transcription": "COFE A COUD A FAIR CHARG CONFE APPEARED",
+    "adversarial_transcription": "COTE A CALD A FAIR CHARG CONFRE APPEARED",
     "ground_truth_wer": 0.75,
     "target_wer": 4.0
   },
   {
-    "sample_idx": 61,
-    "epsilon": 0.3,
-    "ground_truth": "CONSEIL I CALLED A THIRD TIME CONSEIL APPEARED",
-    "adversarial_transcription": "TOT THEY A COWD A FAIR CHILD CONTEY APPEARED",
-    "ground_truth_wer": 0.875,
-    "target_wer": 4.5
-  },
-  {
-    "sample_idx": 62,
-    "epsilon": 0.001,
-    "ground_truth": "AND YET WHAT A FINE GALLANT LAD",
-    "adversarial_transcription": "AND YET WHAT A FINE GALLANT LAD",
-    "ground_truth_wer": 0.0,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 62,
-    "epsilon": 0.005,
-    "ground_truth": "AND YET WHAT A FINE GALLANT LAD",
-    "adversarial_transcription": "AND YET WHAT A FINE GALLANT LAD",
-    "ground_truth_wer": 0.0,
-    "target_wer": 3.5
-  },
-  {
     "sample_idx": 62,
     "epsilon": 0.01,
     "ground_truth": "AND YET WHAT A FINE GALLANT LAD",
@@ -4022,30 +2518,6 @@
     "adversarial_transcription": "AND YET WHAT A FINE GALLANT LAD",
     "ground_truth_wer": 0.0,
     "target_wer": 3.5
-  },
-  {
-    "sample_idx": 62,
-    "epsilon": 0.3,
-    "ground_truth": "AND YET WHAT A FINE GALLANT LAD",
-    "adversarial_transcription": "AND YET FUT A FINE GALLANT LAD",
-    "ground_truth_wer": 0.14285714285714285,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 63,
-    "epsilon": 0.001,
-    "ground_truth": "WE'LL DEAL WITH THEM LATER WHAT",
-    "adversarial_transcription": "WE'LL DEAL WITH THEM LIGHTER WHATS",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 3.0
-  },
-  {
-    "sample_idx": 63,
-    "epsilon": 0.005,
-    "ground_truth": "WE'LL DEAL WITH THEM LATER WHAT",
-    "adversarial_transcription": "WE'LL DEAL WITH THEM LIGHTER WHAT'S",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 3.0
   },
   {
     "sample_idx": 63,
@@ -4088,30 +2560,6 @@
     "target_wer": 3.0
   },
   {
-    "sample_idx": 63,
-    "epsilon": 0.3,
-    "ground_truth": "WE'LL DEAL WITH THEM LATER WHAT",
-    "adversarial_transcription": "WE'LL DEE WITH THEM LATER WHI",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 3.0
-  },
-  {
-    "sample_idx": 64,
-    "epsilon": 0.001,
-    "ground_truth": "DID MASTER SUMMON ME HE SAID ENTERING",
-    "adversarial_transcription": "DEAD MASTER SIMON ME HE SAID ENTERING",
-    "ground_truth_wer": 0.2857142857142857,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 64,
-    "epsilon": 0.005,
-    "ground_truth": "DID MASTER SUMMON ME HE SAID ENTERING",
-    "adversarial_transcription": "DEAD MASTER SIMONRY HE SAID ENTERING",
-    "ground_truth_wer": 0.42857142857142855,
-    "target_wer": 3.0
-  },
-  {
     "sample_idx": 64,
     "epsilon": 0.01,
     "ground_truth": "DID MASTER SUMMON ME HE SAID ENTERING",
@@ -4147,32 +2595,8 @@
     "sample_idx": 64,
     "epsilon": 0.2,
     "ground_truth": "DID MASTER SUMMON ME HE SAID ENTERING",
-    "adversarial_transcription": "DEAD MASTED HER SINDEMAN HE SAID ANDRY",
+    "adversarial_transcription": "DED MASTED HER SINDEMAN HE SAID ANDRY",
     "ground_truth_wer": 0.7142857142857143,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 64,
-    "epsilon": 0.3,
-    "ground_truth": "DID MASTER SUMMON ME HE SAID ENTERING",
-    "adversarial_transcription": "THE MASTER FUNNERMAN HE SAID ANDRE",
-    "ground_truth_wer": 0.5714285714285714,
-    "target_wer": 3.0
-  },
-  {
-    "sample_idx": 65,
-    "epsilon": 0.001,
-    "ground_truth": "A ROUTE SLIGHTLY LESS DIRECT THAT'S ALL",
-    "adversarial_transcription": "A ROUTE SLIGHTLY LESS DIRECT THAT'S ALL",
-    "ground_truth_wer": 0.0,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 65,
-    "epsilon": 0.005,
-    "ground_truth": "A ROUTE SLIGHTLY LESS DIRECT THAT'S ALL",
-    "adversarial_transcription": "A ROUTE SLIGHTLY LESS DIRECT THAT'S ALL",
-    "ground_truth_wer": 0.0,
     "target_wer": 3.5
   },
   {
@@ -4216,30 +2640,6 @@
     "target_wer": 3.5
   },
   {
-    "sample_idx": 65,
-    "epsilon": 0.3,
-    "ground_truth": "A ROUTE SLIGHTLY LESS DIRECT THAT'S ALL",
-    "adversarial_transcription": "A ROUND SLIGHTLY LEFT DIRECT THAT FOW",
-    "ground_truth_wer": 0.5714285714285714,
-    "target_wer": 3.5
-  },
-  {
-    "sample_idx": 66,
-    "epsilon": 0.001,
-    "ground_truth": "WE HAVE A COMMANDER WHO'S GAME FOR ANYTHING",
-    "adversarial_transcription": "WE HAVE A COMMANDER WHOSE GAME FOR ANYTHING",
-    "ground_truth_wer": 0.125,
-    "target_wer": 4.0
-  },
-  {
-    "sample_idx": 66,
-    "epsilon": 0.005,
-    "ground_truth": "WE HAVE A COMMANDER WHO'S GAME FOR ANYTHING",
-    "adversarial_transcription": "WE HAVE A COMMANDER WHOSE GAME FOR ANYTHING",
-    "ground_truth_wer": 0.125,
-    "target_wer": 4.0
-  },
-  {
     "sample_idx": 66,
     "epsilon": 0.01,
     "ground_truth": "WE HAVE A COMMANDER WHO'S GAME FOR ANYTHING",
@@ -4280,30 +2680,6 @@
     "target_wer": 4.0
   },
   {
-    "sample_idx": 66,
-    "epsilon": 0.3,
-    "ground_truth": "WE HAVE A COMMANDER WHO'S GAME FOR ANYTHING",
-    "adversarial_transcription": "YOU HAVE A COMMANDER WHOSE GAME FOR ANYTHING",
-    "ground_truth_wer": 0.25,
-    "target_wer": 4.0
-  },
-  {
-    "sample_idx": 67,
-    "epsilon": 0.001,
-    "ground_truth": "YES WE ARE CERTAINLY I REPLIED EVASIVELY BUT AFTER WE MAKE A DETOUR",
-    "adversarial_transcription": "YES WE ARE CERTAINLY I REPLIED EVASIVELY BUT AFTER WE MAKE A DETOUR",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 67,
-    "epsilon": 0.005,
-    "ground_truth": "YES WE ARE CERTAINLY I REPLIED EVASIVELY BUT AFTER WE MAKE A DETOUR",
-    "adversarial_transcription": "YES WE ARE CERTAINLY I REPLIED EVASIVELY BUT AFTER WE MAKE A DETOUR",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.5
-  },
-  {
     "sample_idx": 67,
     "epsilon": 0.01,
     "ground_truth": "YES WE ARE CERTAINLY I REPLIED EVASIVELY BUT AFTER WE MAKE A DETOUR",
@@ -4323,7 +2699,7 @@
     "sample_idx": 67,
     "epsilon": 0.05,
     "ground_truth": "YES WE ARE CERTAINLY I REPLIED EVASIVELY BUT AFTER WE MAKE A DETOUR",
-    "adversarial_transcription": "YES WE ARE CERTAINLY I REPLIED ADVASICALLY BUT AFTER WE MAKE A DUE TOUR",
+    "adversarial_transcription": "YES WE ARE CERTAINLY I REPLIED ADVASIVALY BUT AFTER WE MAKE A DE TOUR",
     "ground_truth_wer": 0.23076923076923078,
     "target_wer": 7.0
   },
@@ -4339,33 +2715,9 @@
     "sample_idx": 67,
     "epsilon": 0.2,
     "ground_truth": "YES WE ARE CERTAINLY I REPLIED EVASIVELY BUT AFTER WE MAKE A DETOUR",
-    "adversarial_transcription": "YES WE ARE CERTAINLY I REPLIED ADVASIVELY BUT AFTER WE MAKE AVIE TOER",
+    "adversarial_transcription": "YES WE ARE CERTAINLY I REPLIED ADVASIVELY BUT AFTER WE MAKE A GIEU TOUER",
     "ground_truth_wer": 0.23076923076923078,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 67,
-    "epsilon": 0.3,
-    "ground_truth": "YES WE ARE CERTAINLY I REPLIED EVASIVELY BUT AFTER WE MAKE A DETOUR",
-    "adversarial_transcription": "YES WE ARE CERTAINLY I REPLIED IFFACIEVELY BUT AFTER WE MAKE A VEUTURUR",
-    "ground_truth_wer": 0.15384615384615385,
-    "target_wer": 6.5
-  },
-  {
-    "sample_idx": 68,
-    "epsilon": 0.001,
-    "ground_truth": "WE DON'T KNOW WHERE IT WILL TAKE US",
-    "adversarial_transcription": "WE DON'T KNOW WHERE IT WILL TAKE US",
-    "ground_truth_wer": 0.0,
-    "target_wer": 4.0
-  },
-  {
-    "sample_idx": 68,
-    "epsilon": 0.005,
-    "ground_truth": "WE DON'T KNOW WHERE IT WILL TAKE US",
-    "adversarial_transcription": "WE DON'T KNOW WHERE IT WILL TAKE US",
-    "ground_truth_wer": 0.0,
-    "target_wer": 4.0
+    "target_wer": 7.0
   },
   {
     "sample_idx": 68,
@@ -4387,7 +2739,7 @@
     "sample_idx": 68,
     "epsilon": 0.05,
     "ground_truth": "WE DON'T KNOW WHERE IT WILL TAKE US",
-    "adversarial_transcription": "WE DON'T KNOW WHERE IT WILL TRAG US",
+    "adversarial_transcription": "WE DON'T KNOW WHERE IT WILL TRAT US",
     "ground_truth_wer": 0.125,
     "target_wer": 4.0
   },
@@ -4403,33 +2755,9 @@
     "sample_idx": 68,
     "epsilon": 0.2,
     "ground_truth": "WE DON'T KNOW WHERE IT WILL TAKE US",
-    "adversarial_transcription": "WE DON'T KNOW WHERE IT WILL TRAT TEM",
+    "adversarial_transcription": "WE DON'T KNOW WHERE IT WILL TRAT THEM",
     "ground_truth_wer": 0.25,
     "target_wer": 4.0
-  },
-  {
-    "sample_idx": 68,
-    "epsilon": 0.3,
-    "ground_truth": "WE DON'T KNOW WHERE IT WILL TAKE US",
-    "adversarial_transcription": "WE DON'T KNOW WHERE IT WILL CRITE TOU",
-    "ground_truth_wer": 0.25,
-    "target_wer": 4.0
-  },
-  {
-    "sample_idx": 69,
-    "epsilon": 0.001,
-    "ground_truth": "BUT WE'RE GOING JUST THE SAME",
-    "adversarial_transcription": "BUT WE'RE GOING JUST THE SAME",
-    "ground_truth_wer": 0.0,
-    "target_wer": 3.0
-  },
-  {
-    "sample_idx": 69,
-    "epsilon": 0.005,
-    "ground_truth": "BUT WE'RE GOING JUST THE SAME",
-    "adversarial_transcription": "BUT WE'RE GOING JUST THE SAME",
-    "ground_truth_wer": 0.0,
-    "target_wer": 3.0
   },
   {
     "sample_idx": 69,
@@ -4470,30 +2798,6 @@
     "adversarial_transcription": "BUT WE'RE GOING JUST THE SAME",
     "ground_truth_wer": 0.0,
     "target_wer": 3.0
-  },
-  {
-    "sample_idx": 69,
-    "epsilon": 0.3,
-    "ground_truth": "BUT WE'RE GOING JUST THE SAME",
-    "adversarial_transcription": "THET WERE GOING JUST THE SAME",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 3.0
-  },
-  {
-    "sample_idx": 70,
-    "epsilon": 0.001,
-    "ground_truth": "PLEASE FORGIVE ME FOR THIS UNDERHANDED WAY OF ADMITTING I HAD TURNED FORTY",
-    "adversarial_transcription": "PLEASE FORGIVE ME FOR THIS UNDERHANDED WAY OF ADMITTING THAT I HAD TURNED FORTY",
-    "ground_truth_wer": 0.07692307692307693,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 70,
-    "epsilon": 0.005,
-    "ground_truth": "PLEASE FORGIVE ME FOR THIS UNDERHANDED WAY OF ADMITTING I HAD TURNED FORTY",
-    "adversarial_transcription": "PLEASE FORGIVE ME FOR THIS UNDERHANDED WAY OF ADMITTING THAT I HAD TURNED FORTY",
-    "ground_truth_wer": 0.07692307692307693,
-    "target_wer": 7.0
   },
   {
     "sample_idx": 70,
@@ -4536,30 +2840,6 @@
     "target_wer": 7.0
   },
   {
-    "sample_idx": 70,
-    "epsilon": 0.3,
-    "ground_truth": "PLEASE FORGIVE ME FOR THIS UNDERHANDED WAY OF ADMITTING I HAD TURNED FORTY",
-    "adversarial_transcription": "FAST FORGIVE ME FOR THIS UNDERHANDED WAY OF ADMITTING THAT I HAD TURNED OBORITY",
-    "ground_truth_wer": 0.23076923076923078,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 71,
-    "epsilon": 0.001,
-    "ground_truth": "NOT ONCE DID HE COMMENT ON THE LENGTH OR THE HARDSHIPS OF A JOURNEY",
-    "adversarial_transcription": "NOT ONCE DID HE COMMENT ON THE LENGTH OR THE HARDSHIPS OF THE JOURNEY",
-    "ground_truth_wer": 0.07142857142857142,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 71,
-    "epsilon": 0.005,
-    "ground_truth": "NOT ONCE DID HE COMMENT ON THE LENGTH OR THE HARDSHIPS OF A JOURNEY",
-    "adversarial_transcription": "NOT ONCE DID HE COMMENT ON THE LENGTH OR THE HARDSHIPS OF THE JOURNEY",
-    "ground_truth_wer": 0.07142857142857142,
-    "target_wer": 7.0
-  },
-  {
     "sample_idx": 71,
     "epsilon": 0.01,
     "ground_truth": "NOT ONCE DID HE COMMENT ON THE LENGTH OR THE HARDSHIPS OF A JOURNEY",
@@ -4598,30 +2878,6 @@
     "adversarial_transcription": "NOT ONCE DID HE COMMENT ON THE LENGTH OR THE HARDSHIPS OF THE JOURNEY",
     "ground_truth_wer": 0.07142857142857142,
     "target_wer": 7.0
-  },
-  {
-    "sample_idx": 71,
-    "epsilon": 0.3,
-    "ground_truth": "NOT ONCE DID HE COMMENT ON THE LENGTH OR THE HARDSHIPS OF A JOURNEY",
-    "adversarial_transcription": "NOT ONCE DID THE COMMENT ON THE LENGTH OR THE HARDSHIPS OF THE JOURNEY",
-    "ground_truth_wer": 0.14285714285714285,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 72,
-    "epsilon": 0.001,
-    "ground_truth": "CHAPTER THREE AS MASTER WISHES",
-    "adversarial_transcription": "CHAPTER THREE AS MASTER WISHES",
-    "ground_truth_wer": 0.0,
-    "target_wer": 2.5
-  },
-  {
-    "sample_idx": 72,
-    "epsilon": 0.005,
-    "ground_truth": "CHAPTER THREE AS MASTER WISHES",
-    "adversarial_transcription": "CHAPTER THREE AS MASTER WISHES",
-    "ground_truth_wer": 0.0,
-    "target_wer": 2.5
   },
   {
     "sample_idx": 72,
@@ -4664,30 +2920,6 @@
     "target_wer": 2.5
   },
   {
-    "sample_idx": 72,
-    "epsilon": 0.3,
-    "ground_truth": "CHAPTER THREE AS MASTER WISHES",
-    "adversarial_transcription": "CHAPTER THREE AS MASTER WISHES",
-    "ground_truth_wer": 0.0,
-    "target_wer": 2.5
-  },
-  {
-    "sample_idx": 73,
-    "epsilon": 0.001,
-    "ground_truth": "THERE WAS GOOD REASON TO STOP AND THINK EVEN FOR THE WORLD'S MOST EMOTIONLESS MAN",
-    "adversarial_transcription": "THERE WAS GOOD REASON TO STOP AND THINK EVEN FOR THE WORLD'S MOST EMOTIONLESS MAN",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 73,
-    "epsilon": 0.005,
-    "ground_truth": "THERE WAS GOOD REASON TO STOP AND THINK EVEN FOR THE WORLD'S MOST EMOTIONLESS MAN",
-    "adversarial_transcription": "THERE WAS GOOD REASON TO STOP AND THINK EVEN FOR THE WORLD'S MOST EMOTIONLESS MAN",
-    "ground_truth_wer": 0.0,
-    "target_wer": 7.5
-  },
-  {
     "sample_idx": 73,
     "epsilon": 0.01,
     "ground_truth": "THERE WAS GOOD REASON TO STOP AND THINK EVEN FOR THE WORLD'S MOST EMOTIONLESS MAN",
@@ -4728,30 +2960,6 @@
     "target_wer": 7.5
   },
   {
-    "sample_idx": 73,
-    "epsilon": 0.3,
-    "ground_truth": "THERE WAS GOOD REASON TO STOP AND THINK EVEN FOR THE WORLD'S MOST EMOTIONLESS MAN",
-    "adversarial_transcription": "THERE WAS GOOD REASON TO STOP IN THINK EVEN FOR THE WORLD'S MOST EMOTIONLESS MAN",
-    "ground_truth_wer": 0.06666666666666667,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 74,
-    "epsilon": 0.001,
-    "ground_truth": "WE'RE LEAVING ON THE ABRAHAM LINCOLN",
-    "adversarial_transcription": "WERE LEAVING ON THE ABRAHAM LINCOLN",
-    "ground_truth_wer": 0.16666666666666666,
-    "target_wer": 3.0
-  },
-  {
-    "sample_idx": 74,
-    "epsilon": 0.005,
-    "ground_truth": "WE'RE LEAVING ON THE ABRAHAM LINCOLN",
-    "adversarial_transcription": "WERE LEAVING ON THE ABRAHAM LINCOLN",
-    "ground_truth_wer": 0.16666666666666666,
-    "target_wer": 3.0
-  },
-  {
     "sample_idx": 74,
     "epsilon": 0.01,
     "ground_truth": "WE'RE LEAVING ON THE ABRAHAM LINCOLN",
@@ -4771,8 +2979,8 @@
     "sample_idx": 74,
     "epsilon": 0.05,
     "ground_truth": "WE'RE LEAVING ON THE ABRAHAM LINCOLN",
-    "adversarial_transcription": "WERE LEAVING ON THE ABRAHAM LINCOLN",
-    "ground_truth_wer": 0.16666666666666666,
+    "adversarial_transcription": "WERE LEVING ON THE ABRAHAM LINCOLN",
+    "ground_truth_wer": 0.3333333333333333,
     "target_wer": 3.0
   },
   {
@@ -4790,30 +2998,6 @@
     "adversarial_transcription": "RELIEVING ON THE ABRAHAM LINCOLN",
     "ground_truth_wer": 0.3333333333333333,
     "target_wer": 2.5
-  },
-  {
-    "sample_idx": 74,
-    "epsilon": 0.3,
-    "ground_truth": "WE'RE LEAVING ON THE ABRAHAM LINCOLN",
-    "adversarial_transcription": "RELIEVING ON THE ABRAHAM LINCOLN",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 2.5
-  },
-  {
-    "sample_idx": 75,
-    "epsilon": 0.001,
-    "ground_truth": "I WAS WELL SATISFIED WITH MY CABIN WHICH WAS LOCATED IN THE STERN AND OPENED INTO THE OFFICERS MESS",
-    "adversarial_transcription": "I WAS WELL SATISFIED WITH MY CABIN WHICH WAS LOCATED IN THE STERN AND OPENED INTO THE OFFICER'S MESS",
-    "ground_truth_wer": 0.05263157894736842,
-    "target_wer": 9.5
-  },
-  {
-    "sample_idx": 75,
-    "epsilon": 0.005,
-    "ground_truth": "I WAS WELL SATISFIED WITH MY CABIN WHICH WAS LOCATED IN THE STERN AND OPENED INTO THE OFFICERS MESS",
-    "adversarial_transcription": "I WAS WELL SATISFIED WITH MY CABIN WHICH WAS LOCATED IN THE STERN AND OPENED INTO THE OFFICER'S MESTS",
-    "ground_truth_wer": 0.10526315789473684,
-    "target_wer": 9.5
   },
   {
     "sample_idx": 75,
@@ -4851,33 +3035,9 @@
     "sample_idx": 75,
     "epsilon": 0.2,
     "ground_truth": "I WAS WELL SATISFIED WITH MY CABIN WHICH WAS LOCATED IN THE STERN AND OPENED INTO THE OFFICERS MESS",
-    "adversarial_transcription": "I WAS WELL SATISFIED WITH MY CABIN WHICH WAS LOCATED IN THE STERN AND OPENED INTO THE OFFICE OFS MESH",
+    "adversarial_transcription": "I WAS WELL SATISFIED WITH MY CABIN WHICH WAS LOCATED IN THE STERN AND OPENED INTO THE OFFICE OFS MEST",
     "ground_truth_wer": 0.15789473684210525,
     "target_wer": 10.0
-  },
-  {
-    "sample_idx": 75,
-    "epsilon": 0.3,
-    "ground_truth": "I WAS WELL SATISFIED WITH MY CABIN WHICH WAS LOCATED IN THE STERN AND OPENED INTO THE OFFICERS MESS",
-    "adversarial_transcription": "I WAS WELL SATISFIED WITH MY CABIN WHICH WAS LOCATED IN THE STERN AND OPENED INTO THE OFFICE OF MESS",
-    "ground_truth_wer": 0.10526315789473684,
-    "target_wer": 10.0
-  },
-  {
-    "sample_idx": 76,
-    "epsilon": 0.001,
-    "ground_truth": "THE WHARVES OF BROOKLYN AND EVERY PART OF NEW YORK BORDERING THE EAST RIVER WERE CROWDED WITH CURIOSITY SEEKERS",
-    "adversarial_transcription": "THE WHARVES OF BROOKLYN AND EVERY PART OF NEW YORK BORDERING THE EAST RIVER WERE CROWDED WITH CURIOSITY SEEKERS",
-    "ground_truth_wer": 0.0,
-    "target_wer": 9.5
-  },
-  {
-    "sample_idx": 76,
-    "epsilon": 0.005,
-    "ground_truth": "THE WHARVES OF BROOKLYN AND EVERY PART OF NEW YORK BORDERING THE EAST RIVER WERE CROWDED WITH CURIOSITY SEEKERS",
-    "adversarial_transcription": "THE WHARVES OF BROGLYND AND EVERY PART OF NEW YORK BORDERING THE EAST RIVER WERE CROWDED WITH CURIOSITY SEEKERS",
-    "ground_truth_wer": 0.05263157894736842,
-    "target_wer": 9.5
   },
   {
     "sample_idx": 76,
@@ -4907,7 +3067,7 @@
     "sample_idx": 76,
     "epsilon": 0.1,
     "ground_truth": "THE WHARVES OF BROOKLYN AND EVERY PART OF NEW YORK BORDERING THE EAST RIVER WERE CROWDED WITH CURIOSITY SEEKERS",
-    "adversarial_transcription": "THE WARVES OF BREGLAND AND EVERY PART OF NEW YORK BORDERING THE EAST RIVER WERE CROWDED WITH CURIOSITY SEEKERS",
+    "adversarial_transcription": "THE WARVES OF BRUGLAND AND EVERY PART OF NEW YORK BORDERING THE EAST RIVER WERE CROWDED WITH CURIOSITY SEEKERS",
     "ground_truth_wer": 0.10526315789473684,
     "target_wer": 9.5
   },
@@ -4918,30 +3078,6 @@
     "adversarial_transcription": "THE WARVES OF BRUGLYND AND EVERY PART OF NEW YORK BORDERING THE EAST RIVER WERE CROWDED WITH CURIOSITY SEEKERS",
     "ground_truth_wer": 0.10526315789473684,
     "target_wer": 9.5
-  },
-  {
-    "sample_idx": 76,
-    "epsilon": 0.3,
-    "ground_truth": "THE WHARVES OF BROOKLYN AND EVERY PART OF NEW YORK BORDERING THE EAST RIVER WERE CROWDED WITH CURIOSITY SEEKERS",
-    "adversarial_transcription": "THE WARS OF BRUGLAND AND EVERY PART OF NEW YORK BORDERING THE EAST RIVER WERE CROWDED WITH CURIOSITY FIGURES",
-    "ground_truth_wer": 0.15789473684210525,
-    "target_wer": 9.5
-  },
-  {
-    "sample_idx": 77,
-    "epsilon": 0.001,
-    "ground_truth": "CONSEIL WAS MY MANSERVANT",
-    "adversarial_transcription": "COSSEIL WAS MY MAN SERVANT",
-    "ground_truth_wer": 0.75,
-    "target_wer": 2.5
-  },
-  {
-    "sample_idx": 77,
-    "epsilon": 0.005,
-    "ground_truth": "CONSEIL WAS MY MANSERVANT",
-    "adversarial_transcription": "COSSEL WAS MY MAN SERVANT",
-    "ground_truth_wer": 0.75,
-    "target_wer": 2.5
   },
   {
     "sample_idx": 77,
@@ -4955,7 +3091,7 @@
     "sample_idx": 77,
     "epsilon": 0.02,
     "ground_truth": "CONSEIL WAS MY MANSERVANT",
-    "adversarial_transcription": "CONSEL WERE'S MY MAN SERVANT",
+    "adversarial_transcription": "CONSEH WERE'S MY MAN SERVANT",
     "ground_truth_wer": 1.0,
     "target_wer": 2.5
   },
@@ -4982,30 +3118,6 @@
     "adversarial_transcription": "CONFE WERE'S MY MAN SERVANT",
     "ground_truth_wer": 1.0,
     "target_wer": 2.5
-  },
-  {
-    "sample_idx": 77,
-    "epsilon": 0.3,
-    "ground_truth": "CONSEIL WAS MY MANSERVANT",
-    "adversarial_transcription": "HAFE WHICH MY MAN SERVANT",
-    "ground_truth_wer": 1.0,
-    "target_wer": 2.5
-  },
-  {
-    "sample_idx": 78,
-    "epsilon": 0.001,
-    "ground_truth": "SUBSTANTIALLY THIS WAS JACOB'S UNVARNISHED DESCRIPTION OF HIS MASTER AND MISTRESS",
-    "adversarial_transcription": "SUBSTANTIALLY THIS WAS JACOB'S UNVARNISHED DESCRIPTION OF HIS MASTER AND MISTRESS",
-    "ground_truth_wer": 0.0,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 78,
-    "epsilon": 0.005,
-    "ground_truth": "SUBSTANTIALLY THIS WAS JACOB'S UNVARNISHED DESCRIPTION OF HIS MASTER AND MISTRESS",
-    "adversarial_transcription": "SUBSTANTIALLY THIS WAS JACOB'S UNVARNISHED DESCRIPTION OF HIS MASTER AND MISTRESS",
-    "ground_truth_wer": 0.0,
-    "target_wer": 5.5
   },
   {
     "sample_idx": 78,
@@ -5048,30 +3160,6 @@
     "target_wer": 5.0
   },
   {
-    "sample_idx": 78,
-    "epsilon": 0.3,
-    "ground_truth": "SUBSTANTIALLY THIS WAS JACOB'S UNVARNISHED DESCRIPTION OF HIS MASTER AND MISTRESS",
-    "adversarial_transcription": "EXTANTIALLY IS THE SAKOFS UNVARNISHED DESCRIPTION OF HIS MASTER AND MISTE",
-    "ground_truth_wer": 0.45454545454545453,
-    "target_wer": 5.5
-  },
-  {
-    "sample_idx": 79,
-    "epsilon": 0.001,
-    "ground_truth": "AS USUAL NOTHING WAS DONE IN THE WAY OF PUNISHMENT",
-    "adversarial_transcription": "AS USUAL NOTHING WAS DONE IN THE WAY OF PUNISHMENT",
-    "ground_truth_wer": 0.0,
-    "target_wer": 5.0
-  },
-  {
-    "sample_idx": 79,
-    "epsilon": 0.005,
-    "ground_truth": "AS USUAL NOTHING WAS DONE IN THE WAY OF PUNISHMENT",
-    "adversarial_transcription": "AS HE WROTE NOTHING WAS DONE IN THE WAY OF PUNISHMENT",
-    "ground_truth_wer": 0.2,
-    "target_wer": 5.5
-  },
-  {
     "sample_idx": 79,
     "epsilon": 0.01,
     "ground_truth": "AS USUAL NOTHING WAS DONE IN THE WAY OF PUNISHMENT",
@@ -5110,30 +3198,6 @@
     "adversarial_transcription": "ASHE WOKE NOTHING WAS DONE IN THE WAY OF PUNISHMENT",
     "ground_truth_wer": 0.2,
     "target_wer": 5.0
-  },
-  {
-    "sample_idx": 79,
-    "epsilon": 0.3,
-    "ground_truth": "AS USUAL NOTHING WAS DONE IN THE WAY OF PUNISHMENT",
-    "adversarial_transcription": "ESE WOTE NOTHING WAS DONE IN THE WAY OF CUNCIONING",
-    "ground_truth_wer": 0.3,
-    "target_wer": 5.0
-  },
-  {
-    "sample_idx": 80,
-    "epsilon": 0.001,
-    "ground_truth": "I NEVER KNEW OF BUT ONE MAN WHO COULD EVER PLEASE HIM",
-    "adversarial_transcription": "I NEVER KNEW OF BUT ONE MAN WHO COULD EVER PLEASE HIM",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 80,
-    "epsilon": 0.005,
-    "ground_truth": "I NEVER KNEW OF BUT ONE MAN WHO COULD EVER PLEASE HIM",
-    "adversarial_transcription": "I NEVER KNEW OF BUT ONE MAN WHO COULD EVER PLEASE HIM",
-    "ground_truth_wer": 0.0,
-    "target_wer": 6.0
   },
   {
     "sample_idx": 80,
@@ -5176,30 +3240,6 @@
     "target_wer": 6.0
   },
   {
-    "sample_idx": 80,
-    "epsilon": 0.3,
-    "ground_truth": "I NEVER KNEW OF BUT ONE MAN WHO COULD EVER PLEASE HIM",
-    "adversarial_transcription": "I NEVER KNEW OF BUT ONE MAN HE COULD EVER PLEAVE HIM",
-    "ground_truth_wer": 0.16666666666666666,
-    "target_wer": 6.0
-  },
-  {
-    "sample_idx": 81,
-    "epsilon": 0.001,
-    "ground_truth": "THIS WAS WHAT DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
-    "adversarial_transcription": "THIS WAS WHEX DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
-    "ground_truth_wer": 0.07142857142857142,
-    "target_wer": 7.0
-  },
-  {
-    "sample_idx": 81,
-    "epsilon": 0.005,
-    "ground_truth": "THIS WAS WHAT DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
-    "adversarial_transcription": "THIS WAS WEX DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
-    "ground_truth_wer": 0.07142857142857142,
-    "target_wer": 7.0
-  },
-  {
     "sample_idx": 81,
     "epsilon": 0.01,
     "ground_truth": "THIS WAS WHAT DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
@@ -5238,30 +3278,6 @@
     "adversarial_transcription": "THIS WAS WEX DEARED THE MISCHIEF SO FAR AS THE RUNNING A WAY IS CONCERN",
     "ground_truth_wer": 0.42857142857142855,
     "target_wer": 7.5
-  },
-  {
-    "sample_idx": 81,
-    "epsilon": 0.3,
-    "ground_truth": "THIS WAS WHAT DID THE MISCHIEF SO FAR AS THE RUNNING AWAY WAS CONCERNED",
-    "adversarial_transcription": "IS WETWUET HE HAD THE MISCHIEF SO FAR AS THE RUNNING HE WAY IF HE FERN",
-    "ground_truth_wer": 0.6428571428571429,
-    "target_wer": 8.0
-  },
-  {
-    "sample_idx": 82,
-    "epsilon": 0.001,
-    "ground_truth": "OF STARTING I DIDN'T KNOW THE WAY TO COME",
-    "adversarial_transcription": "OF STARTING I DIDN'T KNOW THE WAY TO COME",
-    "ground_truth_wer": 0.0,
-    "target_wer": 4.5
-  },
-  {
-    "sample_idx": 82,
-    "epsilon": 0.005,
-    "ground_truth": "OF STARTING I DIDN'T KNOW THE WAY TO COME",
-    "adversarial_transcription": "OF STARTING I DIDN'T KNOW THE WAY TO COME",
-    "ground_truth_wer": 0.0,
-    "target_wer": 4.5
   },
   {
     "sample_idx": 82,
@@ -5304,30 +3320,6 @@
     "target_wer": 4.5
   },
   {
-    "sample_idx": 82,
-    "epsilon": 0.3,
-    "ground_truth": "OF STARTING I DIDN'T KNOW THE WAY TO COME",
-    "adversarial_transcription": "AT HE TARTING I DIDN'T KNOW THE WAY TO COME",
-    "ground_truth_wer": 0.3333333333333333,
-    "target_wer": 5.0
-  },
-  {
-    "sample_idx": 83,
-    "epsilon": 0.001,
-    "ground_truth": "AS TO HIS AGE AND ALSO THE NAME OF HIS MASTER JACOB'S STATEMENT VARIED SOMEWHAT FROM THE ADVERTISEMENT",
-    "adversarial_transcription": "AS TO HIS AGE AND ALSO THE NAME OF HIS MASTER JACOB STATEMENT VARIED SOMEWHAT FROM THE ADVERTISEMENT",
-    "ground_truth_wer": 0.05555555555555555,
-    "target_wer": 9.0
-  },
-  {
-    "sample_idx": 83,
-    "epsilon": 0.005,
-    "ground_truth": "AS TO HIS AGE AND ALSO THE NAME OF HIS MASTER JACOB'S STATEMENT VARIED SOMEWHAT FROM THE ADVERTISEMENT",
-    "adversarial_transcription": "AS TO HIS AGE AND ALSO THE NAME OF HIS MASTER JACOB STATEMENT VARIED SOMEWHAT FROM THE ADVERTISEMENT",
-    "ground_truth_wer": 0.05555555555555555,
-    "target_wer": 9.0
-  },
-  {
     "sample_idx": 83,
     "epsilon": 0.01,
     "ground_truth": "AS TO HIS AGE AND ALSO THE NAME OF HIS MASTER JACOB'S STATEMENT VARIED SOMEWHAT FROM THE ADVERTISEMENT",
@@ -5368,30 +3360,6 @@
     "target_wer": 9.0
   },
   {
-    "sample_idx": 83,
-    "epsilon": 0.3,
-    "ground_truth": "AS TO HIS AGE AND ALSO THE NAME OF HIS MASTER JACOB'S STATEMENT VARIED SOMEWHAT FROM THE ADVERTISEMENT",
-    "adversarial_transcription": "ESHUDOV AGE AND ALSO THE NAME OF ICMASTER DAVIB BATEMENT BURIED SOMEWHAT FOM THE ADVERTISEMENT",
-    "ground_truth_wer": 0.5,
-    "target_wer": 7.5
-  },
-  {
-    "sample_idx": 84,
-    "epsilon": 0.001,
-    "ground_truth": "IT IS HARDLY NECESSARY TO SAY MORE OF THEM HERE",
-    "adversarial_transcription": "IT IS HARDLY NECESSARY TO SAY MORE OF THEM HERE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 5.0
-  },
-  {
-    "sample_idx": 84,
-    "epsilon": 0.005,
-    "ground_truth": "IT IS HARDLY NECESSARY TO SAY MORE OF THEM HERE",
-    "adversarial_transcription": "IT IS HARDLY NECESSARY TO SAY MORE OF THEM HERE",
-    "ground_truth_wer": 0.0,
-    "target_wer": 5.0
-  },
-  {
     "sample_idx": 84,
     "epsilon": 0.01,
     "ground_truth": "IT IS HARDLY NECESSARY TO SAY MORE OF THEM HERE",
@@ -5430,13 +3398,5 @@
     "adversarial_transcription": "IT IS HARDLY NECESSARY TO SAY MORE OF THEM HERE",
     "ground_truth_wer": 0.0,
     "target_wer": 5.0
-  },
-  {
-    "sample_idx": 84,
-    "epsilon": 0.3,
-    "ground_truth": "IT IS HARDLY NECESSARY TO SAY MORE OF THEM HERE",
-    "adversarial_transcription": "IT IS HARBY HAS TO FAIRY TO FAY MORE OF THEM HERE",
-    "ground_truth_wer": 0.5,
-    "target_wer": 6.0
   }
 ]

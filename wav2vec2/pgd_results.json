@@ -1,0 +1,402 @@
+[
+  {
+    "sample_idx": 0,
+    "epsilon": 0.01,
+    "ground_truth": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
+    "adversarial_transcription": "AND WHAT SORT OF EVIDENCE IS LOGICLLY POSSIBLE",
+    "ground_truth_wer": 0.125,
+    "target_wer": 4.0
+  },
+  {
+    "sample_idx": 0,
+    "epsilon": 0.02,
+    "ground_truth": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
+    "adversarial_transcription": "AND WHAT SORT OF EVIDENCE IS LOGICIPOSSLE",
+    "ground_truth_wer": 0.25,
+    "target_wer": 3.5
+  },
+  {
+    "sample_idx": 0,
+    "epsilon": 0.05,
+    "ground_truth": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
+    "adversarial_transcription": "AND WHAT SORT OF EVIDENCE AS LOGILY POSSI",
+    "ground_truth_wer": 0.375,
+    "target_wer": 4.0
+  },
+  {
+    "sample_idx": 0,
+    "epsilon": 0.1,
+    "ground_truth": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
+    "adversarial_transcription": "AND WHAT SORT OF EVIDENT EBLOGRIPOS",
+    "ground_truth_wer": 0.5,
+    "target_wer": 3.0
+  },
+  {
+    "sample_idx": 0,
+    "epsilon": 0.2,
+    "ground_truth": "AND WHAT SORT OF EVIDENCE IS LOGICALLY POSSIBLE",
+    "adversarial_transcription": "MEN WHAT SORT OF LOGIPORSE",
+    "ground_truth_wer": 0.625,
+    "target_wer": 2.5
+  },
+  {
+    "sample_idx": 1,
+    "epsilon": 0.01,
+    "ground_truth": "REMEMBERING HAS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLING OR RELATED TO WHAT IS REMEMBERED",
+    "adversarial_transcription": "REMEMBERIN HAS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLIN ORELATED TO WHAT IS REMEMBERED",
+    "ground_truth_wer": 0.23529411764705882,
+    "target_wer": 8.0
+  },
+  {
+    "sample_idx": 1,
+    "epsilon": 0.02,
+    "ground_truth": "REMEMBERING HAS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLING OR RELATED TO WHAT IS REMEMBERED",
+    "adversarial_transcription": "REMEMBERIN HOW TO BE A PRESENT LE CURRENCE IN SOME WAY RESEMBLIN RELATED TO WHAT IS REMEMBERED",
+    "ground_truth_wer": 0.35294117647058826,
+    "target_wer": 8.5
+  },
+  {
+    "sample_idx": 1,
+    "epsilon": 0.05,
+    "ground_truth": "REMEMBERING HAS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLING OR RELATED TO WHAT IS REMEMBERED",
+    "adversarial_transcription": "REMEMBERIN HA T BE PREST THE CURRENTS IN SOME WAY RESINI RELATED TO WHAT IS RUMNV",
+    "ground_truth_wer": 0.5294117647058824,
+    "target_wer": 8.0
+  },
+  {
+    "sample_idx": 1,
+    "epsilon": 0.1,
+    "ground_truth": "REMEMBERING HAS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLING OR RELATED TO WHAT IS REMEMBERED",
+    "adversarial_transcription": "REMEMBERIN HA TO BE A PREJCURENCE IN SOME WAY RES AME TO WHAT IS RM",
+    "ground_truth_wer": 0.47058823529411764,
+    "target_wer": 7.5
+  },
+  {
+    "sample_idx": 1,
+    "epsilon": 0.2,
+    "ground_truth": "REMEMBERING HAS TO BE A PRESENT OCCURRENCE IN SOME WAY RESEMBLING OR RELATED TO WHAT IS REMEMBERED",
+    "adversarial_transcription": "REMEMBERIN HAS TO BE O PRESCURENCE IN SOME WAY RESUN OR LI TO WHAT IS REM",
+    "ground_truth_wer": 0.4117647058823529,
+    "target_wer": 8.0
+  },
+  {
+    "sample_idx": 2,
+    "epsilon": 0.01,
+    "ground_truth": "BUT I DO NOT THINK SUCH AN INFERENCE IS WARRANTED",
+    "adversarial_transcription": "BUT I DO NOT THINK SUCH AN IFFERENCE AS WARNT IT",
+    "ground_truth_wer": 0.4,
+    "target_wer": 5.5
+  },
+  {
+    "sample_idx": 2,
+    "epsilon": 0.02,
+    "ground_truth": "BUT I DO NOT THINK SUCH AN INFERENCE IS WARRANTED",
+    "adversarial_transcription": "BUT I DO NOT THINK SUCH AN IFERENCE WARN'T IT",
+    "ground_truth_wer": 0.3,
+    "target_wer": 5.0
+  },
+  {
+    "sample_idx": 2,
+    "epsilon": 0.05,
+    "ground_truth": "BUT I DO NOT THINK SUCH AN INFERENCE IS WARRANTED",
+    "adversarial_transcription": "BUT I DO NOT THINK SUCH AN INFENCE WAR",
+    "ground_truth_wer": 0.3,
+    "target_wer": 4.5
+  },
+  {
+    "sample_idx": 2,
+    "epsilon": 0.1,
+    "ground_truth": "BUT I DO NOT THINK SUCH AN INFERENCE IS WARRANTED",
+    "adversarial_transcription": "BUT I DO NOT THINK SUCH AN ICE RON",
+    "ground_truth_wer": 0.3,
+    "target_wer": 4.5
+  },
+  {
+    "sample_idx": 2,
+    "epsilon": 0.2,
+    "ground_truth": "BUT I DO NOT THINK SUCH AN INFERENCE IS WARRANTED",
+    "adversarial_transcription": "INO P WARNF",
+    "ground_truth_wer": 1.0,
+    "target_wer": 1.5
+  },
+  {
+    "sample_idx": 3,
+    "epsilon": 0.01,
+    "ground_truth": "FAMILIARITY IS A FEELING CAPABLE OF DEGREES",
+    "adversarial_transcription": "FAMILIARITY IS A FILLING CAPABLE OF DE GREEKS",
+    "ground_truth_wer": 0.42857142857142855,
+    "target_wer": 4.0
+  },
+  {
+    "sample_idx": 3,
+    "epsilon": 0.02,
+    "ground_truth": "FAMILIARITY IS A FEELING CAPABLE OF DEGREES",
+    "adversarial_transcription": "FAMILIARITY IS A FILLING CAPABLE OF DE GREEKS",
+    "ground_truth_wer": 0.42857142857142855,
+    "target_wer": 4.0
+  },
+  {
+    "sample_idx": 3,
+    "epsilon": 0.05,
+    "ground_truth": "FAMILIARITY IS A FEELING CAPABLE OF DEGREES",
+    "adversarial_transcription": "FAMILIARITY IS ICAPABLE OF GRETS",
+    "ground_truth_wer": 0.5714285714285714,
+    "target_wer": 2.5
+  },
+  {
+    "sample_idx": 3,
+    "epsilon": 0.1,
+    "ground_truth": "FAMILIARITY IS A FEELING CAPABLE OF DEGREES",
+    "adversarial_transcription": "FAMILIARITY CAPABLE OF TE GREEKS",
+    "ground_truth_wer": 0.7142857142857143,
+    "target_wer": 2.5
+  },
+  {
+    "sample_idx": 3,
+    "epsilon": 0.2,
+    "ground_truth": "FAMILIARITY IS A FEELING CAPABLE OF DEGREES",
+    "adversarial_transcription": "COMILIARIFU IS NCAPABLE OF DUT",
+    "ground_truth_wer": 0.7142857142857143,
+    "target_wer": 2.5
+  },
+  {
+    "sample_idx": 4,
+    "epsilon": 0.01,
+    "ground_truth": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
+    "adversarial_transcription": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN ACERTAIN IN ADVANCE IS RATHER VAGU",
+    "ground_truth_wer": 0.16666666666666666,
+    "target_wer": 8.5
+  },
+  {
+    "sample_idx": 4,
+    "epsilon": 0.02,
+    "ground_truth": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
+    "adversarial_transcription": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN A CERTAIN INDVANCE IS RATEBA",
+    "ground_truth_wer": 0.2777777777777778,
+    "target_wer": 8.0
+  },
+  {
+    "sample_idx": 4,
+    "epsilon": 0.05,
+    "ground_truth": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
+    "adversarial_transcription": "IN THIS CASE AS IN MOST OTHERS WAT MAY BE TAKEN ACERTAIN ANADVANCE ITS RAVEBA",
+    "ground_truth_wer": 0.4444444444444444,
+    "target_wer": 7.5
+  },
+  {
+    "sample_idx": 4,
+    "epsilon": 0.1,
+    "ground_truth": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
+    "adversarial_transcription": "IN THIS CASE AS IN MOST OTHERS MAY BE TAKEN ASER NADVANCE IRAVBE",
+    "ground_truth_wer": 0.4444444444444444,
+    "target_wer": 6.5
+  },
+  {
+    "sample_idx": 4,
+    "epsilon": 0.2,
+    "ground_truth": "IN THIS CASE AS IN MOST OTHERS WHAT MAY BE TAKEN AS CERTAIN IN ADVANCE IS RATHER VAGUE",
+    "adversarial_transcription": "NAM DISC IENOOTER MAY BE TAKEN A CERTAIN AERAVEWAY",
+    "ground_truth_wer": 0.7777777777777778,
+    "target_wer": 4.5
+  },
+  {
+    "sample_idx": 5,
+    "epsilon": 0.01,
+    "ground_truth": "THE FIRST OF OUR VAGUE BUT INDUBITABLE DATA IS THAT THERE IS KNOWLEDGE OF THE PAST",
+    "adversarial_transcription": "THE FIRST OF OUR VEG B INDUBITABLE DETA CAZETERA'S KNOWLEDGE OF TE PAST",
+    "ground_truth_wer": 0.5,
+    "target_wer": 6.5
+  },
+  {
+    "sample_idx": 5,
+    "epsilon": 0.02,
+    "ground_truth": "THE FIRST OF OUR VAGUE BUT INDUBITABLE DATA IS THAT THERE IS KNOWLEDGE OF THE PAST",
+    "adversarial_transcription": "THE FIRST OF OUR VEI ANDUBIPLE DATA AZETERAS KNOWLEDGE OF THE PASTE",
+    "ground_truth_wer": 0.5,
+    "target_wer": 6.0
+  },
+  {
+    "sample_idx": 5,
+    "epsilon": 0.05,
+    "ground_truth": "THE FIRST OF OUR VAGUE BUT INDUBITABLE DATA IS THAT THERE IS KNOWLEDGE OF THE PAST",
+    "adversarial_transcription": "THE FIRST OF OUR VAY INDIGBLE DAISET THERS KNOWLEDGE  PAST",
+    "ground_truth_wer": 0.625,
+    "target_wer": 5.0
+  },
+  {
+    "sample_idx": 5,
+    "epsilon": 0.1,
+    "ground_truth": "THE FIRST OF OUR VAGUE BUT INDUBITABLE DATA IS THAT THERE IS KNOWLEDGE OF THE PAST",
+    "adversarial_transcription": "INTHE THIRST OF OUR E AND AVEDA EXEPT THER SNOWLED  PAST",
+    "ground_truth_wer": 0.8125,
+    "target_wer": 5.5
+  },
+  {
+    "sample_idx": 5,
+    "epsilon": 0.2,
+    "ground_truth": "THE FIRST OF OUR VAGUE BUT INDUBITABLE DATA IS THAT THERE IS KNOWLEDGE OF THE PAST",
+    "adversarial_transcription": "DEHER RVE NIDE TRKNOWLEDGE LIKE HAST",
+    "ground_truth_wer": 1.0,
+    "target_wer": 3.0
+  },
+  {
+    "sample_idx": 6,
+    "epsilon": 0.01,
+    "ground_truth": "A FURTHER STAGE IS RECOGNITION",
+    "adversarial_transcription": "A FURTHER STAGE IS RECOGNITN",
+    "ground_truth_wer": 0.2,
+    "target_wer": 2.5
+  },
+  {
+    "sample_idx": 6,
+    "epsilon": 0.02,
+    "ground_truth": "A FURTHER STAGE IS RECOGNITION",
+    "adversarial_transcription": "A FURTHER STAGE IS RECOGNITION",
+    "ground_truth_wer": 0.0,
+    "target_wer": 2.5
+  },
+  {
+    "sample_idx": 6,
+    "epsilon": 0.05,
+    "ground_truth": "A FURTHER STAGE IS RECOGNITION",
+    "adversarial_transcription": "A FURTHER STAGE IS RECOGIT",
+    "ground_truth_wer": 0.2,
+    "target_wer": 2.5
+  },
+  {
+    "sample_idx": 6,
+    "epsilon": 0.1,
+    "ground_truth": "A FURTHER STAGE IS RECOGNITION",
+    "adversarial_transcription": "TURTHERSTAY RE",
+    "ground_truth_wer": 1.0,
+    "target_wer": 1.0
+  },
+  {
+    "sample_idx": 6,
+    "epsilon": 0.2,
+    "ground_truth": "A FURTHER STAGE IS RECOGNITION",
+    "adversarial_transcription": "A FURTHER STAVE RECKI",
+    "ground_truth_wer": 0.6,
+    "target_wer": 2.0
+  },
+  {
+    "sample_idx": 7,
+    "epsilon": 0.01,
+    "ground_truth": "SOME POINTS MAY BE TAKEN AS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE AT",
+    "adversarial_transcription": "SOME POINTS MAY BE TAKEN ATS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE A",
+    "ground_truth_wer": 0.11764705882352941,
+    "target_wer": 8.5
+  },
+  {
+    "sample_idx": 7,
+    "epsilon": 0.02,
+    "ground_truth": "SOME POINTS MAY BE TAKEN AS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE AT",
+    "adversarial_transcription": "SOME POINTS MAY BE TAKEN AT FIXD AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE A",
+    "ground_truth_wer": 0.17647058823529413,
+    "target_wer": 8.5
+  },
+  {
+    "sample_idx": 7,
+    "epsilon": 0.05,
+    "ground_truth": "SOME POINTS MAY BE TAKEN AS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE AT",
+    "adversarial_transcription": "TE SOME PINTS MAY BE TAKEN FIXED AND  SUCH OS ANY FURY OF MEMRY MUST ARAGA",
+    "ground_truth_wer": 0.47058823529411764,
+    "target_wer": 8.0
+  },
+  {
+    "sample_idx": 7,
+    "epsilon": 0.1,
+    "ground_truth": "SOME POINTS MAY BE TAKEN AS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE AT",
+    "adversarial_transcription": "SUM WITS MAY BE TAKEN  FIXED AND SUCH OS ANY FURITY OF MEMERE MUST ARRIVE AFTER",
+    "ground_truth_wer": 0.4117647058823529,
+    "target_wer": 8.0
+  },
+  {
+    "sample_idx": 7,
+    "epsilon": 0.2,
+    "ground_truth": "SOME POINTS MAY BE TAKEN AS FIXED AND SUCH AS ANY THEORY OF MEMORY MUST ARRIVE AT",
+    "adversarial_transcription": "SOMEW PIIX AND SUCHAN MEMRMASROICIL",
+    "ground_truth_wer": 0.9411764705882353,
+    "target_wer": 2.5
+  },
+  {
+    "sample_idx": 8,
+    "epsilon": 0.01,
+    "ground_truth": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
+    "adversarial_transcription": "THIS KNOWLEDGE IS MEMORY AND ONE SINSE THOUGH IN ANOTHER IT IS NOT",
+    "ground_truth_wer": 0.15384615384615385,
+    "target_wer": 6.5
+  },
+  {
+    "sample_idx": 8,
+    "epsilon": 0.02,
+    "ground_truth": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
+    "adversarial_transcription": "IT IS NOLET IS MEMORY AND ONE SINSE THOUGH IN ANOTHER IT IS NOT",
+    "ground_truth_wer": 0.38461538461538464,
+    "target_wer": 7.0
+  },
+  {
+    "sample_idx": 8,
+    "epsilon": 0.05,
+    "ground_truth": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
+    "adversarial_transcription": "IT ISNOVLET I MEMORY AND ONE SINSE THOUGH IN ANOTHER IT IS NOT",
+    "ground_truth_wer": 0.38461538461538464,
+    "target_wer": 6.5
+  },
+  {
+    "sample_idx": 8,
+    "epsilon": 0.1,
+    "ground_truth": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
+    "adversarial_transcription": "DISMELL I MEMORATE AN MIS BUT WIT ANOTHER IS NOT",
+    "ground_truth_wer": 0.7692307692307693,
+    "target_wer": 5.0
+  },
+  {
+    "sample_idx": 8,
+    "epsilon": 0.2,
+    "ground_truth": "THIS KNOWLEDGE IS MEMORY IN ONE SENSE THOUGH IN ANOTHER IT IS NOT",
+    "adversarial_transcription": "THI SMAL MEMORY AND MON NOTHER  HIS LOT",
+    "ground_truth_wer": 0.9230769230769231,
+    "target_wer": 4.0
+  },
+  {
+    "sample_idx": 9,
+    "epsilon": 0.01,
+    "ground_truth": "SOME IMAGES LIKE SOME SENSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
+    "adversarial_transcription": "SOME IMAGES LIKE SOME SENSATIONS FEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
+    "ground_truth_wer": 0.08333333333333333,
+    "target_wer": 6.0
+  },
+  {
+    "sample_idx": 9,
+    "epsilon": 0.02,
+    "ground_truth": "SOME IMAGES LIKE SOME SENSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
+    "adversarial_transcription": "SOME IMAGES LIKE SOMSSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
+    "ground_truth_wer": 0.16666666666666666,
+    "target_wer": 5.5
+  },
+  {
+    "sample_idx": 9,
+    "epsilon": 0.05,
+    "ground_truth": "SOME IMAGES LIKE SOME SENSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
+    "adversarial_transcription": "SOME IMAGES LIKE SOM ATIONS FIL VARI AMILLION WHILE OTHERS VILDRANGE",
+    "ground_truth_wer": 0.5833333333333334,
+    "target_wer": 5.5
+  },
+  {
+    "sample_idx": 9,
+    "epsilon": 0.1,
+    "ground_truth": "SOME IMAGES LIKE SOME SENSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
+    "adversarial_transcription": "SOME IMAGS LIKEOION FIL VERY FAMILIAR WHILE OTHERS STRANGE",
+    "ground_truth_wer": 0.5,
+    "target_wer": 4.5
+  },
+  {
+    "sample_idx": 9,
+    "epsilon": 0.2,
+    "ground_truth": "SOME IMAGES LIKE SOME SENSATIONS FEEL VERY FAMILIAR WHILE OTHERS FEEL STRANGE",
+    "adversarial_transcription": "SNGO LIKEASH  VERY  OTHE",
+    "ground_truth_wer": 0.9166666666666666,
+    "target_wer": 2.0
+  }
+]
