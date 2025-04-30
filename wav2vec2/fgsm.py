@@ -1,63 +1,63 @@
 import torch
-import torchaudio
 from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor
+from datasets import load_dataset
+import jiwer
+import numpy as np
 
-def fgsm_attack_single_audio(model, processor, waveform, target_text, epsilon):
+def fgsm_attack(audio_array, ground_truth, target_transcription, model, processor, epsilon=0.3, sampling_rate=16000, device="cuda"):
     """
-    Perform FGSM attack on a single audio waveform for a Wav2Vec2 ASR model.
+    Perform FGSM attack on Wav2Vec2 model to generate adversarial audio.
 
     Args:
-        model (torch.nn.Module): Pre-trained Wav2Vec2ForCTC model.
-        processor (Wav2Vec2Processor): Processor to handle audio and text.
-        waveform (torch.Tensor): Input waveform of shape (T,) or (1, T) with values in [-1, 1].
-        target_text (str): The target transcription.
-        epsilon (float): Perturbation magnitude.
+        audio_array (np.ndarray): Input audio waveform (1D NumPy array).
+        ground_truth (str): Ground truth transcription.
+        target_transcription (str): Desired target transcription for the attack.
+        model (Wav2Vec2ForCTC): Pre-trained Wav2Vec2 model.
+        processor (Wav2Vec2Processor): Wav2Vec2 processor for audio and text processing.
+        epsilon (float): Perturbation magnitude for FGSM. Default is 0.3.
+        sampling_rate (int): Audio sampling rate (default: 16000 Hz).
+        device (str): Device to run the model on (default: "cuda").
 
     Returns:
-        torch.Tensor: Adversarial waveform with shape (T,) in the range [-1, 1].
+        tuple: (adversarial_waveform, ground_truth_wer, target_wer, adversarial_transcription)
+            - adversarial_waveform (np.ndarray): Perturbed audio waveform.
+            - ground_truth_wer (float): WER between ground truth and adversarial transcription.
+            - target_wer (float): WER between target transcription and adversarial transcription.
+            - adversarial_transcription (str): Transcription of the adversarial audio.
     """
-    device = next(model.parameters()).device
+    # Step 1: Preprocess the audio
+    inputs = processor(audio_array, sampling_rate=sampling_rate, return_tensors="pt", padding="longest")
+    input_values = inputs.input_values.to(device)  # Shape: [1, audio_length]
 
-    # Ensure waveform has shape [1, T]
-    if waveform.dim() == 1:
-        waveform = waveform.unsqueeze(0)  # shape: [1, T]
+    # Step 2: Tokenize the target transcription
+    labels = processor.tokenizer(target_transcription, return_tensors="pt").input_ids.to(device)
 
-    # Process the audio input with explicit sampling_rate
-    inputs = processor(waveform.squeeze().cpu().numpy(), sampling_rate=16000, return_tensors="pt", padding=True)
-    input_values = inputs.input_values.to(device)  # shape: [1, T']
-
-    # Process the target text by directly using the underlying tokenizer
-    target = processor.tokenizer(target_text, return_tensors="pt").input_ids.to(device)
-
-    # Forward pass to get logits and determine input length for CTC loss
-    with torch.no_grad():
-        logits = model(input_values).logits  # shape: [1, T', vocab_size]
-    logit_length = logits.size(1)
-    input_lengths = torch.full((1,), logit_length, dtype=torch.long, device=device)
-    target_lengths = torch.full((1,), target.size(1), dtype=torch.long, device=device)
-
-    # Set up the CTC loss (using the pad_token_id as blank)
-    ctc_loss_fn = torch.nn.CTCLoss(blank=processor.tokenizer.pad_token_id, zero_infinity=True)
-
-    # Enable gradient tracking for input_values
-    input_values.requires_grad = True
-
-    # Forward pass with gradient tracking
-    logits = model(input_values).logits
-    # CTC loss expects logits in shape (T, N, C)
-    logits_for_loss = logits.transpose(0, 1)  # shape: [T', 1, vocab_size]
-    loss = ctc_loss_fn(logits_for_loss.log_softmax(dim=-1), target, input_lengths, target_lengths)
-
-    # Backward pass to compute gradients with respect to input
-    model.zero_grad()
+    # Step 3 & 4: Compute CTC loss with gradient tracking
+    input_values.requires_grad_(True)
+    output = model(input_values, labels=labels)
+    loss = output.loss
     loss.backward()
 
-    # Compute the sign of the gradient and add the perturbation
-    grad_sign = torch.sign(input_values.grad.data)
-    adv_input = input_values + epsilon * grad_sign
-    adv_input = torch.clamp(adv_input, -1.0, 1.0)
+    # Step 5: Compute the gradient
+    grad = input_values.grad  # Gradient of loss w.r.t. input_values
 
-    # Return the adversarial waveform (removing the batch dimension)
-    return adv_input.detach().cpu().squeeze()
+    # Step 6: Generate perturbation (targeted attack: minimize loss w.r.t. target)
+    perturbation = -epsilon * torch.sign(grad)
 
+    # Step 7: Create adversarial input
+    adversarial_input_values = input_values.detach() + perturbation
 
+    # Step 8: Transcribe adversarial audio
+    with torch.no_grad():
+        logits = model(adversarial_input_values).logits
+        predicted_ids = torch.argmax(logits, dim=-1)
+        adversarial_transcription = processor.batch_decode(predicted_ids)[0]
+
+    # Step 9: Evaluate the attack
+    ground_truth_wer = jiwer.wer(ground_truth, adversarial_transcription)
+    target_wer = jiwer.wer(target_transcription, adversarial_transcription)
+
+    # Convert adversarial input to NumPy array for return
+    adversarial_waveform = adversarial_input_values.squeeze().cpu().numpy()
+
+    return adversarial_waveform, ground_truth_wer, target_wer, adversarial_transcription
