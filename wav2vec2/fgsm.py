@@ -27,7 +27,7 @@ def fgsm_attack(audio_array, ground_truth, target_transcription, model, processo
     """
     # Step 1: Preprocess the audio
     inputs = processor(audio_array, sampling_rate=sampling_rate, return_tensors="pt", padding="longest")
-    input_values = inputs.input_values  # Shape: [1, audio_length]
+    input_values = inputs.input_values.to(model.device)  # Shape: [1, audio_length]
 
     # Step 2: Tokenize the target transcription
     labels = processor.tokenizer(target_transcription, return_tensors="pt").input_ids
@@ -47,17 +47,8 @@ def fgsm_attack(audio_array, ground_truth, target_transcription, model, processo
     # Step 7: Create adversarial input
     adversarial_input_values = input_values.detach() + perturbation
 
-    # Step 8: Transcribe adversarial audio
-    with torch.no_grad():
-        logits = model(adversarial_input_values).logits
-        predicted_ids = torch.argmax(logits, dim=-1)
-        adversarial_transcription = processor.batch_decode(predicted_ids)[0]
-
-    # Step 9: Evaluate the attack
-    ground_truth_wer = jiwer.wer(ground_truth, adversarial_transcription)
-    target_wer = jiwer.wer(target_transcription, adversarial_transcription)
 
     # Convert adversarial input to NumPy array for return
     adversarial_waveform = adversarial_input_values.squeeze().cpu().numpy()
 
-    return adversarial_waveform, ground_truth_wer, target_wer, adversarial_transcription
+    return adversarial_waveform
