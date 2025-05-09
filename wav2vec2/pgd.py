@@ -59,21 +59,7 @@ def pgd_attack(audio_array, ground_truth, target_transcription, model, processor
     # Create adversarial input
     adversarial_input_values = input_values + perturbation
 
-    # Transcribe adversarial audio
-    with torch.no_grad():
-        logits = model(adversarial_input_values).logits
-        predicted_ids = torch.argmax(logits, dim=-1)
-        adversarial_transcription = processor.batch_decode(predicted_ids)[0]
-
-    # Evaluate the attack
-    ground_truth_wer = jiwer.wer(ground_truth, adversarial_transcription)
-    target_wer = jiwer.wer(target_transcription, adversarial_transcription)
-
     # Convert adversarial input to NumPy array for return
     adversarial_waveform = adversarial_input_values.detach().squeeze().cpu().numpy()
 
-    return adversarial_waveform, ground_truth_wer, target_wer, adversarial_transcription
-
-
-
-
+    return adversarial_waveform
