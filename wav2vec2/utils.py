@@ -6,7 +6,7 @@ def transcribe_audio(audio_array, sampling_rate, processor, model):
 
     # Pass sampling_rate to the processor
     inputs = processor(audio_array, sampling_rate=16000, return_tensors="pt", padding="longest")
-    input_values = inputs.input_values
+    input_values = inputs.input_values.to(model.device)
 
     with torch.no_grad():
         logits = model(input_values).logits
