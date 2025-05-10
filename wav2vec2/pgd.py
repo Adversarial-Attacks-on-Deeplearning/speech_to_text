@@ -1,65 +1,70 @@
 import torch
-from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor
-import jiwer
-import numpy as np
+from torch.amp import autocast  
 
-def pgd_attack(audio_array, ground_truth, target_transcription, model, processor, epsilon=0.3, alpha=0.01, num_iter=40, sampling_rate=16000, device="cuda"):
+def pgd_attack(audio_tensors, target_transcription, model, processor, epsilon=0.3, alpha=0.01, num_iter=40, sampling_rate=16000, device="cuda", convergence_threshold=1e-4):
     """
-    Perform PGD attack on Wav2Vec2 model to generate adversarial audio.
+    Perform PGD attack on Wav2Vec2 model for a batch of audio tensors.
 
     Args:
-        audio_array (np.ndarray): Input audio waveform (1D NumPy array).
-        ground_truth (str): Ground truth transcription.
-        target_transcription (str): Desired target transcription for the attack.
+        audio_tensors (torch.Tensor): Batch of input audio waveforms (shape: [batch_size, max_length]).
+        target_transcription (str): Desired target transcription.
         model (Wav2Vec2ForCTC): Pre-trained Wav2Vec2 model.
-        processor (Wav2Vec2Processor): Wav2Vec2 processor for audio and text processing.
-        epsilon (float): Maximum perturbation magnitude. Default is 0.3.
-        alpha (float): Step size for each iteration. Default is 0.01.
-        num_iter (int): Number of iterations for the attack. Default is 40.
-        sampling_rate (int): Audio sampling rate (default: 16000 Hz).
-        device (str): Device to run the model on (default: "cuda").
+        processor (Wav2Vec2Processor): Wav2Vec2 processor.
+        epsilon (float): Maximum perturbation magnitude.
+        alpha (float): Step size for each iteration.
+        num_iter (int): Number of iterations.
+        sampling_rate (int): Audio sampling rate.
+        device (str): Device to run the model on.
+        convergence_threshold (float): Stop if loss change is below this threshold.
 
     Returns:
-        tuple: (adversarial_waveform, ground_truth_wer, target_wer, adversarial_transcription)
-            - adversarial_waveform (np.ndarray): Perturbed audio waveform.
-            - ground_truth_wer (float): WER between ground truth and adversarial transcription.
-            - target_wer (float): WER between target transcription and adversarial transcription.
-            - adversarial_transcription (str): Transcription of the adversarial audio.
+        torch.Tensor: Adversarial waveforms (shape: [batch_size, max_length]).
     """
-    # Preprocess the audio
-    inputs = processor(audio_array, sampling_rate=sampling_rate, return_tensors="pt", padding="longest")
-    input_values = inputs.input_values  # Shape: [1, audio_length]
+    # Move input to device
+    input_values = audio_tensors.to(device)
+    if input_values.ndim == 1:
+        input_values = input_values.unsqueeze(0)  # Ensure batch dimension
 
-    # Tokenize the target transcription
-    labels = processor.tokenizer(target_transcription, return_tensors="pt").input_ids
+    # Tokenize target transcription and move to device
+    labels = processor.tokenizer(target_transcription, return_tensors="pt").input_ids.to(device)
+    labels = labels.repeat(input_values.shape[0], 1)  # Repeat for batch
 
     # Initialize perturbation
-    perturbation = torch.zeros_like(input_values)
-    perturbation.requires_grad_(True)
+    perturbation = torch.zeros_like(input_values, requires_grad=True, device=device)
 
     # Iterative PGD attack
+    prev_loss = float('inf')
     for i in range(num_iter):
-        # Compute CTC loss
-        output = model(input_values + perturbation, labels=labels)
+        # Compute input with perturbation
+        adv_input = input_values + perturbation
+
+        # Run model outside autocast to avoid FP16 mismatch
+        output = model(adv_input, labels=labels)
         loss = output.loss
+
+        # Check for convergence
+        if i > 0 and abs(prev_loss - loss.item()) < convergence_threshold:
+            print(f"Converged at iteration {i+1}")
+            break
+        prev_loss = loss.item()
+
+        # Backpropagate
+        model.zero_grad()
         loss.backward()
 
-        # Get gradient of perturbation
-        grad = perturbation.grad
+        # Update perturbation in-place with autocast for efficiency
+        with torch.no_grad():
+            with autocast(device_type='cuda', enabled=True):  # Corrected autocast API
+                perturbation.sub_(alpha * torch.sign(perturbation.grad))
+                perturbation.clamp_(-epsilon, epsilon)
 
-        # Update perturbation: step in the direction to minimize loss (targeted attack)
-        perturbation = perturbation - alpha * torch.sign(grad)
+        # Reset gradient
+        perturbation.grad.zero_()
 
-        # Project perturbation to be within [-epsilon, epsilon]
-        perturbation = torch.clamp(perturbation, -epsilon, epsilon)
-        perturbation = perturbation.detach().requires_grad_(True)
-        if i % 10 == 0 and i>0:
-          print(f"Iteration {i+1}/{num_iter} ")
+        if i % 10 == 0 and i > 0:
+            print(f"Iteration {i+1}/{num_iter}, Loss: {loss.item():.4f}")
 
     # Create adversarial input
     adversarial_input_values = input_values + perturbation
 
-    # Convert adversarial input to NumPy array for return
-    adversarial_waveform = adversarial_input_values.detach().squeeze().cpu().numpy()
-
-    return adversarial_waveform
+    return adversarial_input_values.detach().cpu()
