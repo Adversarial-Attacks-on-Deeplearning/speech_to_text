@@ -101,7 +101,6 @@ def custom_collate_fn(batch):
     return padded_audio, ground_truths, indices
 
 
-# Custom dataset (unchanged)
 class LibriSpeechDataset(torch.utils.data.Dataset):
     def __init__(self, dataset, processor, sampling_rate=16000):
         self.dataset = dataset
@@ -114,9 +113,113 @@ class LibriSpeechDataset(torch.utils.data.Dataset):
     def __getitem__(self, idx):
         example = self.dataset[idx]
         audio_array = example["audio"]["array"]
-        ground_truth = example["true_text"]
+        ground_truth = example["text"]
         audio_array = preprocess_audio(audio_array)  # Assumed function
         return audio_array, ground_truth, idx
+    
+
+
+
+import numpy as np
+
+def compute_segmental_snr(clean, processed, frame_len_ms=25, sample_rate=16000,
+                         silence_threshold_db=-20, snr_clip_range=(-10, 35)):
+    """
+    Compute segmental Signal-to-Noise Ratio between clean and processed signals.
+
+    Args:
+        clean: Clean reference signal (numpy array or torch tensor)
+        processed: Processed/noisy signal (numpy array or torch tensor)
+        frame_len_ms: Frame length in milliseconds (default: 25ms)
+        sample_rate: Sample rate in Hz (default: 16kHz)
+        silence_threshold_db: Threshold below which frames are considered silent (default: -20dB)
+        snr_clip_range: Tuple of (min_snr, max_snr) for clipping (default: (-10, 35))
+
+    Returns:
+        Average segmental SNR in dB, or np.nan if no valid frames
+    """
+    # Handle PyTorch tensors - convert to numpy
+    if hasattr(clean, 'cpu'):  # Check if it's a torch tensor
+        clean = clean.detach().cpu().numpy()
+    if hasattr(processed, 'cpu'):  # Check if it's a torch tensor
+        processed = processed.detach().cpu().numpy()
+
+    # Ensure inputs are numpy arrays with proper dtype
+    clean = np.asarray(clean, dtype=np.float64)
+    processed = np.asarray(processed, dtype=np.float64)
+
+    # Handle batched inputs (squeeze if needed)
+    if clean.ndim > 1:
+        clean = clean.squeeze()
+    if processed.ndim > 1:
+        processed = processed.squeeze()
+
+    # Truncate to minimum length
+    min_len = min(len(clean), len(processed))
+    clean = clean[:min_len]
+    processed = processed[:min_len]
+
+    # Compute noise signal
+    noise = processed - clean
+
+    # Calculate frame length in samples
+    frame_len_samples = int(frame_len_ms * sample_rate / 1000)
+
+    # Split signals into frames
+    clean_frames = split_into_frames(clean, frame_len_samples)
+    noise_frames = split_into_frames(noise, frame_len_samples)
+
+    snr_values = []
+
+    for clean_frame, noise_frame in zip(clean_frames, noise_frames):
+        # Compute frame energies with small epsilon to avoid division by zero
+        clean_energy = np.sum(clean_frame**2) + 1e-12
+        noise_energy = np.sum(noise_frame**2) + 1e-12
+
+        # Convert clean energy to dB for silence detection
+        clean_energy_db = 10 * np.log10(clean_energy)
+
+        # Skip silent frames
+        if clean_energy_db < silence_threshold_db:
+            continue
+
+        # Compute frame SNR in dB
+        frame_snr = 10 * np.log10(clean_energy / noise_energy)
+
+        # Clip SNR to specified range
+        clipped_snr = np.clip(frame_snr, snr_clip_range[0], snr_clip_range[1])
+        snr_values.append(clipped_snr)
+
+    # Return mean SNR or NaN if no valid frames
+    return np.mean(snr_values) if snr_values else np.nan
+
+
+def split_into_frames(signal, frame_len_samples, hop_len_samples=None):
+    """
+    Split signal into overlapping or non-overlapping frames.
+
+    Args:
+        signal: Input signal (numpy array)
+        frame_len_samples: Frame length in samples
+        hop_len_samples: Hop length in samples (default: frame_len_samples for non-overlapping)
+
+    Returns:
+        List of frames (numpy arrays)
+    """
+    if hop_len_samples is None:
+        hop_len_samples = frame_len_samples
+
+    frames = []
+    start = 0
+
+    while start + frame_len_samples <= len(signal):
+        frame = signal[start:start + frame_len_samples]
+        frames.append(frame)
+        start += hop_len_samples
+
+    return frames
+
+
     
 
 
