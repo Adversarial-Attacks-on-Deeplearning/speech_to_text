@@ -1,0 +1,332 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{siunitx}
+
+\title{Speech Recognition}
+
+\begin{document}
+
+\maketitle
+\section{Defenses}
+\subsection{Randomized Smoothing}
+\subsubsection{Introduction}
+Randomized smoothing \cite{cohen2019certified} emerges as a promising defense by creating noise-invariant predictions. And it is an effective defense with speech to text models\cite{zelasko2021adversarial}. We implemented it with:
+
+\begin{itemize}
+    \item \textbf{Adaptive variance scaling \cite{li2024adaptive}:} This technique adjusts the noise level (variance) added to an input signal based on its local characteristics, such as signal variance. In speech recognition, it dynamically scales the noise to be lower in high-variance regions (to preserve speech content) and higher in low-variance regions (to mask potential adversarial perturbations), enhancing robustness while maintaining accuracy.
+    \item \textbf{Batch Processing for Efficient Monte Carlo Sampling \cite{cohen2019certified}:} This approach improves the efficiency of randomized smoothing by processing multiple noisy versions of an input signal in batches. Instead of evaluating each perturbed sample individually, batch processing leverages parallel computation to perform Monte Carlo sampling, estimating the smoothed classifier's prediction faster and more scalably. 
+    \item \textbf{ROVER voting \cite{olivier2022sequential}:} ROVER (Recognizer Output Voting Error Reduction) is a method for combining multiple transcription outputs from a speech recognition system. It aggregates transcriptions by voting on words at each position across noisy samples, selecting the most frequent word to produce a final, more robust transcription, reducing errors caused by noise or adversarial attacks.
+\end{itemize}
+
+\newpage
+\subsubsection{Methodology}
+\begin{algorithm}
+\caption{Randomized Smoothing Defense}
+\begin{algorithmic}[1]
+\Require $x_{audio}$, processor, model, $\sigma_{base}$, $num_samples$ \Comment{Input audio signal, processor, model, base noise level, number of samples}
+\Ensure $transcription$, $\sigma_{used}$ \Comment{Defended transcription, used noise level}
+
+\State $\sigma \gets adaptive\_sigma(x_{audio}, \sigma_{base})$ \Comment{Compute adaptive noise level}
+\State $noisy\_audios \gets [add\_gaussian\_noise(x_{audio}, \sigma) \text{ for } i \text{ in } 1 \text{ to } num_samples]$ \Comment{Generate noisy samples}
+\State $transcriptions \gets []$ \Comment{Initialize transcription list}
+\For{$i \gets 1$ to $num_samples$ step $batch\_size$} \Comment{Process in batches}
+    \State $batch \gets noisy\_audios[i:i+batch\_size]$
+    \State $inputs \gets processor(batch, sampling\_rate=16000, return\_tensors="pt", padding="longest").input\_values.to(model.device)$ \Comment{Prepare inputs}
+    \State $logits \gets model(inputs).logits$ \Comment{Compute logits}
+    \State $pred\_ids \gets \arg\max(logits, dim=-1)$ \Comment{Get predicted IDs}
+    \State $batch\_transcriptions \gets processor.batch\_decode(pred\_ids)$ \Comment{Decode predictions}
+    \State $transcriptions \gets transcriptions \cup batch\_transcriptions$ \Comment{Add to transcription list}
+\EndFor
+\State $word\_votes \gets dictionary()$ \Comment{Initialize vote counter}
+\For{$ts \in transcriptions$} \Comment{Count word votes}
+    \State $words \gets split(ts)$
+    \For{$idx, word \in enumerate(words)$}
+        \State $word\_votes[idx][word] \gets word\_votes[idx][word] + 1$
+    \EndFor
+\EndFor
+\State $final\_transcription \gets []$ \Comment{Initialize final transcription}
+\For{$idx \in sorted(keys(word\_votes))$} \Comment{Construct final transcription}
+    \If{$idx \in word\_votes$ and $word\_votes[idx]$}
+        \State $final\_word \gets word \text{ with } \max(word\_votes[idx][word])$
+        \State $final\_transcription \gets final\_transcription \cup \{final\_word\}$
+    \EndIf
+\EndFor
+\State $transcription \gets " ".join(final\_transcription)$ \Comment{Join words into transcription}
+\State \Return $transcription, \sigma$ \Comment{Return transcription and used sigma}
+\end{algorithmic}
+\end{algorithm}
+
+\newpage
+\subsubsection{Results with PGD Attacks}
+\begin{table}[ht]
+\centering
+\footnotesize
+\caption{Defense Effectiveness Against PGD Attacks with Adaptive Smoothing}
+\label{tab:pgd_results}
+\begin{tabular}{@{\hspace{0.3cm}}ccS[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=3.2]S[table-format=3.2]c@{\hspace{0.3cm}}}
+\toprule
+$\epsilon$ & $\alpha$ & {O-CER (\%)} & {O-WER (\%)} & {D-CER (\%)} & {D-WER (\%)} & {$\Delta$CER} & {$\Delta$WER} & {Samp.} \\
+\midrule
+0.01 & 0.001 & 5.34 & 14.70 & 1.65 & 5.12 & -3.69 & -9.57 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 1.90 & 5.60 & -7.89 & -17.12 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 3.09 & 8.19 & -21.12 & -36.17 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 11.46 & 22.95 & -26.44 & -39.03 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 42.07 & 67.04 & -16.32 & -14.40 & 100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{MP3 Compression}
+\subsubsection{Introduction}
+MP3 compression, a lossy audio encoding scheme based on psychoacoustic models, serves as an effective defense against Audio Adversarial Examples (AAEs) in Automatic Speech Recognition (ASR) systems \cite{andronic2020mp3}. By discarding audio information below human hearing thresholds, MP3 compression can reduce adversarial noise (AN) embedded in AAEs, which is often imperceptible to humans but misleads ASR systems into incorrect transcriptions \cite{andronic2020mp3}. We implement this defense with the following key components:
+
+\begin{itemize}
+    \item \textbf{MP3 Compression and Decompression \cite{andronic2020mp3}:} The audio signal is compressed to MP3 format at varying bitrates (e.g., 128 kbps to 4 kbps) and then decompressed back to the time domain. This process removes frequency components where AN is typically hidden, improving transcription accuracy.
+    \item \textbf{Bitrate Variation:} Different bitrates are tested to evaluate the trade-off between noise reduction and audio quality preservation. Lower bitrates increase noise reduction but may degrade speech content \cite{andronic2020mp3}.
+    \item \textbf{Evaluation Metrics:} Character Error Rate (CER) and Word Error Rate (WER) are used to measure the defense's effectiveness against Projected Gradient Descent (PGD) attacks, with Signal-to-Noise Ratio (SNR) improvements confirming AN reduction \cite{andronic2020mp3}.
+\end{itemize}
+
+\newpage
+\subsubsection{Methodology}
+The MP3 compression defense involves compressing an input audio signal to MP3 format, decompressing it back to the time domain, and transcribing the result using an ASR model. The process is implemented as follows:
+
+\begin{algorithm}
+\caption{MP3 Compression Defense}
+\begin{algorithmic}[1]
+\Require $x_{audio}$, processor, model, $bitrate$ \Comment{Input audio signal, processor, model, MP3 bitrate}
+\Ensure $transcription$, $bitrate_{used}$ \Comment{Defended transcription, used bitrate}
+
+\State $audio_{float32} \gets convert\_to\_float32(x_{audio})$ \Comment{Convert to float32}
+\State $audio_{float32} \gets clip(audio_{float32}, -1.0, 1.0)$ \Comment{Clip to [-1, 1]}
+\State $audio_{int16} \gets (audio_{float32} \cdot 32767) \text{ as } int16$ \Comment{Convert to 16-bit PCM}
+\If{$audio_{int16}$ has multiple channels}
+    \State $audio_{int16} \gets squeeze(audio_{int16})$ \Comment{Flatten to mono}
+\EndIf
+\State $audio_{segment} \gets AudioSegment(audio_{int16}, sample\_rate=16000, sample\_width=2, channels=1)$ \Comment{Create audio segment}
+\State $temp\_file \gets create\_temp\_file(suffix=".mp3")$ \Comment{Create temporary file}
+\State $export(audio_{segment}, temp\_file, format="mp3", bitrate=bitrate)$ \Comment{Export as MP3}
+\State $compressed_{audio} \gets import\_audio(temp\_file, format="mp3")$ \Comment{Read compressed audio}
+\State $delete(temp\_file)$ \Comment{Clean up temporary file}
+\State $audio_{samples} \gets get\_samples(compressed_{audio}, dtype=float32)$ \Comment{Convert to numpy array}
+\State $audio_{normalized} \gets audio_{samples} / 32767$ \Comment{Normalize to [-1, 1]}
+\If{$length(audio_{normalized}) \neq length(x_{audio})$}
+    \If{$length(audio_{normalized}) > length(x_{audio})$}
+        \State $audio_{normalized} \gets audio_{normalized}[:length(x_{audio})]$ \Comment{Trim to match input}
+    \Else
+        \State $audio_{normalized} \gets pad(audio_{normalized}, length(x_{audio}), mode="constant")$ \Comment{Pad to match input}
+    \EndIf
+\EndIf
+\State $transcription \gets transcribe\_audio(audio_{normalized}, 16000, processor, model)$ \Comment{Transcribe defended audio}
+\State \Return $transcription, bitrate$ \Comment{Return transcription and used bitrate}
+\end{algorithmic}
+\end{algorithm}
+
+\newpage
+\subsubsection{Results with PGD Attacks}
+
+The spectral gating defense was evaluated on 100 adversarial audio samples across five epsilon values (0.01 to 0.2) and corresponding alpha values (0.001 to 0.02). The character error rate (CER) and word error rate (WER) were computed for the original (undefended) and defended audio using five defense configurations:
+\begin{itemize}
+    \item Non-stationary, 80\% noise reduction, 500 Hz/50 ms smoothing (\texttt{nonstat\_p80\_f500\_t50}).
+    \item Stationary, 80\% noise reduction, 500 Hz/50 ms smoothing (\texttt{stat\_p80\_f500\_t50}).
+    \item Non-stationary, 60\% noise reduction, 500 Hz/50 ms smoothing (\texttt{nonstat\_p60\_f500\_t50}).
+    \item Non-stationary, 100\% noise reduction, 500 Hz/50 ms smoothing (\texttt{nonstat\_p100\_f500\_t50}).
+    \item Non-stationary, 80\% noise reduction, 200 Hz/25 ms smoothing (\texttt{nonstat\_p80\_f200\_t25}).
+\end{itemize}
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{MP3 Compression Defense Effectiveness Against PGD Attacks}
+\label{tab:mp3_results}
+\begin{tabular}{@{\hspace{0.3cm}}ccS[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=3.2]S[table-format=3.2]c@{\hspace{0.3cm}}}
+\toprule
+$\epsilon$ & $\alpha$ & {O-CER (\%)} & {O-WER (\%)} & {D-CER (\%)} & {D-WER (\%)} & {$\Delta$CER} & {$\Delta$WER} & {Samp.} \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Bitrate: 128 kbps} \\
+0.01 & 0.001 & 5.34 & 14.70 & 2.63 & 7.40 & -2.72 & -7.30 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 3.48 & 9.63 & -6.31 & -13.09 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 7.13 & 15.66 & -17.08 & -28.69 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 11.81 & 24.73 & -26.09 & -37.25 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 24.87 & 45.13 & -33.52 & -36.31 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Bitrate: 96 kbps} \\
+0.01 & 0.001 & 5.34 & 14.70 & 2.59 & 7.22 & -2.75 & -7.48 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 3.51 & 9.67 & -6.28 & -13.05 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 6.98 & 15.42 & -17.23 & -28.94 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 11.79 & 25.04 & -26.11 & -36.94 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 25.04 & 44.75 & -33.35 & -36.69 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Bitrate: 64 kbps} \\
+0.01 & 0.001 & 5.34 & 14.70 & 2.41 & 6.98 & -2.93 & -7.71 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 3.15 & 9.00 & -6.64 & -13.73 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 6.47 & 14.70 & -17.74 & -29.66 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 10.63 & 22.53 & -27.27 & -39.45 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 22.84 & 41.60 & -35.55 & -39.84 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Bitrate: 32 kbps} \\
+0.01 & 0.001 & 5.34 & 14.70 & 2.02 & 6.27 & -3.33 & -8.43 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 2.45 & 7.25 & -7.34 & -15.47 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 4.40 & 10.92 & -19.81 & -33.44 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 7.08 & 14.94 & -30.82 & -47.04 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 14.23 & 27.59 & -44.16 & -53.85 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Bitrate: 24 kbps} \\
+0.01 & 0.001 & 5.34 & 14.70 & 2.05 & 6.02 & -3.30 & -8.67 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 2.24 & 6.61 & -7.56 & -16.12 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 3.25 & 8.59 & -20.96 & -35.77 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 5.91 & 12.62 & -32.00 & -49.36 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 8.96 & 17.72 & -49.43 & -63.72 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Bitrate: 16 kbps} \\
+0.01 & 0.001 & 5.34 & 14.70 & 3.45 & 8.93 & -1.90 & -5.77 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 3.39 & 8.83 & -6.41 & -13.89 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 4.20 & 10.19 & -20.01 & -34.17 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 5.42 & 11.81 & -32.48 & -50.17 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 8.05 & 16.14 & -50.34 & -65.30 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Bitrate: 8 kbps} \\
+0.01 & 0.001 & 5.34 & 14.70 & 23.46 & 44.03 & 18.11 & 29.33 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 24.46 & 44.58 & 14.66 & 21.85 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 25.98 & 46.84 & 1.77 & 2.48 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 28.30 & 49.60 & -9.61 & -12.38 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 32.37 & 55.64 & -26.02 & -25.81 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Bitrate: 4 kbps} \\
+0.01 & 0.001 & 5.34 & 14.70 & 23.46 & 44.03 & 18.11 & 29.33 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 24.46 & 44.58 & 14.66 & 21.85 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 25.98 & 46.84 & 1.77 & 2.48 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 28.30 & 49.60 & -9.61 & -12.38 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 32.37 & 55.64 & -26.02 & -25.81 & 100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Spectral Gating Defense}
+\subsubsection{Introduction}
+Spectral gating is a defense strategy that applies noise reduction to audio signals to remove adversarial perturbations. It uses WebRTC VAD to identify speech and non-speech segments, extracts a noise profile from non-speech regions, and applies spectral subtraction to denoise the audio \cite{oreilly2022voiceblock}. The defense operates in the frequency domain, attenuating noise components while preserving speech quality, making it suitable for streaming applications with low latency.
+
+\subsubsection{Methodology}
+The spectral gating defense processes a 1D audio signal as follows:
+\begin{enumerate}
+    \item \textbf{Voice Activity Detection}: Apply WebRTC VAD to generate a boolean mask identifying speech segments, using a frame duration of 30 ms and an aggressiveness level of 2.
+    \item \textbf{Noise Profile Extraction}: Extract non-speech segments based on the VAD mask. If no non-speech segments exist, use portions from the audio's beginning and end (0.5 seconds each).
+    \item \textbf{Noise Reduction}: Use the \texttt{noisereduce} library to perform spectral subtraction, configured with parameters for stationary noise, proportion of noise to remove, and frequency/time smoothing.
+    \item \textbf{Output Adjustment}: Ensure the output audio matches the input length by trimming or padding as needed, and cast to float32 format.
+\end{enumerate}
+
+The pseudocode for the spectral gating defense is shown in Algorithm \ref{alg:spectral_gating}.
+
+\begin{algorithm}
+\caption{Spectral Gating Defense}
+\label{alg:spectral_gating}
+\begin{algorithmic}[1]
+\Require Audio signal $x$ (float32, [-1,1]), sample rate $sr$, stationary flag $s$, proportion decrease $p$, frequency smoothing $f_{hz}$, time smoothing $t_{ms}$
+\Ensure Denoised audio signal $y$ (float32, same length as $x$)
+\State $x \gets \text{Clip}(x, -1.0, 1.0)$ \Comment{Ensure signal is in [-1,1]}
+\State $x \gets \text{Squeeze}(x)$ \Comment{Remove singleton dimensions}
+\State $m \gets \text{VoiceActivityDetection}(x, sr)$ \Comment{Generate VAD mask}
+\State $n \gets \text{ExtractNoiseProfile}(x, m, sr)$ \Comment{Get noise from non-speech}
+\State $y \gets \text{ReduceNoise}(x, sr, n, s, p, f_{hz}, t_{ms})$ \Comment{Spectral subtraction}
+\If{$\text{length}(y) > \text{length}(x)$}
+    \State $y \gets y[1:\text{length}(x)]$ \Comment{Trim excess}
+\ElsIf{$\text{length}(y) < \text{length}(x)$}
+    \State $y \gets \text{Pad}(y, \text{length}(x) - \text{length}(y))$ \Comment{Pad to match}
+\EndIf
+\State \Return $y.\text{astype}(\text{float32})$
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Results with PGD Attacks}
+
+
+
+Table \ref{tab:spectral_gating_results} summarizes the results, showing CER, WER, and their reductions ($\Delta$CER, $\Delta$WER) compared to the undefended case for $\epsilon=0.1, \alpha=0.01$. Results for other epsilon values are available in the supplemental material.
+
+\begin{table}[ht]
+\caption{Spectral Gating Defense Results for $\epsilon=0.1, \alpha=0.01$}
+\label{tab:spectral_gating_results}
+\centering
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccr}
+\toprule
+\textbf{Config} & \textbf{CER (\%)} & \textbf{WER (\%)} & \textbf{$\Delta$CER (\%)} & \textbf{$\Delta$WER (\%)} & \textbf{Samples} \\
+\midrule
+Original (No Defense) & 37.90 & 61.98 & -- & -- & 100 \\
+\texttt{nonstat\_p80\_f500\_t50} & 7.25 & 16.47 & -30.65 & -45.51 & 100 \\
+\texttt{stat\_p80\_f500\_t50} & 7.47 & 17.22 & -30.43 & -44.76 & 100 \\
+\texttt{nonstat\_p60\_f500\_t50} & 9.88 & 21.39 & -28.02 & -40.59 & 100 \\
+\texttt{nonstat\_p100\_f500\_t50} & 2.84 & 7.01 & -35.06 & -54.97 & 100 \\
+\texttt{nonstat\_p80\_f200\_t25} & 5.10 & 11.82 & -32.80 & -50.16 & 100 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+
+
+
+\subsection{Quantization Defense}
+\subsubsection{Introduction}
+Input quantization reduces the precision of audio signals by mapping continuous values to discrete levels, effectively attenuating adversarial perturbations \cite{li2024investigating}. The defense preprocesses audio inputs by quantizing them to a specified bit-width (e.g., 4-bit, 8-bit, 16-bit), scaling values to a discrete range, and dequantizing back to the original scale. This process introduces noise that can disrupt adversarial perturbations while preserving speech intelligibility.
+
+\subsubsection{Methodology}
+The input quantization defense processes a 1D audio signal as follows:
+\begin{enumerate}
+    \item \textbf{Clamping}: Ensure the audio signal is within the range $[-1, 1]$.
+    \item \textbf{Scaling}: Map the signal to $[0, 2^b - 1]$, where $b$ is the bit-width.
+    \item \textbf{Quantization}: Round the scaled values to the nearest integer.
+    \item \textbf{Dequantization}: Scale the quantized values back to $[-1, 1]$.
+    \item \textbf{Output}: Return the dequantized signal as a float32 array.
+\end{enumerate}
+
+The pseudocode for the input quantization defense is shown in Algorithm \ref{alg:input_quantization}.
+
+\begin{algorithm}
+\caption{Input Quantization Defense}
+\label{alg:input_quantization}
+\begin{algorithmic}[1]
+\Require Audio signal $x$ (float32, [-1,1]), bit-width $b$, device $d$
+\Ensure Quantized audio signal $y$ (float32, same shape as $x$)
+\State $x \gets \text{Clamp}(x, -1.0, 1.0)$ \Comment{Ensure signal is in [-1,1]}
+\State $x \gets \text{ToTensor}(x, d)$ \Comment{Convert to tensor on device}
+\State $n \gets 2^b$ \Comment{Number of quantization levels}
+\State $s \gets (x + 1) / 2 \times (n - 1)$ \Comment{Scale to [0, n-1]}
+\State $q \gets \text{Round}(s)$ \Comment{Quantize to integers}
+\State $y \gets (q / (n - 1)) \times 2 - 1$ \Comment{Dequantize to [-1,1]}
+\State \Return $y.\text{cpu}().\text{numpy}().\text{astype}(\text{float32})$
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsubsection{Results with PGD Attacks}
+\ref{tab:quantization_results} summarizes the results for $\epsilon=0.1, \alpha=0.01$, showing CER, WER, and their reductions ($\Delta$CER, $\Delta$WER) compared to the undefended case. Results for other epsilon values are available in the supplemental material.
+
+\begin{table}[ht]
+\caption{Input Quantization Defense Results for $\epsilon=0.1, \alpha=0.01$}
+\label{tab:quantization_results}
+\centering
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccr}
+\toprule
+\textbf{Config} & \textbf{CER (\%)} & \textbf{WER (\%)} & \textbf{$\Delta$CER (\%)} & \textbf{$\Delta$WER (\%)} & \textbf{Samples} \\
+\midrule
+Original (No Defense) & 37.90 & 61.98 & -- & -- & 100 \\
+4-bit & 5.56 & 12.91 & -32.34 & -49.07 & 100 \\
+8-bit & 14.70 & 29.56 & -23.21 & -32.42 & 100 \\
+16-bit & 14.85 & 29.91 & -23.05 & -32.07 & 100 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}
