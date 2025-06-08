@@ -43,6 +43,10 @@ def calculate_snr(original, adversarial):
 
 
 
+
+
+
+
 from torch import nn
 import torch
 import torchaudio
@@ -220,6 +224,77 @@ def split_into_frames(signal, frame_len_samples, hop_len_samples=None):
     return frames
 
 
-    
+
+import os
+import json
+from pathlib import Path
+
+import json
+import numpy as np
+from pathlib import Path
+
+def load_epsilon_group(epsilon, alpha=None, root_dir='adversarial_dataset'):
+    root = Path(root_dir)
+    # Build the glob pattern
+    if alpha is not None:
+        pattern = f"eps_{epsilon}_alpha_{alpha}"
+    else:
+        pattern = f"eps_{epsilon}*"
+    # Find matching directories
+    matching_dirs = [d for d in root.glob(pattern) if d.is_dir()]
+    samples = []
+    if not matching_dirs:
+        print(f"No directories matching pattern '{pattern}' in {root}")
+        return samples
+    for param_dir in matching_dirs:
+        json_files = list(param_dir.glob("*.json"))
+        print(f"Found {len(json_files)} samples in {param_dir}")
+        for json_file in json_files:
+            try:
+                with open(json_file) as f:
+                    metadata = json.load(f)
+                numpy_path = metadata['numpy_path']
+                if not Path(numpy_path).exists():
+                    print(f"Warning: {numpy_path} does not exist")
+                    continue
+                audio_array = np.load(numpy_path)
+                samples.append({
+                    'audio': audio_array,
+                    'sr': 16000,
+                    'ground_truth': metadata['ground_truth'],
+                    'params': metadata['params']
+                })
+            except Exception as e:
+                print(f"Error loading {json_file}: {str(e)}")
+    return samples
 
 
+
+
+
+def get_original_results(samples, processor, model):
+    from tqdm import tqdm
+    import evaluate 
+    cer_metric = evaluate.load("cer")
+    wer_metric = evaluate.load("wer")
+    cer_list = []
+    wer_list = []
+    print("Computing original (undefended) results...")
+    for sample in tqdm(samples, desc="Processing original"):
+        try:
+            original_transcription = transcribe_audio(sample['audio'], 16000, processor, model)
+            ground_truth = sample['ground_truth']
+            cer = cer_metric.compute(predictions=[original_transcription], references=[ground_truth])
+            wer = wer_metric.compute(predictions=[original_transcription], references=[ground_truth])
+            cer_list.append(cer)
+            wer_list.append(wer)
+        except Exception as e:
+            print(f"Error processing original sample: {str(e)}")
+            continue
+    if cer_list and wer_list:
+        return {
+            'cer': np.mean(cer_list),
+            'wer': np.mean(wer_list),
+            'num_samples': len(cer_list)
+        }
+    return None
