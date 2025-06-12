@@ -48,6 +48,7 @@ The Fast Gradient Sign Method (FGSM) is a seminal single-step adversarial attack
 \subsubsection{Results}
 the evaluation happened over 100 samples from librespeech test dataset.
 
+
 Original CER: 0.9\% - Original WER: 2.84\%.
 \begin{table}[H]
 \centering
@@ -71,6 +72,7 @@ $\epsilon$   & {A-CER (\%)} & {A-WER (\%)} & {SNR (dB)} & {$\Delta$CER} & {$\Del
 \subsection{PGD Attack}
 \subsubsection{Introduction}
 The Projected Gradient Descent (PGD) attack is a powerful iterative adversarial attack method that builds upon the principles of the Fast Gradient Sign Method (FGSM) by applying multiple small perturbations to optimize the adversarial example within an $\ell_\infty$ norm constraint \cite{madry2018towardspgd}. In automatic speech recognition (ASR) systems, PGD generates adversarial audio samples by iteratively adjusting the input waveform to maximize the loss function, aiming to force the model to produce a specified target transcription \cite{zelasko2021adversarial}.
+
 
 \subsubsection{Methodology}
 \begin{algorithm}[H]
@@ -96,12 +98,11 @@ The Projected Gradient Descent (PGD) attack is a powerful iterative adversarial 
     \State $prev\_loss \gets loss$ \Comment{Update previous loss}
     \State $\text{model}.\Call{zero\_grad}{}$ \Comment{Clear gradients}
     \State $loss.\Call{backward}{}$ \Comment{Compute gradients}
-    \With{\text{no\_grad}} \Comment{Update perturbation without tracking}
-        \With{\text{autocast}(\text{device\_type}=\text{``cuda''}, \text{enabled}=\text{True})} \Comment{Enable mixed precision}
-            \State $perturbation \gets perturbation - \alpha \cdot \Call{sign}{perturbation.\text{grad}}$ \Comment{Update perturbation}
-            \State $perturbation \gets \Call{clamp}{perturbation, -\epsilon, \epsilon}$ \Comment{Project to $\ell_\infty$ ball}
-        \EndWith
-    \EndWith
+    \State \Comment{Update perturbation without tracking gradients}
+    \State \Comment{Begin mixed precision block}
+    \State $perturbation \gets perturbation - \alpha \cdot \Call{sign}{perturbation.\text{grad}}$ \Comment{Update perturbation}
+    \State $perturbation \gets \Call{clamp}{perturbation, -\epsilon, \epsilon}$ \Comment{Project to $\ell_\infty$ ball}
+    \State \Comment{End mixed precision block}
     \State $perturbation.\text{grad}.\Call{zero\_}{}$ \Comment{Reset gradient}
 \EndFor
 \State $x_{\text{adv}} \gets x_{\text{input}} + perturbation$ \Comment{Final adversarial input}
@@ -109,10 +110,11 @@ The Projected Gradient Descent (PGD) attack is a powerful iterative adversarial 
 \end{algorithmic}
 \end{algorithm}
 
+
 \subsubsection{Results}
 the evaluation happened over 100 samples from librespeech test dataset.
-Original CER: 0.9\% \\
-Original WER: 2.84\%
+
+Original CER: 0.9\% - Original WER: 2.84\%
 \begin{table}[H]
 \centering
 \footnotesize
@@ -130,6 +132,81 @@ $\epsilon$ & $\alpha$ & {A-CER (\%)} & {A-WER (\%)} & {SNR (dB)} & {$\Delta$CER}
 \bottomrule
 \end{tabular}
 \end{table}
+
+\subsection{Cramér-IPM Attack}
+\subsubsection{Introduction}
+The Cramér Integral Probability Metric (IPM) attack is an advanced adversarial method designed to generate robust adversarial audio signals for automatic speech recognition (ASR) systems,\cite{esmaeilpour2021towards}. By leveraging the Cramér-IPM, this attack minimizes the discrepancy between the distributions of original and adversarial audio samples, ensuring the adversarial signals remain close to the legitimate speech manifold. Unlike traditional attacks like FGSM or PGD, the Cramér-IPM approach combines the Connectionist Temporal Classification (CTC) loss with a statistical distance metric, enhancing robustness against over-the-air playback without relying on costly Expectation Over Transformation (EOT) operations \cite{esmaeilpour2021towards}. This method optimizes perturbations to maximize transcription errors while maintaining perceptual similarity, making it effective for both targeted and non-targeted attacks.
+
+\subsubsection{Methodology}
+
+\begin{algorithm}[H]
+\caption{Cramér-IPM Adversarial Attack}
+\begin{algorithmic}[1]
+\Require $x_{\text{audio}}$, $t_{\text{target}}$, $\text{model}$, $\text{processor}$, $\epsilon$, $sr$, $\text{num\_iter}$, $\lambda_{\text{ipm}}$, $n_{\text{samples}}$, $\text{device}$ \Comment{Input audio, target transcription, model, processor, perturbation bound, sample rate, iterations, IPM weight, sample points, device}
+\Ensure $x_{\text{adv}}$ \Comment{Adversarial audio signal}
+
+\State $x_{\text{input}} \gets x_{\text{audio}}.\text{to}(\text{device})$ \Comment{Move audio to device}
+\If{$x_{\text{input}}.\text{ndim} = 1$}
+    \State $x_{\text{input}} \gets x_{\text{input}}.\text{unsqueeze}(0)$ \Comment{Add batch dimension}
+\EndIf
+
+\State $labels \gets \text{processor}.\text{tokenizer}(t_{\text{target}}, \text{return\_tensors}=\text{``pt''}).\text{input\_ids}.\text{to}(\text{device})$ \Comment{Tokenize target}
+\State $labels \gets labels.\text{repeat}(x_{\text{input}}.\text{shape}[0], 1)$ \Comment{Replicate for batch}
+\State $x_{\text{adv}} \gets x_{\text{input}}.\text{clone}().\text{detach}().\text{requires\_grad\_}(\text{True})$ \Comment{Initialize adversarial input}
+
+\For{$i \gets 1$ to $\text{num\_iter}$} \Comment{Iterate up to max iterations}
+    \State $adv_{\text{iter}} \gets x_{\text{adv}}.\text{clone}().\text{detach}().\text{requires\_grad\_}(\text{True})$ \Comment{Copy for iteration}
+    \State $\text{model}.\text{zero\_grad}()$ \Comment{Clear gradients}
+    \State $output \gets \text{model}(adv_{\text{iter}}, \text{labels}=labels)$ \Comment{Compute model output}
+    \State $loss_{\text{ctc}} \gets output.\text{loss}$ \Comment{Extract CTC loss}
+    \State $loss_{\text{ctc}}.\text{backward}()$ \Comment{Compute CTC gradients}
+    \State $grad_{\text{ctc}} \gets adv_{\text{iter}}.\text{grad}.\text{clone}()$ \Comment{Store CTC gradient}
+    
+    \State \Comment{Compute IPM without gradients}
+    \State $ipm_{\text{val}} \gets \text{compute\_cramer\_ipm}(x_{\text{input}}, adv_{\text{iter}}.\text{detach}(), n_{\text{samples}})$ \Comment{Compute IPM}
+    \State $adv_{\text{ipm}} \gets x_{\text{adv}}.\text{clone}().\text{detach}().\text{requires\_grad\_}(\text{True})$ \Comment{Copy for IPM gradient}
+    \State $perturb \gets \text{randn\_like}(adv_{\text{ipm}}) \cdot 10^{-5}$ \Comment{Small random perturbation}
+    \State $adv_{\text{perturbed}} \gets adv_{\text{ipm}} + perturb$ \Comment{Perturbed input}
+    \State $ipm_{\text{val}} \gets \text{compute\_cramer\_ipm}(x_{\text{input}}, adv_{\text{ipm}}, n_{\text{samples}})$ \Comment{Base IPM}
+    \State $ipm_{\text{perturbed}} \gets \text{compute\_cramer\_ipm}(x_{\text{input}}, adv_{\text{perturbed}}, n_{\text{samples}})$ \Comment{Perturbed IPM}
+    \State $grad_{\text{ipm}} \gets \frac{ipm_{\text{perturbed}} - ipm_{\text{val}}}{10^{-5}} \cdot \text{mean}(perturb)$ \Comment{Finite difference gradient}
+    \State $grad_{\text{combined}} \gets grad_{\text{ctc}} - \lambda_{\text{ipm}} \cdot grad_{\text{ipm}}$ \Comment{Combine gradients}
+    \State $perturbation \gets \epsilon \cdot \text{sign}(grad_{\text{combined}})$ \Comment{Generate perturbation}
+    
+    \State \Comment{Update adversarial input}
+    \State $x_{\text{adv}} \gets x_{\text{adv}} - perturbation$ \Comment{Apply perturbation}
+    \State $x_{\text{adv}} \gets \text{clamp}(x_{\text{adv}}, -1.0, 1.0)$ \Comment{Clamp to valid range}
+\EndFor
+
+\State \Return $x_{\text{adv}}.\text{detach}().\text{cpu}()$ \Comment{Return adversarial audio}
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\subsubsection{Results}
+The evaluation was conducted over 100 samples from the LibriSpeech test dataset.
+
+Original CER: 0.9\%  - Original WER: 2.84\%
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Attack Effectiveness of Cramér-IPM}
+\label{tab:cramer_ipm_results}
+\begin{tabular}{@{\hspace{0.3cm}}cS[table-format=1.2]S[table-format=1.2]S[table-format=2.2]lS[table-format=1.2]S[table-format=2.2]c@{\hspace{0.3cm}}}
+\toprule
+$\epsilon$ & {A-CER (\%)} & {A-WER (\%)} & {SNR (dB)}  & {$\Delta$CER} & {$\Delta$WER}  \\
+\midrule
+0.001 & 0.18 & 0.34 & 16.21 &  -0.72 & -2.50  \\
+0.01  & 0.60 & 0.83 & 9.46   & -0.30 & -2.01  \\
+0.02  & 0.73 & 0.92 & 6.88  & -0.17 & -1.92  \\
+0.05  & 0.86 & 0.99 & 3.10   & -0.04 & -1.85  \\
+0.1   & 0.94 & 1.00 & 0.10   & 0.04 & -1.84 &  \\
+0.2   & 0.96 & 1.02 & -2.50  & 0.06 & -1.82  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 
 \section{Defenses}
 \subsection{Randomized Smoothing}
