@@ -30,7 +30,7 @@ def get_thread_metrics():
     return thread_local.cer_metric, thread_local.wer_metric
 
 
-def mp3_compress_defense_optimized(audio_array: np.ndarray, sample_rate=16000, bitrate="128k") -> np.ndarray:
+def mp3_compress_defense(audio_array: np.ndarray, sample_rate=16000, bitrate="128k") -> np.ndarray:
     """Optimized MP3 compression/decompression defense with memory improvements"""
 
     # Ensure audio is in correct range and format
@@ -101,7 +101,7 @@ def process_single_sample(sample, processor, model, bitrate):
     """Process a single sample with MP3 compression defense"""
     try:
         # Apply defense
-        defended_audio = mp3_compress_defense_optimized(sample['audio'], sample_rate=16000, bitrate=bitrate)
+        defended_audio = mp3_compress_defense(sample['audio'], sample_rate=16000, bitrate=bitrate)
         
         # Transcribe
         defended_transcription = transcribe_audio(defended_audio, 16000, processor, model)
@@ -213,15 +213,12 @@ def evaluate_mp3_compression_with_comparison(model, processor, epsilon_values, a
     return results
 
 
-# Keep original functions for backward compatibility
-def mp3_compress_defense(audio_array: np.ndarray, sample_rate=16000, bitrate="128k") -> np.ndarray:
-    """Original MP3 compression defense - kept for compatibility"""
-    return mp3_compress_defense_optimized(audio_array, sample_rate, bitrate)
+#
 
 
 def mp3_compression_transcribe(audio_array: np.ndarray, processor, model, bitrate="128k"):
     """Apply MP3 compression defense and transcribe - kept for compatibility"""
-    defended_audio = mp3_compress_defense_optimized(audio_array, sample_rate=16000, bitrate=bitrate)
+    defended_audio = mp3_compress_defense(audio_array, sample_rate=16000, bitrate=bitrate)
     transcription = transcribe_audio(defended_audio, 16000, processor, model)
     return transcription, bitrate
 
