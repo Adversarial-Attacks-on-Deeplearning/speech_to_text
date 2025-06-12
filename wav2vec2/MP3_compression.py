@@ -10,15 +10,28 @@ from tqdm import tqdm
 import evaluate
 from pydub import AudioSegment
 from utils import load_epsilon_group, get_original_results, transcribe_audio
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import threading
+from functools import lru_cache
 
 
 # Initialize metrics
 cer_metric = evaluate.load("cer")
 wer_metric = evaluate.load("wer")
 
+# Thread-local storage for metrics (since evaluate metrics may not be thread-safe)
+thread_local = threading.local()
 
-def mp3_compress_defense(audio_array: np.ndarray, sample_rate=16000, bitrate="128k") -> np.ndarray:
-    """Apply MP3 compression/decompression as defense"""
+def get_thread_metrics():
+    """Get thread-local metrics instances"""
+    if not hasattr(thread_local, 'cer_metric'):
+        thread_local.cer_metric = evaluate.load("cer")
+        thread_local.wer_metric = evaluate.load("wer")
+    return thread_local.cer_metric, thread_local.wer_metric
+
+
+def mp3_compress_defense_optimized(audio_array: np.ndarray, sample_rate=16000, bitrate="128k") -> np.ndarray:
+    """Optimized MP3 compression/decompression defense with memory improvements"""
 
     # Ensure audio is in correct range and format
     if audio_array.dtype != np.float32:
@@ -46,15 +59,17 @@ def mp3_compress_defense(audio_array: np.ndarray, sample_rate=16000, bitrate="12
             channels=1
         )
 
-        # Use temporary file approach for better compatibility
-        with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as temp_file:
-            audio_segment.export(temp_file.name, format="mp3", bitrate=bitrate)
-
-            # Read back the compressed audio
-            compressed_audio = AudioSegment.from_file(temp_file.name, format="mp3")
-
-            # Clean up temp file
-            os.unlink(temp_file.name)
+        # Use in-memory compression when possible (faster than file I/O)
+        from io import BytesIO
+        
+        # Export to memory buffer
+        mp3_buffer = BytesIO()
+        audio_segment.export(mp3_buffer, format="mp3", bitrate=bitrate)
+        mp3_buffer.seek(0)
+        
+        # Read back from memory buffer
+        compressed_audio = AudioSegment.from_file(mp3_buffer, format="mp3")
+        mp3_buffer.close()
 
         # Convert back to numpy array
         audio_samples = np.array(compressed_audio.get_array_of_samples(), dtype=np.float32)
@@ -63,12 +78,16 @@ def mp3_compress_defense(audio_array: np.ndarray, sample_rate=16000, bitrate="12
         audio_normalized = audio_samples / 32767.0
 
         # Ensure output length matches input (pad or trim if necessary)
-        if len(audio_normalized) != len(audio_array):
-            if len(audio_normalized) > len(audio_array):
-                audio_normalized = audio_normalized[:len(audio_array)]
+        input_len = len(audio_array)
+        output_len = len(audio_normalized)
+        
+        if output_len != input_len:
+            if output_len > input_len:
+                audio_normalized = audio_normalized[:input_len]
             else:
-                padding = len(audio_array) - len(audio_normalized)
-                audio_normalized = np.pad(audio_normalized, (0, padding), mode='constant', constant_values=0)
+                # Use zeros for padding (more efficient than np.pad for simple constant padding)
+                padding = input_len - output_len
+                audio_normalized = np.concatenate([audio_normalized, np.zeros(padding, dtype=np.float32)])
 
         return audio_normalized
 
@@ -77,14 +96,56 @@ def mp3_compress_defense(audio_array: np.ndarray, sample_rate=16000, bitrate="12
         # Return original audio if compression fails
         return audio_array
 
-def mp3_compression_transcribe(audio_array: np.ndarray, processor, model, bitrate="128k"):
-    """Apply MP3 compression defense and transcribe"""
-    defended_audio = mp3_compress_defense(audio_array, sample_rate=16000, bitrate=bitrate)
-    transcription = transcribe_audio(defended_audio, 16000, processor, model)
-    return transcription, bitrate
+
+def process_single_sample(sample, processor, model, bitrate):
+    """Process a single sample with MP3 compression defense"""
+    try:
+        # Apply defense
+        defended_audio = mp3_compress_defense_optimized(sample['audio'], sample_rate=16000, bitrate=bitrate)
+        
+        # Transcribe
+        defended_transcription = transcribe_audio(defended_audio, 16000, processor, model)
+        
+        # Get thread-local metrics
+        cer_metric_local, wer_metric_local = get_thread_metrics()
+        
+        # Calculate metrics
+        ground_truth = sample['ground_truth']
+        cer = cer_metric_local.compute(predictions=[defended_transcription], references=[ground_truth])
+        wer = wer_metric_local.compute(predictions=[defended_transcription], references=[ground_truth])
+        
+        return {'cer': cer, 'wer': wer, 'success': True}
+        
+    except Exception as e:
+        return {'error': str(e), 'success': False}
+
+
+def mp3_compression_transcribe_batch(samples, processor, model, bitrate="128k", max_workers=4):
+    """Process multiple samples in parallel"""
+    results = []
+    
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Submit all tasks
+        future_to_sample = {
+            executor.submit(process_single_sample, sample, processor, model, bitrate): i 
+            for i, sample in enumerate(samples)
+        }
+        
+        # Collect results with progress bar
+        for future in tqdm(as_completed(future_to_sample), total=len(samples), desc=f"Processing with {bitrate}"):
+            result = future.result()
+            if result['success']:
+                results.append(result)
+            else:
+                print(f"Error processing sample: {result.get('error', 'Unknown error')}")
+    
+    return results
+
 
 def evaluate_mp3_compression_with_comparison(model, processor, epsilon_values, alpha_values,
-                                           bitrate_values=["128k", "96k", "64k", "32k"]):
+                                                     bitrate_values=["128k", "96k", "64k", "32k"],
+                                                     max_workers=2):
+    """Optimized evaluation with parallel processing"""
     results = {}
 
     for epsilon, alpha in zip(epsilon_values, alpha_values):
@@ -115,37 +176,27 @@ def evaluate_mp3_compression_with_comparison(model, processor, epsilon_values, a
             'defended': {}
         }
 
-        # Test different bitrates
+        # Test different bitrates with parallel processing
         for bitrate in bitrate_values:
             print(f"\nTesting with bitrate: {bitrate}")
-            cer_list = []
-            wer_list = []
-
-            for sample in tqdm(samples, desc=f"Processing with {bitrate}"):
-                try:
-                    defended_transcription, used_bitrate = mp3_compression_transcribe(
-                        sample['audio'], processor, model, bitrate=bitrate
-                    )
-
-                    ground_truth = sample['ground_truth']
-                    cer = cer_metric.compute(predictions=[defended_transcription], references=[ground_truth])
-                    wer = wer_metric.compute(predictions=[defended_transcription], references=[ground_truth])
-
-                    cer_list.append(cer)
-                    wer_list.append(wer)
-
-                except Exception as e:
-                    print(f"Error processing sample: {str(e)}")
-                    continue
-
-            if cer_list and wer_list:
+            
+            # Process samples in parallel
+            batch_results = mp3_compression_transcribe_batch(
+                samples, processor, model, bitrate=bitrate, max_workers=max_workers
+            )
+            
+            if batch_results:
+                # Extract CER and WER values
+                cer_list = [r['cer'] for r in batch_results]
+                wer_list = [r['wer'] for r in batch_results]
+                
                 avg_cer = np.mean(cer_list)
                 avg_wer = np.mean(wer_list)
 
                 results[(epsilon, alpha)]['defended'][bitrate] = {
                     'cer': avg_cer,
                     'wer': avg_wer,
-                    'num_samples': len(cer_list)
+                    'num_samples': len(batch_results)
                 }
 
                 if original_results:
@@ -154,15 +205,30 @@ def evaluate_mp3_compression_with_comparison(model, processor, epsilon_values, a
 
                     print(f"   Bitrate {bitrate}:")
                     print(f"   CER={avg_cer*100:.2f}% (Δ {cer_improvement:+.1f}%), "
-                          f"WER={avg_wer*100:.2f}% (Δ {wer_improvement:+.1f}%) (n={len(cer_list)})")
+                          f"WER={avg_wer*100:.2f}% (Δ {wer_improvement:+.1f}%) (n={len(batch_results)})")
                 else:
                     print(f"   Bitrate {bitrate}:")
-                    print(f"   CER={avg_cer*100:.2f}%, WER={avg_wer*100:.2f}% (n={len(cer_list)})")
+                    print(f"   CER={avg_cer*100:.2f}%, WER={avg_wer*100:.2f}% (n={len(batch_results)})")
 
     return results
 
 
+# Keep original functions for backward compatibility
+def mp3_compress_defense(audio_array: np.ndarray, sample_rate=16000, bitrate="128k") -> np.ndarray:
+    """Original MP3 compression defense - kept for compatibility"""
+    return mp3_compress_defense_optimized(audio_array, sample_rate, bitrate)
+
+
+def mp3_compression_transcribe(audio_array: np.ndarray, processor, model, bitrate="128k"):
+    """Apply MP3 compression defense and transcribe - kept for compatibility"""
+    defended_audio = mp3_compress_defense_optimized(audio_array, sample_rate=16000, bitrate=bitrate)
+    transcription = transcribe_audio(defended_audio, 16000, processor, model)
+    return transcription, bitrate
+
+
+
 def print_mp3_compress_comprehensive_summary(results):
+    """Print comprehensive summary - unchanged"""
     print("\n" + "="*100)
     print("COMPREHENSIVE MP3 COMPRESSION DEFENSE EFFECTIVENESS SUMMARY")
     print("="*100)
