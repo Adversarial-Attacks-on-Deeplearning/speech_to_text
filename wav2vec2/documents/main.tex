@@ -9,7 +9,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{siunitx}
-
+\date{}
 \title{Speech Recognition}
 
 \begin{document}
@@ -28,6 +28,8 @@ Randomized smoothing \cite{cohen2019certified} emerges as a promising defense by
 
 \newpage
 \subsubsection{Methodology}
+
+
 \begin{algorithm}
 \caption{Randomized Smoothing Defense}
 \begin{algorithmic}[1]
@@ -66,7 +68,8 @@ Randomized smoothing \cite{cohen2019certified} emerges as a promising defense by
 
 \newpage
 \subsubsection{Results with PGD Attacks}
-\begin{table}[ht]
+
+\begin{table}[H]
 \centering
 \footnotesize
 \caption{Defense Effectiveness Against PGD Attacks with Adaptive Smoothing}
@@ -96,8 +99,6 @@ MP3 compression, a lossy audio encoding scheme based on psychoacoustic models, s
 
 \newpage
 \subsubsection{Methodology}
-The MP3 compression defense involves compressing an input audio signal to MP3 format, decompressing it back to the time domain, and transcribing the result using an ASR model. The process is implemented as follows:
-
 \begin{algorithm}
 \caption{MP3 Compression Defense}
 \begin{algorithmic}[1]
@@ -111,17 +112,17 @@ The MP3 compression defense involves compressing an input audio signal to MP3 fo
     \State $audio_{int16} \gets squeeze(audio_{int16})$ \Comment{Flatten to mono}
 \EndIf
 \State $audio_{segment} \gets AudioSegment(audio_{int16}, sample\_rate=16000, sample\_width=2, channels=1)$ \Comment{Create audio segment}
-\State $temp\_file \gets create\_temp\_file(suffix=".mp3")$ \Comment{Create temporary file}
-\State $export(audio_{segment}, temp\_file, format="mp3", bitrate=bitrate)$ \Comment{Export as MP3}
-\State $compressed_{audio} \gets import\_audio(temp\_file, format="mp3")$ \Comment{Read compressed audio}
-\State $delete(temp\_file)$ \Comment{Clean up temporary file}
+\State $mp3\_buffer \gets create\_memory\_buffer()$ \Comment{Create in-memory buffer}
+\State $export(audio_{segment}, mp3\_buffer, format="mp3", bitrate=bitrate)$ \Comment{Export to memory as MP3}
+\State $compressed_{audio} \gets import\_audio(mp3\_buffer, format="mp3")$ \Comment{Read from memory}
+\State $close(mp3\_buffer)$ \Comment{Clean up buffer}
 \State $audio_{samples} \gets get\_samples(compressed_{audio}, dtype=float32)$ \Comment{Convert to numpy array}
 \State $audio_{normalized} \gets audio_{samples} / 32767$ \Comment{Normalize to [-1, 1]}
 \If{$length(audio_{normalized}) \neq length(x_{audio})$}
     \If{$length(audio_{normalized}) > length(x_{audio})$}
         \State $audio_{normalized} \gets audio_{normalized}[:length(x_{audio})]$ \Comment{Trim to match input}
     \Else
-        \State $audio_{normalized} \gets pad(audio_{normalized}, length(x_{audio}), mode="constant")$ \Comment{Pad to match input}
+        \State $audio_{normalized} \gets concatenate([audio_{normalized}, zeros(length(x_{audio}) - length(audio_{normalized}))])$ \Comment{Pad with zeros}
     \EndIf
 \EndIf
 \State $transcription \gets transcribe\_audio(audio_{normalized}, 16000, processor, model)$ \Comment{Transcribe defended audio}
@@ -130,20 +131,14 @@ The MP3 compression defense involves compressing an input audio signal to MP3 fo
 \end{algorithm}
 
 \newpage
+
+
 \subsubsection{Results with PGD Attacks}
 
-The spectral gating defense was evaluated on 100 adversarial audio samples across five epsilon values (0.01 to 0.2) and corresponding alpha values (0.001 to 0.02). The character error rate (CER) and word error rate (WER) were computed for the original (undefended) and defended audio using five defense configurations:
-\begin{itemize}
-    \item Non-stationary, 80\% noise reduction, 500 Hz/50 ms smoothing (\texttt{nonstat\_p80\_f500\_t50}).
-    \item Stationary, 80\% noise reduction, 500 Hz/50 ms smoothing (\texttt{stat\_p80\_f500\_t50}).
-    \item Non-stationary, 60\% noise reduction, 500 Hz/50 ms smoothing (\texttt{nonstat\_p60\_f500\_t50}).
-    \item Non-stationary, 100\% noise reduction, 500 Hz/50 ms smoothing (\texttt{nonstat\_p100\_f500\_t50}).
-    \item Non-stationary, 80\% noise reduction, 200 Hz/25 ms smoothing (\texttt{nonstat\_p80\_f200\_t25}).
-\end{itemize}
 \begin{table}[H]
 \centering
 \footnotesize
-\caption{MP3 Compression Defense Effectiveness Against PGD Attacks}
+\caption{Defense Effectiveness Against PGD Attacks with MP3 Compression}
 \label{tab:mp3_results}
 \begin{tabular}{@{\hspace{0.3cm}}ccS[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=3.2]S[table-format=3.2]c@{\hspace{0.3cm}}}
 \toprule
@@ -208,11 +203,11 @@ $\epsilon$ & $\alpha$ & {O-CER (\%)} & {O-WER (\%)} & {D-CER (\%)} & {D-WER (\%)
 \end{tabular}
 \end{table}
 
+
+
 \subsection{Spectral Gating Defense}
 \subsubsection{Introduction}
-Spectral gating is a defense strategy that applies noise reduction to audio signals to remove adversarial perturbations. It uses WebRTC VAD to identify speech and non-speech segments, extracts a noise profile from non-speech regions, and applies spectral subtraction to denoise the audio \cite{oreilly2022voiceblock}. The defense operates in the frequency domain, attenuating noise components while preserving speech quality, making it suitable for streaming applications with low latency.
-
-\subsubsection{Methodology}
+Spectral gating is a defense strategy that applies noise reduction to audio signals to remove adversarial perturbations\cite{oreilly2022voiceblock}.
 The spectral gating defense processes a 1D audio signal as follows:
 \begin{enumerate}
     \item \textbf{Voice Activity Detection}: Apply WebRTC VAD to generate a boolean mask identifying speech segments, using a frame duration of 30 ms and an aggressiveness level of 2.
@@ -221,55 +216,88 @@ The spectral gating defense processes a 1D audio signal as follows:
     \item \textbf{Output Adjustment}: Ensure the output audio matches the input length by trimming or padding as needed, and cast to float32 format.
 \end{enumerate}
 
-The pseudocode for the spectral gating defense is shown in Algorithm \ref{alg:spectral_gating}.
+
+\subsubsection{Methodology}
 
 \begin{algorithm}
 \caption{Spectral Gating Defense}
 \label{alg:spectral_gating}
 \begin{algorithmic}[1]
-\Require Audio signal $x$ (float32, [-1,1]), sample rate $sr$, stationary flag $s$, proportion decrease $p$, frequency smoothing $f_{hz}$, time smoothing $t_{ms}$
+\Require Audio signal $x$ (float32 or convertible, [-1,1]), sample rate $sr$, stationary flag $s$, proportion decrease $p$, frequency smoothing $f_{hz}$, time smoothing $t_{ms}$
 \Ensure Denoised audio signal $y$ (float32, same length as $x$)
+\State $x \gets x.\text{astype}(\text{float32})$ \Comment{Convert to float32}
 \State $x \gets \text{Clip}(x, -1.0, 1.0)$ \Comment{Ensure signal is in [-1,1]}
 \State $x \gets \text{Squeeze}(x)$ \Comment{Remove singleton dimensions}
 \State $m \gets \text{VoiceActivityDetection}(x, sr)$ \Comment{Generate VAD mask}
-\State $n \gets \text{ExtractNoiseProfile}(x, m, sr)$ \Comment{Get noise from non-speech}
-\State $y \gets \text{ReduceNoise}(x, sr, n, s, p, f_{hz}, t_{ms})$ \Comment{Spectral subtraction}
+\State $n \gets \text{ExtractNoiseProfile}(x, m, sr)$ \Comment{Get noise from non-speech, fallback to edges if none}
+\State $y \gets \text{ReduceNoise}(x, sr, n, s, p, f_{hz}, t_{ms})$ \Comment{Apply spectral gating}
 \If{$\text{length}(y) > \text{length}(x)$}
-    \State $y \gets y[1:\text{length}(x)]$ \Comment{Trim excess}
+    \State $y \gets y[0:\text{length}(x)]$ \Comment{Trim excess from start}
 \ElsIf{$\text{length}(y) < \text{length}(x)$}
-    \State $y \gets \text{Pad}(y, \text{length}(x) - \text{length}(y))$ \Comment{Pad to match}
+    \State $y \gets \text{Pad}(y, \text{length}(x) - \text{length}(y), \text{mode="constant"})$ \Comment{Pad with zeros}
 \EndIf
 \State \Return $y.\text{astype}(\text{float32})$
 \end{algorithmic}
 \end{algorithm}
-
 \subsubsection{Results with PGD Attacks}
 
+The spectral gating defense was evaluated on 100 adversarial audio samples across five epsilon values (0.01 to 0.2) and corresponding alpha values (0.001 to 0.02). The character error rate (CER) and word error rate (WER) were computed for the original (undefended) and defended audio using five defense configurations:
+\begin{itemize}
+    \item Non-stationary, 80\% noise reduction, 500 Hz/50 ms smoothing (\texttt{nonstat\_p80\_f500\_t50}).
+    \item Stationary, 80\% noise reduction, 500 Hz/50 ms smoothing (\texttt{stat\_p80\_f500\_t50}).
+    \item Non-stationary, 60\% noise reduction, 500 Hz/50 ms smoothing (\texttt{nonstat\_p60\_f500\_t50}).
+    \item Non-stationary, 100\% noise reduction, 500 Hz/50 ms smoothing (\texttt{nonstat\_p100\_f500\_t50}).
+    \item Non-stationary, 80\% noise reduction, 200 Hz/25 ms smoothing (\texttt{nonstat\_p80\_f200\_t25}).
+\end{itemize}
 
+Table \ref{tab:spectral_gating_results} summarizes the results.
 
-Table \ref{tab:spectral_gating_results} summarizes the results, showing CER, WER, and their reductions ($\Delta$CER, $\Delta$WER) compared to the undefended case for $\epsilon=0.1, \alpha=0.01$. Results for other epsilon values are available in the supplemental material.
-
-\begin{table}[ht]
-\caption{Spectral Gating Defense Results for $\epsilon=0.1, \alpha=0.01$}
-\label{tab:spectral_gating_results}
+\begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{
-\begin{tabular}{lccccr}
+\footnotesize
+\caption{Defense Effectiveness Against PGD Attacks with Spectral Gating}
+\label{tab:spectral_gating_results}
+\begin{tabular}{@{\hspace{0.3cm}}ccS[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=3.2]S[table-format=3.2]c@{\hspace{0.3cm}}}
 \toprule
-\textbf{Config} & \textbf{CER (\%)} & \textbf{WER (\%)} & \textbf{$\Delta$CER (\%)} & \textbf{$\Delta$WER (\%)} & \textbf{Samples} \\
+$\epsilon$ & $\alpha$ & {O-CER (\%)} & {O-WER (\%)} & {D-CER (\%)} & {D-WER (\%)} & {$\Delta$CER} & {$\Delta$WER} & {Samp.} \\
 \midrule
-Original (No Defense) & 37.90 & 61.98 & -- & -- & 100 \\
-\texttt{nonstat\_p80\_f500\_t50} & 7.25 & 16.47 & -30.65 & -45.51 & 100 \\
-\texttt{stat\_p80\_f500\_t50} & 7.47 & 17.22 & -30.43 & -44.76 & 100 \\
-\texttt{nonstat\_p60\_f500\_t50} & 9.88 & 21.39 & -28.02 & -40.59 & 100 \\
-\texttt{nonstat\_p100\_f500\_t50} & 2.84 & 7.01 & -35.06 & -54.97 & 100 \\
-\texttt{nonstat\_p80\_f200\_t25} & 5.10 & 11.82 & -32.80 & -50.16 & 100 \\
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Config: nonstat\_p80\_f500\_t50} \\
+0.0100 & 0.0010 & 5.34 & 14.70 & 1.79 & 5.13 & -3.56 & -9.56 & 100 \\
+0.0200 & 0.0020 & 9.80 & 22.72 & 2.28 & 6.26 & -7.52 & -16.47 & 100 \\
+0.0500 & 0.0050 & 24.21 & 44.36 & 4.05 & 9.89 & -20.16 & -34.46 & 100 \\
+0.1000 & 0.0100 & 37.90 & 61.98 & 7.25 & 16.47 & -30.65 & -45.51 & 100 \\
+0.2000 & 0.0200 & 58.39 & 81.44 & 15.77 & 31.66 & -42.62 & -49.78 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Config: stat\_p80\_f500\_t50} \\
+0.0100 & 0.0010 & 5.34 & 14.70 & 2.19 & 6.58 & -3.16 & -8.12 & 100 \\
+0.0200 & 0.0020 & 9.80 & 22.72 & 2.76 & 7.70 & -7.04 & -15.02 & 100 \\
+0.0500 & 0.0050 & 24.21 & 44.36 & 4.69 & 11.66 & -19.52 & -32.70 & 100 \\
+0.1000 & 0.0100 & 37.90 & 61.98 & 7.47 & 17.22 & -30.43 & -44.76 & 100 \\
+0.2000 & 0.0200 & 58.39 & 81.44 & 14.56 & 29.73 & -43.83 & -51.71 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Config: nonstat\_p60\_f500\_t50} \\
+0.0100 & 0.0010 & 5.34 & 14.70 & 2.23 & 6.31 & -3.12 & -8.39 & 100 \\
+0.0200 & 0.0020 & 9.80 & 22.72 & 2.94 & 8.02 & -6.86 & -14.70 & 100 \\
+0.0500 & 0.0050 & 24.21 & 44.36 & 6.03 & 13.69 & -18.19 & -30.67 & 100 \\
+0.1000 & 0.0100 & 37.90 & 61.98 & 9.88 & 21.39 & -28.02 & -40.59 & 100 \\
+0.2000 & 0.0200 & 58.39 & 81.44 & 21.28 & 40.32 & -37.11 & -41.12 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Config: nonstat\_p100\_f500\_t50} \\
+0.0100 & 0.0010 & 5.34 & 14.70 & 2.26 & 5.83 & -3.08 & -8.87 & 100 \\
+0.0200 & 0.0020 & 9.80 & 22.72 & 2.22 & 5.83 & -7.58 & -16.89 & 100 \\
+0.0500 & 0.0050 & 24.21 & 44.36 & 2.32 & 5.94 & -21.89 & -38.42 & 100 \\
+0.1000 & 0.0100 & 37.90 & 61.98 & 2.84 & 7.01 & -35.06 & -54.97 & 100 \\
+0.2000 & 0.0200 & 58.39 & 81.44 & 3.32 & 8.13 & -55.07 & -73.31 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Config: nonstat\_p80\_f200\_t25} \\
+0.0100 & 0.0010 & 5.34 & 14.70 & 1.64 & 4.76 & -3.71 & -9.94 & 100 \\
+0.0200 & 0.0020 & 9.80 & 22.72 & 1.98 & 5.45 & -7.82 & -17.27 & 100 \\
+0.0500 & 0.0050 & 24.21 & 44.36 & 3.05 & 8.07 & -21.16 & -36.28 & 100 \\
+0.1000 & 0.0100 & 37.90 & 61.98 & 5.10 & 11.82 & -32.80 & -50.16 & 100 \\
+0.2000 & 0.0200 & 58.39 & 81.44 & 11.26 & 23.48 & -47.13 & -57.96 & 100 \\
 \bottomrule
 \end{tabular}
-}
 \end{table}
-
-
 
 
 \subsection{Quantization Defense}
@@ -288,7 +316,7 @@ The input quantization defense processes a 1D audio signal as follows:
 
 The pseudocode for the input quantization defense is shown in Algorithm \ref{alg:input_quantization}.
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{Input Quantization Defense}
 \label{alg:input_quantization}
 \begin{algorithmic}[1]
@@ -308,22 +336,37 @@ The pseudocode for the input quantization defense is shown in Algorithm \ref{alg
 \subsubsection{Results with PGD Attacks}
 \ref{tab:quantization_results} summarizes the results for $\epsilon=0.1, \alpha=0.01$, showing CER, WER, and their reductions ($\Delta$CER, $\Delta$WER) compared to the undefended case. Results for other epsilon values are available in the supplemental material.
 
-\begin{table}[ht]
-\caption{Input Quantization Defense Results for $\epsilon=0.1, \alpha=0.01$}
-\label{tab:quantization_results}
+\begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{
-\begin{tabular}{lccccr}
+\footnotesize
+\caption{Defense Effectiveness Against PGD Attacks with Input Quantization}
+\label{tab:quantization_results}
+\begin{tabular}{@{\hspace{0.3cm}}ccS[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=3.2]S[table-format=3.2]c@{\hspace{0.3cm}}}
 \toprule
-\textbf{Config} & \textbf{CER (\%)} & \textbf{WER (\%)} & \textbf{$\Delta$CER (\%)} & \textbf{$\Delta$WER (\%)} & \textbf{Samples} \\
+$\epsilon$ & $\alpha$ & {O-CER (\%)} & {O-WER (\%)} & {D-CER (\%)} & {D-WER (\%)} & {$\Delta$CER} & {$\Delta$WER} & {Samp.} \\
 \midrule
-Original (No Defense) & 37.90 & 61.98 & -- & -- & 100 \\
-4-bit & 5.56 & 12.91 & -32.34 & -49.07 & 100 \\
-8-bit & 14.70 & 29.56 & -23.21 & -32.42 & 100 \\
-16-bit & 14.85 & 29.91 & -23.05 & -32.07 & 100 \\
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Config: 4-bit} \\
+0.01 & 0.001 & 5.34 & 14.70 & 3.13 & 8.36 & -2.21 & -6.34 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 3.16 & 7.95 & -6.64 & -14.77 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 3.87 & 10.12 & -20.34 & -34.24 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 5.56 & 12.91 & -32.34 & -49.07 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 17.72 & 33.74 & -40.67 & -47.70 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Config: 8-bit} \\
+0.01 & 0.001 & 5.34 & 14.70 & 2.61 & 7.53 & -2.73 & -7.17 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 3.85 & 10.20 & -5.95 & -12.52 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 9.41 & 19.32 & -14.80 & -25.04 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 14.70 & 29.56 & -23.20 & -32.42 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 29.44 & 50.71 & -28.95 & -30.73 & 100 \\
+\midrule
+\multicolumn{9}{@{\hspace{0.3cm}}l@{\hspace{0.3cm}}}{Config: 16-bit} \\
+0.01 & 0.001 & 5.34 & 14.70 & 2.93 & 8.16 & -2.41 & -6.54 & 100 \\
+0.02 & 0.002 & 9.80 & 22.72 & 4.30 & 11.27 & -5.50 & -11.45 & 100 \\
+0.05 & 0.005 & 24.21 & 44.36 & 9.87 & 20.56 & -14.34 & -23.80 & 100 \\
+0.1 & 0.01 & 37.90 & 61.98 & 14.85 & 29.91 & -23.05 & -32.07 & 100 \\
+0.2 & 0.02 & 58.39 & 81.44 & 29.49 & 50.38 & -28.90 & -31.06 & 100 \\
 \bottomrule
 \end{tabular}
-}
 \end{table}
 
 
