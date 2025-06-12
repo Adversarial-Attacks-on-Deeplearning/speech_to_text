@@ -46,8 +46,9 @@ The Fast Gradient Sign Method (FGSM) is a seminal single-step adversarial attack
 
 
 \subsubsection{Results}
-Original CER: 0.9\%
-Original WER: 2.84\%
+the evaluation happened over 100 samples from librespeech test dataset.
+
+Original CER: 0.9\% - Original WER: 2.84\%.
 \begin{table}[H]
 \centering
 \footnotesize
@@ -62,6 +63,70 @@ $\epsilon$   & {A-CER (\%)} & {A-WER (\%)} & {SNR (dB)} & {$\Delta$CER} & {$\Del
 0.05 & 2.85 & 7.83 & 23.58 & 1.95 & 4.99  \\
 0.10 & 3.57 & 9.68 & 17.56 &2.67  & 6.84 \\
 0.20 & 7.6 & 15.16 & 11.54 &6.7 & 12.32 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsection{PGD Attack}
+\subsubsection{Introduction}
+The Projected Gradient Descent (PGD) attack is a powerful iterative adversarial attack method that builds upon the principles of the Fast Gradient Sign Method (FGSM) by applying multiple small perturbations to optimize the adversarial example within an $\ell_\infty$ norm constraint \cite{madry2018towardspgd}. In automatic speech recognition (ASR) systems, PGD generates adversarial audio samples by iteratively adjusting the input waveform to maximize the loss function, aiming to force the model to produce a specified target transcription \cite{zelasko2021adversarial}.
+
+\subsubsection{Methodology}
+\begin{algorithm}[H]
+\caption{Projected Gradient Descent (PGD) Attack}
+\begin{algorithmic}[1]
+\Require $x_{\text{audio}}$, $t_{\text{target}}$, $\text{model}$, $\text{processor}$, $\epsilon$, $\alpha$, $num\_iter$, $sr$, $\text{device}$, $\delta$ \Comment{Input audio, target transcription, model, processor, perturbation bound, step size, iterations, sample rate, device, convergence threshold}
+\Ensure $x_{\text{adv}}$ \Comment{Adversarial audio signal}
+\State $x_{\text{input}} \gets x_{\text{audio}}.\Call{to}{\text{device}}$ \Comment{Move audio to device}
+\If{$x_{\text{input}}.\text{ndim} = 1$}
+    \State $x_{\text{input}} \gets x_{\text{input}}.\Call{unsqueeze}{0}$ \Comment{Add batch dimension}
+\EndIf
+\State $labels \gets \text{processor}.\text{tokenizer}(t_{\text{target}}, \text{return\_tensors}=\text{``pt''}).\text{input\_ids}.\Call{to}{\text{device}}$ \Comment{Tokenize target}
+\State $labels \gets labels.\Call{repeat}{x_{\text{input}}.\text{shape}[0], 1}$ \Comment{Replicate for batch}
+\State $perturbation \gets \Call{zeros\_like}{x_{\text{input}}, \text{requires\_grad}=\text{True}, \text{device}=\text{device}}$ \Comment{Initialize perturbation}
+\State $prev\_loss \gets \infty$ \Comment{Initialize previous loss}
+\For{$i \gets 1$ to $num\_iter$} \Comment{Iterate up to max iterations}
+    \State $x_{\text{adv}} \gets x_{\text{input}} + perturbation$ \Comment{Compute adversarial input}
+    \State $output \gets \text{model}(x_{\text{adv}}, \text{labels}=labels)$ \Comment{Compute model output}
+    \State $loss \gets output.\text{loss}$ \Comment{Extract CTC loss}
+    \If{$i > 1$ and $|prev\_loss - loss| < \delta$} \Comment{Check convergence}
+        \State \textbf{break} \Comment{Stop if loss change is below threshold}
+    \EndIf
+    \State $prev\_loss \gets loss$ \Comment{Update previous loss}
+    \State $\text{model}.\Call{zero\_grad}{}$ \Comment{Clear gradients}
+    \State $loss.\Call{backward}{}$ \Comment{Compute gradients}
+    \With{\text{no\_grad}} \Comment{Update perturbation without tracking}
+        \With{\text{autocast}(\text{device\_type}=\text{``cuda''}, \text{enabled}=\text{True})} \Comment{Enable mixed precision}
+            \State $perturbation \gets perturbation - \alpha \cdot \Call{sign}{perturbation.\text{grad}}$ \Comment{Update perturbation}
+            \State $perturbation \gets \Call{clamp}{perturbation, -\epsilon, \epsilon}$ \Comment{Project to $\ell_\infty$ ball}
+        \EndWith
+    \EndWith
+    \State $perturbation.\text{grad}.\Call{zero\_}{}$ \Comment{Reset gradient}
+\EndFor
+\State $x_{\text{adv}} \gets x_{\text{input}} + perturbation$ \Comment{Final adversarial input}
+\State \Return $x_{\text{adv}}.\Call{detach}{}.\Call{cpu}{}$ \Comment{Return adversarial audio}
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Results}
+the evaluation happened over 100 samples from librespeech test dataset.
+Original CER: 0.9\% \\
+Original WER: 2.84\%
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Attack Effectiveness of PGD}
+\label{tab:pgd_attack_results}
+\begin{tabular}{@{\hspace{0.3cm}}ccS[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=3.2]S[table-format=3.2]c@{\hspace{0.3cm}}}
+\toprule
+$\epsilon$ & $\alpha$ & {A-CER (\%)} & {A-WER (\%)} & {SNR (dB)} & {$\Delta$CER} & {$\Delta$WER}  \\
+\midrule
+0.01 & 0.001 & 5.34 & 14.70 & 37.56 & 4.44 & 11.86  \\
+0.02 & 0.002 & 9.80 & 22.72 & 31.54 & 8.90 & 19.88  \\
+0.05 & 0.005 & 24.21 & 44.36 & 23.58 & 23.31 & 41.52 \\
+0.10 & 0.01 & 37.90 & 61.98 & 17.56 & 37.00 & 59.14  \\
+0.20 & 0.02 & 58.39 & 81.44 & 11.54 & 57.49 & 78.60  \\
 \bottomrule
 \end{tabular}
 \end{table}
