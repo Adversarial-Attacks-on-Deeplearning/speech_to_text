@@ -15,6 +15,57 @@
 \begin{document}
 
 \maketitle
+
+\section{Attacks}
+\subsection{FGSM Attack}
+\subsubsection{Introduction}
+The Fast Gradient Sign Method (FGSM) is a seminal single-step adversarial attack technique designed to generate adversarial examples by introducing imperceptible perturbations to input data, thereby misleading machine learning models \cite{goodfellow2015explaining}. In the context of automatic speech recognition (ASR), this attack crafts adversarial audio samples that force the model to produce a specified target transcription\cite{zelasko2021adversarial}.
+
+\subsubsection{Methodology}
+\begin{algorithm}
+\caption{Fast Gradient Sign Method (FGSM) Attack}
+\begin{algorithmic}[1]
+\Require $x_{\text{audio}}$, $t_{\text{target}}$, $\text{processor}$, $\text{model}$, $\epsilon$, $sr$, $\text{device}$ \Comment{Input audio signal, target transcription, processor, model, perturbation magnitude, sample rate, device}
+\Ensure $x_{\text{adv}}$ \Comment{Adversarial audio signal}
+\State $x_{\text{input}} \gets x_{\text{audio}}.\Call{to}{\text{device}}$ \Comment{Move audio to device}
+\If{$x_{\text{input}}.\text{ndim} = 1$}
+    \State $x_{\text{input}} \gets x_{\text{input}}.\Call{unsqueeze}{0}$ \Comment{Add batch dimension}
+\EndIf
+\State $labels \gets \text{processor}.\text{tokenizer}(t_{\text{target}}, \text{return\_tensors}=\text{``pt''}).\text{input\_ids}.\Call{to}{\text{device}}$ \Comment{Tokenize target}
+\State $labels \gets labels.\Call{repeat}{x_{\text{input}}.\text{shape}[0], 1}$ \Comment{Replicate for batch}
+\State $x_{\text{input}}.\Call{requires\_grad\_}{}$ \Comment{Enable gradient tracking}
+\State $output \gets \text{model}(x_{\text{input}}, \text{labels}=labels)$ \Comment{Compute model output}
+\State $loss \gets output.\text{loss}$ \Comment{Extract CTC loss}
+\State $loss.\Call{backward}{}$ \Comment{Compute gradients}
+\State $grad \gets x_{\text{input}}.\text{grad}$ \Comment{Get gradients}
+\State $perturbation \gets \epsilon \cdot \Call{sign}{grad}$ \Comment{Compute perturbation}
+\State $x_{\text{adv}} \gets x_{\text{input}} + perturbation$ \Comment{Generate adversarial input}
+\State \Return $x_{\text{adv}}.\Call{detach}{}.\Call{cpu}{}$ \Comment{Return adversarial audio}
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsubsection{Results}
+Original CER: 0.9\%
+Original WER: 2.84\%
+\begin{table}[H]
+\centering
+\footnotesize
+\caption{Attack Effectiveness of FGSM}
+\label{tab:fgsm_results}
+\begin{tabular}{@{\hspace{0.3cm}}ccS[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=2.2]S[table-format=3.2]S[table-format=3.2]c@{\hspace{0.3cm}}}
+\toprule
+$\epsilon$   & {A-CER (\%)} & {A-WER (\%)} & {SNR (dB)} & {$\Delta$CER} & {$\Delta$WER}  \\
+\midrule
+0.01 & 1.73 & 5.89 & 37.56 & 0.83 & 3.05  \\
+0.02 & 2.42 & 7.6 & 31.54 & 1.52 & 4.76  \\
+0.05 & 2.85 & 7.83 & 23.58 & 1.95 & 4.99  \\
+0.10 & 3.57 & 9.68 & 17.56 &2.67  & 6.84 \\
+0.20 & 7.6 & 15.16 & 11.54 &6.7 & 12.32 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Defenses}
 \subsection{Randomized Smoothing}
 \subsubsection{Introduction}
